@@ -39,7 +39,7 @@ seq () {
 # User specific aliases and functions
 # Enable color support for ls
 if [ "$TERM" != "dumb" ]; then
-	alias dir='ls -alhF --color=auto --format=long'
+	alias dir='ls -alFh --group-directories-first --color=auto --format=long'
 	alias ll='ls -aF --color=auto --format=long'
 fi
 alias now='date "%D %T"'

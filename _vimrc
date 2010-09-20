@@ -29,7 +29,7 @@ if &t_Co > 2 || has("gui_running")
     set hlsearch
     set cursorline
     set guifont=DejaVu_Sans_Mono:h10
-    winsize 100 55
+    winsize 180 55
     winpos 100 10
     set guioptions=ce
     set guioptions-=T
@@ -65,9 +65,9 @@ set statusline=%F%m%r%h%w\ [Format:\ %{&ff}][Type:\ %Y][A:\ %03.3b,\ H:\ %02.2B]
 let g:zenburn_high_Contrast=1
 colorscheme zenburn 
 
-map <F2> :NERDTreeToggle ~/<CR>
+map <F2> :NERDTreeToggle ~\<CR>
 map <F3> :set invnumber<CR> 
-map <F7> :e ~/.vimrc<CR>
+map <F7> :e ~\_vimrc<CR>
 
 nmap <F4> :ls!<CR>:b
 nmap <F5> a<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR><Esc> 
