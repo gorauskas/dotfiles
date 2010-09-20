@@ -1,0 +1,128 @@
+# Bourne Again Shell Init Function File
+# Jonas Gorauskas - 2007.03.17 22:00:00
+# JGG - 2008-11-14 14:28:42
+#   Added the open function
+
+# Find a process by name
+function psgrep() {
+	ps aux | grep $1 | grep -v grep
+}
+
+# Kill a process by Name
+function pskill() {
+	local pid
+	pid=$(ps ax | grep $1 | grep -v grep | awk '{ print $1 }')
+	echo -n "Killing $1 (Process $pid) ..."
+	kill -9 $pid
+	echo "Slaughtered ..."
+}
+
+# Watch output written to file
+function watch() {
+	if [ $# -ne 1 ]; then
+		tail -f nohup.out
+	else
+		tail -f $1
+	fi
+}
+
+# Display Environment Information
+function envinfo() {
+	local i
+	local is
+	let ic=0
+
+	for i in "${BASH_VERSINFO[@]}"; 
+	do
+		if [ $ic = 5 ]; then
+			is="$is on a $i"
+		else
+			if [ $ic = 0 ]; then
+				is="Bash Version $i"
+			elif [ $ic = 1 ]; then
+				is="$is$i"
+			elif [ $ic = 2 ]; then
+				is="$is$i("
+			elif [ $ic = 3 ]; then
+				is="$is$i)-"
+			elif [ $ic = 4 ]; then
+				is="$is$i"
+			fi
+		fi
+		let ic=$ic+1
+	done
+	echo $is
+}
+
+# Open any document with any application
+function open() {
+    TEMP = 'getopt -o a: -- "$@"'
+    if [ $? != 0 ] ; then exit 1 ; fi
+    eval set - "$TEMP"
+    while true ; do
+        case "$1" in
+            -a) COMMAND=$2 ; shift 2;;
+            -) shift ; break ;;
+            *) echo "should not happen" ; exit 1 ;;
+        esac
+    done
+    if [$COMMAND]; then
+        nohup $COMMAND $@ > ~/.s1 2> ~/.s2 &
+    else
+        /usr/bin/xdg-open $@
+    fi
+
+}
+
+# Dynamic Prompt String
+function prompt() {
+	local BLUE="\[\033[1;34m\]"
+	local BRED="\[\033[1;31m\]"
+	local YELLOW="\[\033[1;33m\]"
+	local RED="\[\033[0;31m\]"
+	local WHITE="\[\033[1;37m\]"
+	local NO_COLOR="\[\033[0m\]"
+
+	case "$1" in
+	d)	PS1='$(dirs) \$ '		;;
+	n)	PS1='\$ '			;;
+	hsw)	PS1='\h[$SHLVL]: \w \$ '	;;
+	hw)	PS1='\h: \w \$ '		;;
+	sh)	PS1='[$SHLVL] \h\$ '		;;
+	sw)	PS1='[$SHLVL] \w \$ '		;;
+	uh)	PS1='\u@\h\$ '			;;
+	uhsHw)	PS1='\u@\h[$SHLVL]:\#: \w \$ '	;;
+	uhsw)	PS1='\u@\h[$SHLVL]: \w \$ '	;;
+	uhw)	PS1='\u@\h: \w \$ '		;;
+	uw)	PS1='(\u) \w \$ '		;;
+	w)	PS1='\w \$ '			;;
+	def)	PS1="$RED[$BLUE\t$BRED\u$WHITE:$YELLOW\W$RED]$NO_COLOR\\$ " ;;
+        tuW)    PS1="[\t \u:\W]\$ "             ;;
+	?)	echo '
+Interactivelly change the shell prompt string.
+Version 0.4 - Jonas Gorauskas
+
+  Usage: prompt [option]
+         where option is one of the following:
+    d     - Shows the current directory path
+    n     - Shows a # for root and a $ for other users
+    hsw   - Shows hostname, shell level variable, and current working 
+            directory
+    hw    - Shows hostname and current working directory
+    sh    - Shows shell level variable and hostname
+    sw    - Shows shell level variable and current working directory
+    uh    - Shows current user name and hostname
+    uhsHw - Shows current user name, hostname, shell level variable,
+            comand level variable, and current working directory
+    uhsw  - Shows current user name, hostname, shell level variable,
+            and current working directory
+    uhw   - Shows current user name, hostname, and currentf working
+            directory
+    uw    - Shows current user name and current working directory
+    w     - Shows the current working directory
+    def   - This is the default prompt. Shows the current time in HH:MM:SS
+            format, the hostname, and the basename of the current working
+            directory
+    ?     - Shows this help message' ;;
+	esac
+}

@@ -1,0 +1,13 @@
+[user]
+	name = Jonas Gorauskas
+	email = jgorauskas@gmail.com
+[core]
+	autocrlf = false
+	safecrlf = false
+[gui]
+	fontdiff = -family \"DejaVu Sans Mono\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
+	commitmsgwidth = 120
+	encoding = utf-8
+	trustmtime = true
+[merge]
+	summary = true

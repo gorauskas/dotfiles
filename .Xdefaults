@@ -1,0 +1,20 @@
+URxvt.termName: rxvt
+URxvt.transparent: false
+URxvt.inheritPixmap: false
+URxvt.imLocale: en_US.UTF-8
+URxvt.scrollBar: true
+URxvt.scrollBar_right:false
+URxvt.scrollstyle:rxvt
+URxvt.saveLines: 2048
+URxvt.urlLauncher: firefox
+URxvt.foreground: white
+URxvt.background: #111111
+URxvt.depth: 24
+URxvt.cursorBlink: true
+URxvt.geometry: 100x40
+URxvt.fading: 25%
+URxvt.font: xft:DejaVu Sans Mono:pixelsize=12
+urxvt.boldFont: xft:DejaVu Sans Mono:bold:pixelsize=12
+URxvt.color4:RoyalBlue
+URxvt.color12:RoyalBlue
+
