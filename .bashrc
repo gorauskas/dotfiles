@@ -78,7 +78,7 @@ if [ -f ~/.bash_function ]; then
     . ~/.bash_function
 fi
 
-prompt tuW
+prompt tuhW
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

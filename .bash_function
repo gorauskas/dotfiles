@@ -32,7 +32,7 @@ function envinfo() {
 	local is
 	let ic=0
 
-	for i in "${BASH_VERSINFO[@]}"; 
+	for i in "${BASH_VERSINFO[@]}";
 	do
 		if [ $ic = 5 ]; then
 			is="$is on a $i"
@@ -98,6 +98,7 @@ function prompt() {
 	w)	PS1='\w \$ '			;;
 	def)	PS1="$RED[$BLUE\t$BRED\u$WHITE:$YELLOW\W$RED]$NO_COLOR\\$ " ;;
         tuW)    PS1="[\t \u:\W]\$ "             ;;
+        tuhW)   PS1="[\t \u@\h:\W]\$ "          ;;
 	?)	echo '
 Interactivelly change the shell prompt string.
 Version 0.4 - Jonas Gorauskas
@@ -106,7 +107,7 @@ Version 0.4 - Jonas Gorauskas
          where option is one of the following:
     d     - Shows the current directory path
     n     - Shows a # for root and a $ for other users
-    hsw   - Shows hostname, shell level variable, and current working 
+    hsw   - Shows hostname, shell level variable, and current working
             directory
     hw    - Shows hostname and current working directory
     sh    - Shows shell level variable and hostname
@@ -120,6 +121,10 @@ Version 0.4 - Jonas Gorauskas
             directory
     uw    - Shows current user name and current working directory
     w     - Shows the current working directory
+    tuW   - Shows the current time in HH:MM:SS format, the current user
+    	    name and the current working directory
+    tuhW  - Shows the current time in HH:MM:SS format, the current user
+    	    name, the hostname and the current working directory
     def   - This is the default prompt. Shows the current time in HH:MM:SS
             format, the hostname, and the basename of the current working
             directory

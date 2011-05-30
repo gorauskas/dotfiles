@@ -1,7 +1,8 @@
 # Bourne Again Shell Aliases File
 # Jonas Gorauskas - 2007-03-17 21:17:05
+# Modified: 2011-05-29 22:19 by jgg
 
-# A function to add an alias to the current shell and 
+# A function to add an alias to the current shell and
 # append it to this file
 adda () {
 	local name=$1 value="$2"
@@ -43,17 +44,17 @@ if [ "$TERM" != "dumb" ]; then
 	alias ll='ls -aF --color=auto --format=long'
 fi
 alias now='date "%D %T"'
-alias home='cd ~'
 alias mv='mv -i'
 alias rm='rm -i'
 alias cp='cp -i'
-alias ss='ps aux'
+alias ss='ps aux | less'
 alias dot='ls .[a-zA-Z0-9_]*'
 alias c='clear'
 alias j='jobs -l'
 alias h='history'
 alias em='emacs -nw'
 alias ..='cd ..'
+alias hn='hostname'
 alias clean='echo -n "Are you sure you want to clean this directory? [y/n] ";
 	read yorn;
 	if test "$yorn" = "y"; then
@@ -63,4 +64,20 @@ alias clean='echo -n "Are you sure you want to clean this directory? [y/n] ";
 		echo "Clean operation has been aborted...";
 	fi'
 
+# Some GIT workflow specific aliases
+alias ga='git add'
+alias gp='git push'
+alias gl='git log'
+alias gs='git status'
+alias gd='git diff'
+alias gm='git commit -m'
+alias gma='git commit -am'
+alias gb='git branch'
+alias gc='git checkout'
+alias gra='git remote add'
+alias grr='git remote rm'
+alias gpu='git pull'
+alias gcl='git clone'
+
 #EOF
+
