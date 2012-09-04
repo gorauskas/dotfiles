@@ -1,68 +1,79 @@
 # Bourne Again Shell Aliases File
 # Jonas Gorauskas - 2007-03-17 21:17:05
-# Modified: 2011-05-29 22:19 by jgg
+# Modified: 2012-09-04 00:57 by jgg
 
 # A function to add an alias to the current shell and
 # append it to this file
 adda () {
-	local name=$1 value="$2"
-	echo alias $name=\'$value\' >> ~/.bash_alias
-	eval alias $name=\'$value\'
-	alias $name
+        local name=$1 value="$2"
+        echo alias $name=\'$value\' >> ~/.bash_alias
+        eval alias $name=\'$value\'
+        alias $name
 }
 
 # Repeat command N times
 #   e.g. repeat 10 echo foo
 repeat () {
-	local count="$1" i;
-	shift;
-	for i in $(seq 1 "$count");
-	do
-		eval "$@";
-	done
+        local count="$1" i;
+        shift;
+        for i in $(seq 1 "$count");
+        do
+                eval "$@";
+        done
 }
 
 # Sub-Function used by Repeat
 seq () {
-	local lower upper output;
-	lower=$1 upper=$2
+        local lower upper output;
+        lower=$1 upper=$2
 
-	if [ $lower -ge $upper ]; then return; fi
+        if [ $lower -ge $upper ]; then return; fi
 
-	while [ $lower -le $upper ];
-	do
-		echo -n "$lower "
-		lower=$(($lower + 1))
-	done
-	echo "$lower"
+        while [ $lower -le $upper ];
+        do
+                echo -n "$lower "
+                lower=$(($lower + 1))
+        done
+        echo "$lower"
 }
 
 # User specific aliases and functions
 # Enable color support for ls
 if [ "$TERM" != "dumb" ]; then
-	alias dir='ls -alFh --group-directories-first --color=auto --format=long'
-	alias ll='ls -aF --color=auto --format=long'
+        alias dir='ls -alFh --group-directories-first --color=auto --format=long'
+        alias ll='ls -aF --color=auto --format=long'
 fi
-alias now='date "%D %T"'
+alias now='date "+DATE: %D%nTIME: %T"'
 alias mv='mv -i'
 alias rm='rm -i'
 alias cp='cp -i'
 alias ss='ps aux | less'
-alias dot='ls .[a-zA-Z0-9_]*'
+alias dot='ls -ld .*'
 alias c='clear'
 alias j='jobs -l'
 alias h='history'
 alias em='emacs -nw'
+
 alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+alias rw-='chmod 600'
+alias rwx='chmod 700'
+alias r--='chmod 644'
+alias r-x='chmod 755'
+
 alias hn='hostname'
+# for the lulz
+alias bitch,=sudo
 alias clean='echo -n "Are you sure you want to clean this directory? [y/n] ";
-	read yorn;
-	if test "$yorn" = "y"; then
-		rm -f \#* *~ .*~ *.bak .*.bak *.tmp .*.tmp core a.out;
-		echo "Directory has been cleaned!";
-	else
-		echo "Clean operation has been aborted...";
-	fi'
+        read yorn;
+        if test "$yorn" = "y"; then
+                rm -f \#* *~ .*~ *.bak .*.bak *.tmp .*.tmp core a.out;
+                echo "Directory has been cleaned!";
+        else
+                echo "Clean operation has been aborted...";
+        fi'
 
 # Some GIT workflow specific aliases
 alias ga='git add'
@@ -80,4 +91,3 @@ alias gpu='git pull'
 alias gcl='git clone'
 
 #EOF
-

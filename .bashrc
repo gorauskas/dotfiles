@@ -1,6 +1,6 @@
 # Bourne Again Shell init file
-#
 # Jonas Gorauskas - 2007-03-17 21:03:35
+# Modified: 2012-09-04 00:15 by jgg
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -29,15 +29,15 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
 fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
-case $TERM in 
-    xterm-color) 
+case $TERM in
+    xterm-color)
         color_prompt=yes;;
-esac 
+esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -58,12 +58,19 @@ fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
-case $TERM in 
+case $TERM in
     xterm*|rxvt*)
         TITLEBAR='\[\033]0;\u@\h:\W\007\]' ;;
     *)
         TITLEBAR="" ;;
 esac
+
+
+# used for various experiments when writing code
+if [ -d "$HOME/bin" ] ; then
+    PATH=$HOME/bin:$PATH
+fi
+export PATH
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -78,14 +85,11 @@ if [ -f ~/.bash_function ]; then
     . ~/.bash_function
 fi
 
-prompt tuhW
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-#EOF
+prompt tuhW
+linux_logo -b -f -u
 
+#EOF

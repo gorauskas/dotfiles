@@ -5,53 +5,67 @@
 
 # Find a process by name
 function psgrep() {
-	ps aux | grep $1 | grep -v grep
+        ps aux | grep $1 | grep -v grep
 }
 
 # Kill a process by Name
 function pskill() {
-	local pid
-	pid=$(ps ax | grep $1 | grep -v grep | awk '{ print $1 }')
-	echo -n "Killing $1 (Process $pid) ..."
-	kill -9 $pid
-	echo "Slaughtered ..."
+        local pid
+        pid=$(ps ax | grep $1 | grep -v grep | awk '{ print $1 }')
+        echo -n "Killing $1 (Process $pid) ..."
+        kill -9 $pid
+        echo "Slaughtered ..."
 }
 
 # Watch output written to file
 function watch() {
-	if [ $# -ne 1 ]; then
-		tail -f nohup.out
-	else
-		tail -f $1
-	fi
+        if [ $# -ne 1 ]; then
+                tail -f nohup.out
+        else
+                tail -f $1
+        fi
+}
+
+function rot13() {
+    if [ $# = 0 ] ; then
+        tr "[a-m][n-z][A-M][N-Z]" "[n-z][a-m][N-Z][A-M]"
+    else
+        tr "[a-m][n-z][A-M][N-Z]" "[n-z][a-m][N-Z][A-M]" < $1
+    fi
+}
+
+# requires superuser access in order to look at
+# all nooks and crannies
+function findall() {
+    sudo find / -name ${1} -print ;
 }
 
 # Display Environment Information
 function envinfo() {
-	local i
-	local is
-	let ic=0
+        local i
+        local is
+        let ic=0
 
-	for i in "${BASH_VERSINFO[@]}";
-	do
-		if [ $ic = 5 ]; then
-			is="$is on a $i"
-		else
-			if [ $ic = 0 ]; then
-				is="Bash Version $i"
-			elif [ $ic = 1 ]; then
-				is="$is$i"
-			elif [ $ic = 2 ]; then
-				is="$is$i("
-			elif [ $ic = 3 ]; then
-				is="$is$i)-"
-			elif [ $ic = 4 ]; then
-				is="$is$i"
-			fi
-		fi
-		let ic=$ic+1
-	done
-	echo $is
+        for i in "${BASH_VERSINFO[@]}";
+        do
+                if [ $ic = 5 ]; then
+                        is="$is on a $i"
+                else
+                        if [ $ic = 0 ]; then
+                                is="Bash Version $i"
+                        elif [ $ic = 1 ]; then
+                                is="$is$i"
+                        elif [ $ic = 2 ]; then
+                                is="$is$i("
+                        elif [ $ic = 3 ]; then
+                                is="$is$i)-"
+                        elif [ $ic = 4 ]; then
+                                is="$is$i"
+                        fi
+                fi
+                let ic=$ic+1
+        done
+        echo $is
 }
 
 # Open any document with any application
@@ -76,30 +90,30 @@ function open() {
 
 # Dynamic Prompt String
 function prompt() {
-	local BLUE="\[\033[1;34m\]"
-	local BRED="\[\033[1;31m\]"
-	local YELLOW="\[\033[1;33m\]"
-	local RED="\[\033[0;31m\]"
-	local WHITE="\[\033[1;37m\]"
-	local NO_COLOR="\[\033[0m\]"
+        local BLUE="\[\033[1;34m\]"
+        local BRED="\[\033[1;31m\]"
+        local YELLOW="\[\033[1;33m\]"
+        local RED="\[\033[0;31m\]"
+        local WHITE="\[\033[1;37m\]"
+        local NO_COLOR="\[\033[0m\]"
 
-	case "$1" in
-	d)	PS1='$(dirs) \$ '		;;
-	n)	PS1='\$ '			;;
-	hsw)	PS1='\h[$SHLVL]: \w \$ '	;;
-	hw)	PS1='\h: \w \$ '		;;
-	sh)	PS1='[$SHLVL] \h\$ '		;;
-	sw)	PS1='[$SHLVL] \w \$ '		;;
-	uh)	PS1='\u@\h\$ '			;;
-	uhsHw)	PS1='\u@\h[$SHLVL]:\#: \w \$ '	;;
-	uhsw)	PS1='\u@\h[$SHLVL]: \w \$ '	;;
-	uhw)	PS1='\u@\h: \w \$ '		;;
-	uw)	PS1='(\u) \w \$ '		;;
-	w)	PS1='\w \$ '			;;
-	def)	PS1="$RED[$BLUE\t$BRED\u$WHITE:$YELLOW\W$RED]$NO_COLOR\\$ " ;;
+        case "$1" in
+        d)      PS1='$(dirs) \$ '               ;;
+        n)      PS1='\$ '                       ;;
+        hsw)    PS1='\h[$SHLVL]: \w \$ '        ;;
+        hw)     PS1='\h: \w \$ '                ;;
+        sh)     PS1='[$SHLVL] \h\$ '            ;;
+        sw)     PS1='[$SHLVL] \w \$ '           ;;
+        uh)     PS1='\u@\h\$ '                  ;;
+        uhsHw)  PS1='\u@\h[$SHLVL]:\#: \w \$ '  ;;
+        uhsw)   PS1='\u@\h[$SHLVL]: \w \$ '     ;;
+        uhw)    PS1='\u@\h: \w \$ '             ;;
+        uw)     PS1='(\u) \w \$ '               ;;
+        w)      PS1='\w \$ '                    ;;
+        def)    PS1="$RED[$BLUE\t$BRED\u$WHITE:$YELLOW\W$RED]$NO_COLOR\\$ " ;;
         tuW)    PS1="[\t \u:\W]\$ "             ;;
         tuhW)   PS1="[\t \u@\h:\W]\$ "          ;;
-	?)	echo '
+        ?)      echo '
 Interactivelly change the shell prompt string.
 Version 0.4 - Jonas Gorauskas
 
@@ -122,12 +136,12 @@ Version 0.4 - Jonas Gorauskas
     uw    - Shows current user name and current working directory
     w     - Shows the current working directory
     tuW   - Shows the current time in HH:MM:SS format, the current user
-    	    name and the current working directory
+            name and the current working directory
     tuhW  - Shows the current time in HH:MM:SS format, the current user
-    	    name, the hostname and the current working directory
+            name, the hostname and the current working directory
     def   - This is the default prompt. Shows the current time in HH:MM:SS
             format, the hostname, and the basename of the current working
             directory
     ?     - Shows this help message' ;;
-	esac
+        esac
 }
