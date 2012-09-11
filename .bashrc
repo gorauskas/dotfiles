@@ -1,6 +1,6 @@
 # Bourne Again Shell init file
 # Jonas Gorauskas - 2007-03-17 21:03:35
-# Modified: 2012-09-04 00:15 by jgg
+# Modified: 2012-09-11 04:30 by jgg
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -89,7 +89,7 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-prompt tuhW
+prompt what
 linux_logo -b -f -u
 
 #EOF

@@ -94,6 +94,7 @@ function prompt() {
         local BRED="\[\033[1;31m\]"
         local YELLOW="\[\033[1;33m\]"
         local RED="\[\033[0;31m\]"
+        local GREEN="\[\033[0;32m\]"
         local WHITE="\[\033[1;37m\]"
         local NO_COLOR="\[\033[0m\]"
 
@@ -113,6 +114,7 @@ function prompt() {
         def)    PS1="$RED[$BLUE\t$BRED\u$WHITE:$YELLOW\W$RED]$NO_COLOR\\$ " ;;
         tuW)    PS1="[\t \u:\W]\$ "             ;;
         tuhW)   PS1="[\t \u@\h:\W]\$ "          ;;
+        what)   PS1="$BRED[$NO_COLOR\w/$BRED]$GREEN what now...$NO_COLOR \$ " ;;
         ?)      echo '
 Interactivelly change the shell prompt string.
 Version 0.4 - Jonas Gorauskas
