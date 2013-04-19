@@ -1,2 +1,14 @@
+xterm*font: -*-terminues-medium-r-normal-*-14-140-72-72-c-80-iso8859-*
+xterm*vt100*geometry: 160x80
 
-xterm*vt100*geometry: 120x60
+XTerm*background: black
+XTerm*foreground: white
+XTerm*pointerColor: firebrick
+XTerm*pointerColorBackground: black
+XTerm*cursorColor: navy
+XTerm*internalBorder: 3
+XTerm*loginShell: true
+XTerm*scrollBar: false
+XTerm*scrollKey: true
+XTerm*saveLines: 4096
+XTerm*multiClickTime: 250

@@ -11,10 +11,10 @@ URxvt.foreground: #eeeeee
 URxvt.background: #111111
 URxvt.depth: 24
 URxvt.cursorBlink: true
-URxvt.geometry: 100x40
+URxvt.geometry: 160x50
 URxvt.fading: 25%
-URxvt.font: xft:DejaVu Sans Mono:pixelsize=11
-URxvt.boldFont: xft:DejaVu Sans Mono:bold:pixelsize=11
+URxvt.font: xft:DejaVu Sans Mono:pixelsize=10
+URxvt.boldFont: xft:DejaVu Sans Mono:bold:pixelsize=10
 
 ! xscreensaver ---------------------------------------------------------------
 
