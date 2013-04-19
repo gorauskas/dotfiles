@@ -1,6 +1,6 @@
 # Bourne Again Shell Init Prompt File
 # Jonas Gorauskas [JGG] - 2013-04-19 01:01:38
-# Modified: 2013-04-19 01:50 by jgg
+# Modified: 2013-04-19 02:53 by jgg
 
 function pre_prompt {
     newPWD="${PWD}"
@@ -73,7 +73,7 @@ $blue]─┐\n$blue└─[$bblue\$(date \"+%F %T\") \$$blue]───>$white "
                     ;;
                 *)
                     PS1="┌─[\u@\h]─\${fill}─[\$newPWD\
-]─┐\n└─[\$(date \"+%F %T\")] \$)───> "
+]─┐\n└─[\$(date \"+%F %T\") \$]───> "
                     ;;
             esac
             ;;
