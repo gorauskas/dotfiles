@@ -1,6 +1,10 @@
 # Bourne Again Shell Aliases File
 # Jonas Gorauskas - 2007-03-17 21:17:05
+<<<<<<< HEAD
 # Modified: 2013-04-18 21:32 by jgg
+=======
+# Modified: 2012-12-09 22:55 by jgg
+>>>>>>> b98b889da61b074f9c1ce0f96e53ca051e512318
 
 # A function to add an alias to the current shell and
 # append it to this file
