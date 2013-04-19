@@ -1,6 +1,6 @@
 # Bourne Again Shell Aliases File
 # Jonas Gorauskas - 2007-03-17 21:17:05
-# Modified: 2012-09-04 00:57 by jgg
+# Modified: 2013-04-18 21:32 by jgg
 
 # A function to add an alias to the current shell and
 # append it to this file
@@ -43,7 +43,7 @@ if [ "$TERM" != "dumb" ]; then
         alias dir='ls -alFh --group-directories-first --color=auto --format=long'
         alias ll='ls -aF --color=auto --format=long'
 fi
-alias now='date "+DATE: %D%nTIME: %T"'
+alias now='date "+%F %T"'
 alias mv='mv -i'
 alias rm='rm -i'
 alias cp='cp -i'
@@ -74,6 +74,8 @@ alias clean='echo -n "Are you sure you want to clean this directory? [y/n] ";
         else
                 echo "Clean operation has been aborted...";
         fi'
+
+alias ipy='ipython --autoindent --pprint --gui=gtk --colors=Linux'
 
 # Some GIT workflow specific aliases
 alias ga='git add'
