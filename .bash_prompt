@@ -1,6 +1,6 @@
 # Bourne Again Shell Init Prompt File
 # Jonas Gorauskas [JGG] - 2013-04-19 01:01:38
-# Modified: 2013-04-19 01:02 by jgg
+# Modified: 2013-04-19 01:50 by jgg
 
 function pre_prompt {
     newPWD="${PWD}"
@@ -112,19 +112,3 @@ Version 0.4 - Jonas Gorauskas
     ?     - Shows this help message' ;;
     esac
 }
-
-
-case "$TERM" in
-    xterm)
-        PS1="$blue┌─[$bblue\u@\h$blue]─\${fill}─[$iceblue\$newPWD\
-$blue]─┐\n$blue└─[$bblue\$(date \"+%F %T\") \$$blue]───>$white "
-        ;;
-    screen)
-        PS1="$blue┌─[$bblue\u@\h$blue]─\${fill}─[$iceblue\$newPWD\
-$blue]─┐\n$blue└─[$bblue\$(date \"+%F %T\") \$$blue]───>$white "
-        ;;
-    *)
-        PS1="┌─[\u@\h]─\${fill}─[\$newPWD\
-]─┐\n└─[\$(date \"+%F %T\")] \$)───> "
-        ;;
-esac
