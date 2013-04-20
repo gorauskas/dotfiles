@@ -13,8 +13,8 @@ URxvt.depth: 24
 URxvt.cursorBlink: true
 URxvt.geometry: 160x50
 URxvt.fading: 25%
-URxvt.font: xft:Droid Mono:pixelsize=8
-URxvt.boldFont: xft:Droid Mono:bold:pixelsize=8
+URxvt.font: xft:Droid Sans Mono:pixelsize=8
+URxvt.boldFont: xft:Droid Sans Mono:bold:pixelsize=8
 
 ! xscreensaver ---------------------------------------------------------------
 

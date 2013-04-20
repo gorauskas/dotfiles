@@ -1,28 +1,28 @@
 # Bourne Again Shell Init Function File
 # Jonas Gorauskas - 2007.03.17 22:00:00
-# Modified: 2013-04-19 01:03 by jgg
+# Modified: 2013-04-20 15:59 by jgg
 
 # Find a process by name
 function psgrep() {
-        ps aux | grep $1 | grep -v grep
+    ps aux | grep $1 | grep -v grep
 }
 
 # Kill a process by Name
 function pskill() {
-        local pid
-        pid=$(ps ax | grep $1 | grep -v grep | awk '{ print $1 }')
-        echo -n "Killing $1 (Process $pid) ..."
-        kill -9 $pid
-        echo "Slaughtered ..."
+    local pid
+    pid=$(ps ax | grep $1 | grep -v grep | awk '{ print $1 }')
+    echo -n "Killing $1 (Process $pid) ..."
+    kill -9 $pid
+    echo "Slaughtered ..."
 }
 
 # Watch output written to file
 function watch() {
-        if [ $# -ne 1 ]; then
-                tail -f nohup.out
-        else
-                tail -f $1
-        fi
+    if [ $# -ne 1 ]; then
+        tail -f nohup.out
+    else
+        tail -f $1
+    fi
 }
 
 function rot13() {
@@ -41,30 +41,30 @@ function findall() {
 
 # Display Environment Information
 function envinfo() {
-        local i
-        local is
-        let ic=0
+    local i
+    local is
+    let ic=0
 
-        for i in "${BASH_VERSINFO[@]}";
-        do
-                if [ $ic = 5 ]; then
-                        is="$is on a $i"
-                else
-                        if [ $ic = 0 ]; then
-                                is="Bash Version $i"
-                        elif [ $ic = 1 ]; then
-                                is="$is.$i"
-                        elif [ $ic = 2 ]; then
-                                is="$is.$i("
-                        elif [ $ic = 3 ]; then
-                                is="$is$i)/"
-                        elif [ $ic = 4 ]; then
-                                is="$is$i"
-                        fi
-                fi
-                let ic=$ic+1
-        done
-        echo $is
+    for i in "${BASH_VERSINFO[@]}";
+    do
+        if [ $ic = 5 ]; then
+            is="$is on a $i"
+        else
+            if [ $ic = 0 ]; then
+                is="Bash Version $i"
+            elif [ $ic = 1 ]; then
+                is="$is.$i"
+            elif [ $ic = 2 ]; then
+                is="$is.$i("
+            elif [ $ic = 3 ]; then
+                is="$is$i)/"
+            elif [ $ic = 4 ]; then
+                is="$is$i"
+            fi
+        fi
+        let ic=$ic+1
+    done
+    echo $is
 }
 
 # Open any document with any application

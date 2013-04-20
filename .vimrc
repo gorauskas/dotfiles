@@ -1,7 +1,7 @@
 " File: .vimrc
 " Author: Jonas Gorauskas [JGG]
 " Description: Vim initialization file
-" Last Modified: 2010-04-15 00:39:13
+" Last Modified: 2013-04-20 15:55 by jgg
 
 set nocompatible
 set backspace=indent,eol,start
@@ -22,7 +22,7 @@ set autowriteall
 
 if has("mouse")
     set mouse=a
-endif   
+endif
 
 if &t_Co > 2 || has("gui_running")
     syntax on
@@ -35,7 +35,7 @@ if &t_Co > 2 || has("gui_running")
     set guioptions-=T
     set guioptions+=m
 
-endif   
+endif
 
 if has("autocmd")
     filetype plugin indent on
@@ -49,13 +49,13 @@ if has("autocmd")
         autocmd BufReadPre *.py normal m`:%s/\s\+$//e ``
         autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
     augroup END
-else 
+else
     set autoindent
 endif "if has("autocmd")
 
 set laststatus=2
 set statusline=%F%m%r%h%w\ [Format:\ %{&ff}][Type:\ %Y][A:\ %03.3b,\ H:\ %02.2B][Coord:\ %04l,\ %04v][Len:\ %L][%p%%]
-"              | | | | | 
+"              | | | | |
 "              | | | | +-- preview flag in square brackets
 "              | | | +-- help flag in square brackets
 "              | | +-- readonly flag in square brackets
@@ -63,17 +63,16 @@ set statusline=%F%m%r%h%w\ [Format:\ %{&ff}][Type:\ %Y][A:\ %03.3b,\ H:\ %02.2B]
 "              +-- full path to file in the buffer
 
 let g:zenburn_high_Contrast=1
-colorscheme zenburn 
+colorscheme zenburn
 
 map <F2> :NERDTreeToggle ~/<CR>
-map <F3> :set invnumber<CR> 
+map <F3> :set invnumber<CR>
 map <F7> :e ~/.vimrc<CR>
 
 nmap <F4> :ls!<CR>:b
-nmap <F5> a<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR><Esc> 
+nmap <F5> a<C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR><Esc>
 
-imap <F5> <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR> 
+imap <F5> <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
 
 " using NERDTree and SnipMate
 " see this http://www.catonmat.net/blog/vim-plugins-nerdtree-vim/
-

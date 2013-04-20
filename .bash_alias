@@ -1,47 +1,47 @@
 # Bourne Again Shell Aliases File
 # Jonas Gorauskas - 2007-03-17 21:17:05
-# Modified: 2013-04-18 21:32 by jgg
+# Modified: 2013-04-20 16:00 by jgg
 
 # A function to add an alias to the current shell and
 # append it to this file
 adda () {
-        local name=$1 value="$2"
-        echo alias $name=\'$value\' >> ~/.bash_alias
-        eval alias $name=\'$value\'
-        alias $name
+    local name=$1 value="$2"
+    echo alias $name=\'$value\' >> ~/.bash_alias
+    eval alias $name=\'$value\'
+    alias $name
 }
 
 # Repeat command N times
 #   e.g. repeat 10 echo foo
 repeat () {
-        local count="$1" i;
-        shift;
-        for i in $(seq 1 "$count");
-        do
-                eval "$@";
-        done
+    local count="$1" i;
+    shift;
+    for i in $(seq 1 "$count");
+    do
+        eval "$@";
+    done
 }
 
 # Sub-Function used by Repeat
 seq () {
-        local lower upper output;
-        lower=$1 upper=$2
+    local lower upper output;
+    lower=$1 upper=$2
 
-        if [ $lower -ge $upper ]; then return; fi
+    if [ $lower -ge $upper ]; then return; fi
 
-        while [ $lower -le $upper ];
-        do
-                echo -n "$lower "
-                lower=$(($lower + 1))
-        done
-        echo "$lower"
+    while [ $lower -le $upper ];
+    do
+        echo -n "$lower "
+        lower=$(($lower + 1))
+    done
+    echo "$lower"
 }
 
 # User specific aliases and functions
 # Enable color support for ls
 if [ "$TERM" != "dumb" ]; then
-        alias dir='ls -alFh --group-directories-first --color=auto --format=long'
-        alias ll='ls -aF --color=auto --format=long'
+    alias dir='ls -alFh --group-directories-first --color=auto --format=long'
+    alias ll='ls -aF --color=auto --format=long'
 fi
 alias now='date "+%F %T"'
 alias mv='mv -i'

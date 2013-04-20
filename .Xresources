@@ -11,5 +11,5 @@ XTerm*scrollBar: false
 XTerm*scrollKey: true
 XTerm*saveLines: 4096
 XTerm*multiClickTime: 250
-XTerm*faceName: Droid Mono
+XTerm*faceName: Droid Sans Mono
 XTerm*faceSize: 8
