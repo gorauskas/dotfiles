@@ -1,6 +1,6 @@
 # Bourne Again Shell Aliases File
 # Jonas Gorauskas - 2007-03-17 21:17:05
-# Modified: 2013-04-20 16:00 by jgg
+# Modified: 2013-04-27 14:26 by jgg
 
 # A function to add an alias to the current shell and
 # append it to this file
@@ -76,6 +76,7 @@ alias clean='echo -n "Are you sure you want to clean this directory? [y/n] ";
         fi'
 
 alias ipy='ipython --autoindent --pprint --gui=gtk --colors=Linux'
+alias ins='sudo apt-get install'
 
 # Some GIT workflow specific aliases
 alias ga='git add'
