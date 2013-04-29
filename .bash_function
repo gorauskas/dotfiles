@@ -1,6 +1,6 @@
 # Bourne Again Shell Init Function File
 # Jonas Gorauskas - 2007.03.17 22:00:00
-# Modified: 2013-04-20 15:59 by jgg
+# Modified: 2013-04-29 01:03 by jgg
 
 # Find a process by name
 function psgrep() {
@@ -85,4 +85,51 @@ function open() {
         /usr/bin/xdg-open $@
     fi
 
+}
+
+# cd and ls in one
+function cl() {
+    if [ -d "$1" ]; then
+        cd "$1"
+        dir
+    else
+        echo "bash: cl '%1' - Directory not found"
+    fi
+}
+
+# The following function will extract a wide range of compressed file types.
+function extract() {
+    local c e i
+
+    (($#)) || return
+
+    for i; do
+        c=''
+        e=1
+
+        if [[ ! -r $i ]]; then
+            echo "$0: file is unreadable: \`$i'" >&2
+            continue
+        fi
+
+        case $i in
+        *.t@(gz|lz|xz|b@(2|z?(2))|a@(z|r?(.@(Z|bz?(2)|gz|lzma|xz)))))
+               c='bsdtar xvf';;
+        *.7z)  c='7z x';;
+        *.Z)   c='uncompress';;
+        *.bz2) c='bunzip2';;
+        *.exe) c='cabextract';;
+        *.gz)  c='gunzip';;
+        *.rar) c='unrar x';;
+        *.xz)  c='unxz';;
+        *.zip) c='unzip';;
+        *)     echo "$0: unrecognized file extension: \`$i'" >&2
+               continue;;
+        esac
+
+        command $c "$i"
+        e=$?
+    done
+
+    return $e
 }

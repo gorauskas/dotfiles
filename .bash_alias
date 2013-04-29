@@ -1,6 +1,6 @@
 # Bourne Again Shell Aliases File
 # Jonas Gorauskas - 2007-03-17 21:17:05
-# Modified: 2013-04-27 14:26 by jgg
+# Modified: 2013-04-29 00:42 by jgg
 
 # A function to add an alias to the current shell and
 # append it to this file
@@ -43,29 +43,44 @@ if [ "$TERM" != "dumb" ]; then
     alias dir='ls -alFh --group-directories-first --color=auto --format=long'
     alias ll='ls -aF --color=auto --format=long'
 fi
-alias now='date "+%F %T"'
-alias mv='mv -i'
-alias rm='rm -i'
-alias cp='cp -i'
-alias ss='ps aux | less'
+alias lm='dir | less'
+alias lr='ls -R'      #recursive ls
 alias dot='ls -ld .*'
-alias c='clear'
-alias j='jobs -l'
-alias h='history'
-alias em='emacs -nw'
 
+# modified commands
+alias diff='colordiff'              # requires colordiff package
+alias grep='grep --color=auto'
+alias more='less'
+alias df='df -h'
+alias du='du -c -h'
+alias mkdir='mkdir -p -v'
+alias nano='nano -w'
+alias ping='ping -c 5'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
+# new commands
+alias da='date "+%A, %B %d, %Y [%T]"'
+alias now='date "+%F %T"'
+alias du1='du --max-depth=1'
+alias hist='history | grep'      # requires an argument
+alias openports='ss --all --numeric --processes --ipv4 --ipv6'
+alias ss='ps aux | less'
+alias c='clear'
+alias j='jobs -l'
+alias h='history'
+alias em='emacs -nw'
+alias hn='hostname'
+alias bitch,=sudo          # for the lulz
 alias rw-='chmod 600'
 alias rwx='chmod 700'
 alias r--='chmod 644'
 alias r-x='chmod 755'
 
-alias hn='hostname'
-# for the lulz
-alias bitch,=sudo
+alias ipy='ipython --autoindent --pprint --gui=gtk --colors=Linux'
+alias ins='sudo apt-get install'
+
 alias clean='echo -n "Are you sure you want to clean this directory? [y/n] ";
         read yorn;
         if test "$yorn" = "y"; then
@@ -75,8 +90,14 @@ alias clean='echo -n "Are you sure you want to clean this directory? [y/n] ";
                 echo "Clean operation has been aborted...";
         fi'
 
-alias ipy='ipython --autoindent --pprint --gui=gtk --colors=Linux'
-alias ins='sudo apt-get install'
+# safety features
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -I'                    # 'rm -i' prompts for every file
+alias ln='ln -i'
+alias chown='chown --preserve-root'
+alias chmod='chmod --preserve-root'
+alias chgrp='chgrp --preserve-root'
 
 # Some GIT workflow specific aliases
 alias ga='git add'
