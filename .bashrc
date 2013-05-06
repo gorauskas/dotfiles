@@ -1,6 +1,6 @@
 # Bourne Again Shell init file
 # Jonas Gorauskas - 2007-03-17 21:03:35
-# Modified: 2013-04-19 01:09 by jgg
+# Modified: 2013-05-06 03:34 by jgg
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -65,6 +65,6 @@ if [ -f /etc/bash_completion ]; then
 fi
 
 prompt fancy
-linux_logo -b -f -u -w 160
+linux_logo -b -f -u -w 160 -L banner-simp
 
 #EOF
