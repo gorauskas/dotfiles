@@ -1,6 +1,6 @@
 # Bourne Again Shell Init Function File
 # Jonas Gorauskas - 2007.03.17 22:00:00
-# Modified: 2013-05-06 03:58 by jgg
+# Modified: 2013-05-06 18:20 by jgg
 
 # Find a process by name
 function psgrep() {
@@ -68,23 +68,11 @@ function envinfo() {
 }
 
 # Open any document with any application
-function open() {
-    TEMP = 'getopt -o a: -- "$@"'
-    if [ $? != 0 ] ; then exit 1 ; fi
-    eval set - "$TEMP"
-    while true ; do
-        case "$1" in
-            -a) COMMAND=$2 ; shift 2;;
-            -) shift ; break ;;
-            *) echo "should not happen" ; exit 1 ;;
-        esac
-    done
-    if [$COMMAND]; then
-        nohup $COMMAND $@ > ~/.s1 2> ~/.s2 &
-    else
-        /usr/bin/xdg-open $@
-    fi
-
+function open () {
+    T=`xdg-mime query filetype $1`
+    echo "Opening file" $1 "of type" $T "with" `xdg-mime query default $T`
+    xdg-open $1
+    echo "Open done!"
 }
 
 # cd and ls in one

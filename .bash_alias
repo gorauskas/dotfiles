@@ -1,6 +1,6 @@
 # Bourne Again Shell Aliases File
 # Jonas Gorauskas - 2007-03-17 21:17:05
-# Modified: 2013-04-29 00:42 by jgg
+# Modified: 2013-04-29 21:40 by jgg
 
 # A function to add an alias to the current shell and
 # append it to this file
@@ -66,11 +66,11 @@ alias now='date "+%F %T"'
 alias du1='du --max-depth=1'
 alias hist='history | grep'      # requires an argument
 alias openports='ss --all --numeric --processes --ipv4 --ipv6'
-alias ss='ps aux | less'
+alias pl='ps aux | less'
 alias c='clear'
 alias j='jobs -l'
 alias h='history'
-alias em='emacs -nw'
+alias nox='emacs -nw'
 alias hn='hostname'
 alias bitch,=sudo          # for the lulz
 alias rw-='chmod 600'
