@@ -1,6 +1,6 @@
 # Bourne Again Shell Init Function File
 # Jonas Gorauskas - 2007.03.17 22:00:00
-# Modified: 2013-05-06 18:20 by jgg
+# Modified: 2013-05-07 23:48 by jgg
 
 # Find a process by name
 function psgrep() {
@@ -76,11 +76,21 @@ function open () {
 }
 
 # cd and ls in one
-function cl() {
+function cl () {
     if [ -d "$1" ]; then
         cd "$1"
         dir
     else
         echo "bash: cl '%1' - Directory not found"
     fi
+}
+
+# make and cd into directory
+function mcd () {
+    mkdir -p "$1" && cd "$1";
+}
+
+# get your current internet ip
+function myip () {
+    echo `curl -s whatismyip.akamai.com`
 }
