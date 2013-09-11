@@ -1,6 +1,6 @@
 # Bourne Again Shell Init Prompt File
 # Jonas Gorauskas [JGG] - 2013-04-19 01:01:38
-# Modified: 2013-04-20 15:04 by jgg
+# Modified: 2013-09-10 01:35 by jgg
 
 function pre_prompt {
     newPWD="${PWD}"
@@ -8,7 +8,7 @@ function pre_prompt {
     host=$(echo -n $HOSTNAME | sed -e "s/[\.].*//")
     datenow=$(date "+%F %T")
     let promptsize=$(echo -n "┌[$user@$host][${PWD}]┐" | wc -c | tr -d " ")
-    let fillsize=${COLUMNS}-${promptsize}
+    let fillsize=${COLUMNS}-${promptsize}+3
     fill=""
     while [ "$fillsize" -gt "0" ]
     do

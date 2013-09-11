@@ -1,6 +1,6 @@
 # Bourne Again Shell Aliases File
 # Jonas Gorauskas - 2007-03-17 21:17:05
-# Modified: 2013-05-26 02:37 by jgg
+# Modified: 2013-09-10 23:59 by jgg
 
 # A function to add an alias to the current shell and
 # append it to this file
@@ -77,6 +77,7 @@ alias rw-='chmod 600'
 alias rwx='chmod 700'
 alias r--='chmod 644'
 alias r-x='chmod 755'
+alias e='emacsclient -ca ""'
 
 alias ipy='ipython --autoindent --pprint --gui=gtk --colors=Linux'
 alias ins='sudo apt-get install'
