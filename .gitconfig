@@ -1,5 +1,5 @@
 [user]
-        name = Jonas Gorauskas
+        name = Jonas Gorauskas\n
         email = jgorauskas@gmail.com
 [core]
         autocrlf = false
@@ -11,3 +11,30 @@
         trustmtime = true
 [merge]
         summary = true
+[credential]
+        helper = cache --timeout=3600
+[giggle]
+        main-window-maximized = false
+        main-window-geometry = 803x731+856+366
+        file-view-vpane-position = 445
+        history-view-vpane-position = 613
+        file-view-hpane-position = 184
+        main-window-view = FileView
+[alias]
+        unpushed = log --branches --not --remotes --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+        undo = reset --hard HEAD~1
+        visual = !gitk
+        ls = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate
+        ll = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --numstat
+        lds = log --color --graph --pretty=format:'%Cred%h %ad%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short
+        grep = git ls-files ls-files | grep -i
+        la = !git config -l | grep alias | cut -c 7-
+        cp = cherry-pick
+        st = status -s
+        cl = clone
+        ci = commit
+        co = checkout
+        br = branch
+        diff = diff --word-diff
+        dc = diff --cached
+        ltg = describe --tags --abbrev=0
