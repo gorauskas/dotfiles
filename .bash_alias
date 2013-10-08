@@ -1,6 +1,6 @@
 # Bourne Again Shell Aliases File
 # Jonas Gorauskas - 2007-03-17 21:17:05
-# Modified: 2013-09-27 00:48 by jgg
+# Modified: 2013-10-09 00:37 by jgg
 
 # A function to add an alias to the current shell and
 # append it to this file
@@ -83,6 +83,7 @@ alias ipy='ipython --autoindent --pprint --gui=gtk --colors=Linux'
 alias ins='sudo apt-get install'
 alias update='sudo apt-get update'
 alias upgrade='sudo apt-get upgrade --show-upgraded -y'
+alias agent='exec ssh-agent gpg-agent --daemon bash'
 
 alias clean='echo -n "Are you sure you want to clean this directory? [y/n] ";
         read yorn;
