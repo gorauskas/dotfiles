@@ -1,6 +1,6 @@
 # Bourne Again Shell Init Function File
 # Jonas Gorauskas - 2007.03.17 22:00:00
-# Modified: 2013-05-07 23:48 by jgg
+# Modified: 2013-10-10 21:30 by jgg
 
 # Find a process by name
 function psgrep() {
@@ -93,4 +93,18 @@ function mcd () {
 # get your current internet ip
 function myip () {
     echo `curl -s whatismyip.akamai.com`
+}
+
+# Git commit and push - CAP
+function cap () {
+    git add . ;
+    git commit -m "$1" ;
+    git pull ;
+    git push ;
+}
+
+# Git compare local to remote - GDR git diff remote
+function gdr () {
+    git fetch origin ;
+    git diff $1..origin/$1;
 }
