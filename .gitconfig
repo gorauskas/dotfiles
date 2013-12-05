@@ -11,6 +11,7 @@
         trustmtime = true
 [merge]
         summary = true
+    tool = meld
 [credential]
         helper = cache --timeout=3600
 [giggle]
@@ -55,3 +56,6 @@
        untracked = cyan
 [push]
 	default = matching
+[diff]
+    tool = meld
+
