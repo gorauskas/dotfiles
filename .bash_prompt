@@ -1,6 +1,6 @@
 # Bourne Again Shell Init Prompt File
 # Jonas Gorauskas [JGG] - 2013-04-19 01:01:38
-# Modified: 2013-09-10 01:35 by jgg
+# Modified: 2013-12-06 01:15 by jgg
 
 function pre_prompt {
     newPWD="${PWD}"
@@ -57,7 +57,7 @@ function prompt() {
         uhw)    PS1='\u@\h: \w \$ '             ;;
         uw)     PS1='(\u) \w \$ '               ;;
         w)      PS1='\w \$ '                    ;;
-        def)    PS1="$red[$blue\t $bred\u$white:$yellow\W$red]$no_color\\$ " ;;
+        def)    PS1="$blue[$iceblue\t $bblue\u$white:$bblue\W$blue]$no_color\\$ " ;;
         tuW)    PS1="[\t \u:\W]\$ "             ;;
         tuhW)   PS1="[\t \u@\h:\W]\$ "          ;;
         what)   PS1="$bred[$no_color\w/$bred]$green what now...$no_color \$ " ;;
