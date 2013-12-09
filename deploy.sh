@@ -4,7 +4,7 @@
 # to generate sym links on ~/ to all the files in the repo. This file is
 # intended for use in Linux.
 # Created: 2013-05-06 17:39:39 by Jonas Gorauskas [JGG]
-# Modified: 2013-12-09 01:29 by jgg
+# Modified: 2013-12-09 01:45 by jgg
 
 DF_DIR=${PWD}
 DOTFILES=$(ls -A -I .git -I _* -I RE* -I key* -I *.sh ${DF_DIR})
@@ -16,7 +16,7 @@ Proceed? [Y/n] " YN
 
 for df in ${DOTFILES}; {
     bf=$(basename ${df});
-    ln -Fis ${DF_DIR}/${bf} ${HOME}/${bf};
+    ln -Ffs ${DF_DIR}/${bf} ${HOME}/${bf};
 }
 
 echo "All Done!"

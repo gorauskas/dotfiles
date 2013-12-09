@@ -1,6 +1,6 @@
 # Bourne Again Shell Init Prompt File
 # Jonas Gorauskas [JGG] - 2013-04-19 01:01:38
-# Modified: 2013-12-09 01:10 by jgg
+# Modified: 2013-12-09 01:42 by jgg
 
 function pre_prompt {
     newPWD="${PWD}"
@@ -22,7 +22,8 @@ function pre_prompt {
     fi
 }
 
-PROMPT_COMMAND=pre_prompt
+export PROMPT_COMMAND=pre_prompt
+export PS2='> '
 
 export black="\[\033[0;38;5;0m\]"
 export red="\[\033[0;38;5;1m\]"
