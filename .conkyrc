@@ -20,8 +20,8 @@ default_color white
 default_shade_color black
 default_outline_color white
 alignment top_right
-gap_x 10
-gap_y 40
+gap_x 30
+gap_y 30
 no_buffers yes
 uppercase no
 cpu_avg_samples 2
@@ -38,23 +38,9 @@ Host:$alignr$nodename
 Uptime:$alignr$uptime
 File System: $alignr${fs_type}
 
-${font droid sans:bold:size=8}P R O C E S S O R S ${hr 2}
-${font droid sans:normal:size=8}${cpugraph cpu1}
-CPU1: ${cpu cpu1}% ${cpubar cpu1}
-${font droid sans:normal:size=8}${cpugraph cpu2}
-CPU2: ${cpu cpu2}% ${cpubar cpu2}
-${font droid sans:normal:size=8}${cpugraph cpu3}
-CPU3: ${cpu cpu3}% ${cpubar cpu3}
-${font droid sans:normal:size=8}${cpugraph cpu4}
-CPU4: ${cpu cpu4}% ${cpubar cpu4}
-${font droid sans:normal:size=8}${cpugraph cpu5}
-CPU5: ${cpu cpu5}% ${cpubar cpu5}
-${font droid sans:normal:size=8}${cpugraph cpu6}
-CPU6: ${cpu cpu6}% ${cpubar cpu6}
-${font droid sans:normal:size=8}${cpugraph cpu7}
-CPU7: ${cpu cpu7}% ${cpubar cpu7}
-${font droid sans:normal:size=8}${cpugraph cpu8}
-CPU8: ${cpu cpu8}% ${cpubar cpu8}
+${font droid sans:bold:size=8}T O T A L   C P U ${hr 2}
+${font droid sans:normal:size=8}${cpugraph cpu0}
+CPU: ${cpu cpu0}% ${cpubar cpu0}
 
 ${font droid sans:bold:size=8}M E M O R Y ${hr 2}
 ${font droid sans:normal:size=8}RAM $alignc $mem / $memmax $alignr $memperc%
@@ -68,16 +54,18 @@ ${fs_bar /home}
 SWAP $alignc ${swap} / ${swapmax} $alignr ${swapperc}%
 ${swapbar}
 
+${font droid sans:bold:size=8}N E T W O R K ${hr 2}${if_up eth0}
+${font droid sans:normal:size=8}IP: $alignr ${addr eth0}
+${downspeedgraph eth0}
+DOWN: ${downspeedf eth0} kb/s $alignr total: ${totaldown eth0}
+${upspeedgraph eth0}
+UP: ${upspeedf eth0} kb/s $alignr total: ${totalup eth0}
+${else}
+${font droid sans:bold:size=8}4${font}   Network Unavailable
+${endif}
 ${font droid sans:bold:size=8}T O P   P R O C E S S E S ${hr 2}
 ${font droid sans:normal:size=8}${top_mem name 1}${alignr}${top mem 1} %
 ${top_mem name 2}${alignr}${top mem 2} %
 $font${top_mem name 3}${alignr}${top mem 3} %
 $font${top_mem name 4}${alignr}${top mem 4} %
 $font${top_mem name 5}${alignr}${top mem 5} %
-
-${font droid sans:bold:size=8}N E T W O R K ${hr 2}
-${font droid sans:normal:size=8}IP: $alignr ${addr eth0}
-${downspeedgraph eth0}
-IN: ${downspeed eth0} kb/s $alignr total: ${totaldown eth0}
-${upspeedgraph eth0}
-OUT: ${upspeed eth0} kb/s $alignr total: ${totalup eth0}
