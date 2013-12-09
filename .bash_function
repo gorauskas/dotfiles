@@ -1,6 +1,6 @@
 # Bourne Again Shell Init Function File
 # Jonas Gorauskas - 2007.03.17 22:00:00
-# Modified: 2013-10-10 21:30 by jgg
+# Modified: 2013-12-09 01:01 by jgg
 
 # Find a process by name
 function psgrep() {
@@ -30,6 +30,17 @@ function rot13() {
         tr "[a-m][n-z][A-M][N-Z]" "[n-z][a-m][N-Z][A-M]"
     else
         tr "[a-m][n-z][A-M][N-Z]" "[n-z][a-m][N-Z][A-M]" < $1
+    fi
+}
+
+function chmog() {
+    if [ $# -ne 4 ]; then
+        echo "usage: chmog mode owner group file"
+        return 1
+    else
+        chmod $1 $4
+        chown $2 $4
+        chgrp $3 $4
     fi
 }
 
