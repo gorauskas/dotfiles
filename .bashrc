@@ -1,6 +1,6 @@
 # Bourne Again Shell init file
 # Jonas Gorauskas - 2007-03-17 21:03:35
-# Modified: 2013-12-09 00:47 by jgg
+# Modified: 2013-12-14 10:43 by jgg
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -63,6 +63,6 @@ if [ -f /etc/bash_completion ]; then
 fi
 
 prompt def
-linux_logo -b -f -u -w 160 -L banner-simp
+linux_logo -b -f -u -L banner-simp
 
 #EOF
