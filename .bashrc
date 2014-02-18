@@ -1,6 +1,6 @@
 # Bourne Again Shell init file
 # Jonas Gorauskas - 2007-03-17 21:03:35
-# Modified: 2013-12-14 10:43 by jgg
+# Modified: 2014-02-17 21:49:05
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -15,8 +15,8 @@ export HISTFILESIZE=9999
 shopt -s histappend
 
 # set the default editor
-export EDITOR=emacs
-export VISUAL=emacs
+export EDITOR=emacsclient
+export VISUAL=emacsclient
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -43,6 +43,9 @@ export PATH
 
 # files you make look like rw-------
 umask 077
+
+# start tmux by default
+[[ $TERM != "screen" ]] && exec tmux
 
 # Alias definitions.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
