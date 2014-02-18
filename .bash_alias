@@ -1,6 +1,6 @@
 # Bourne Again Shell Aliases File
 # Jonas Gorauskas - 2007-03-17 21:17:05
-# Modified: 2013-12-09 01:05 by jgg
+# Modified: 2014-02-17 20:09:39
 
 # A function to add an alias to the current shell and
 # append it to this file
@@ -44,7 +44,7 @@ if [ "$TERM" != "dumb" ]; then
 fi
 alias lm='dir | less'
 alias lr='ls -R'      #recursive ls
-alias dots='ls -ld .*'
+alias dots='ls -ldFh .*'
 
 # modified commands
 alias diff='colordiff'              # requires colordiff package

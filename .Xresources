@@ -1,5 +1,35 @@
-xterm*vt100*geometry: 160x80
+! X Resources definitions
+! Created: 2001-11-10 20:04:17 by Jonas Gorauskas
+! Modified: 2014-02-17 20:08:02
+!
+! Notes:
+!  to test, run the following to source the file:
+!
+!    xrdb < ~/.Xresources
+!
+!  ... and then start XTerm or URxvt to see the changes
 
+! URxvt definitions
+URxvt*termName: rxvt
+URxvt*transparent: false
+URxvt*inheritPixmap: false
+URxvt*imLocale: en_US.UTF-8
+URxvt*scrollBar: true
+URxvt*scrollBar_right:false
+URxvt*scrollstyle:rxvt
+URxvt*saveLines: 2048
+URxvt*urlLauncher: google-chrome
+URxvt*foreground: #FFFFFF
+URxvt*background: #000000
+URxvt*depth: 24
+URxvt*cursorBlink: true
+URxvt*geometry: 160x50
+URxvt*letterSpace: -1
+URxvt*font: xft:DejaVu Sans Mono:pixelsize=12
+URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=12
+
+! XTerm definitions
+XTerm*vt100*geometry: 160x80
 XTerm*background: black
 XTerm*foreground: white
 XTerm*pointerColor: firebrick
@@ -11,5 +41,5 @@ XTerm*scrollBar: false
 XTerm*scrollKey: true
 XTerm*saveLines: 4096
 XTerm*multiClickTime: 250
-XTerm*faceName: Droid Sans Mono
-XTerm*faceSize: 8
+XTerm*faceName: DejaVu Sans Mono
+XTerm*faceSize: 10
