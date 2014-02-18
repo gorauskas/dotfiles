@@ -4,7 +4,7 @@
 # to generate sym links on ~/ to all the files in the repo. This file is
 # intended for use in Linux.
 # Created: 2013-05-06 17:39:39 by Jonas Gorauskas [JGG]
-# Modified: 2013-12-09 01:45 by jgg
+# Modified: 2014-02-17 21:27:49
 
 DF_DIR=${PWD}
 DOTFILES=$(ls -A -I .git -I _* -I RE* -I key* -I *.sh ${DF_DIR})
@@ -14,9 +14,14 @@ This deployment script will symlink relevant dot files
 from $DF_DIR to $HOME
 Proceed? [Y/n] " YN
 
-for df in ${DOTFILES}; {
-    bf=$(basename ${df});
-    ln -Ffs ${DF_DIR}/${bf} ${HOME}/${bf};
-}
-
-echo "All Done!"
+if [[ "$YN" == "y" || "$YN" == "Y" ]]; then
+    for df in ${DOTFILES}; {
+        bf=$(basename ${df});
+        ln -Ffs ${DF_DIR}/${bf} ${HOME}/${bf};
+    }
+    echo "All Done!"
+elif [[ "$YN" == "n" || "$YN" == "N" ]]; then
+    echo "Aborting..."
+else
+    echo "ERROR: Invalid choice! Aborting..."
+fi
