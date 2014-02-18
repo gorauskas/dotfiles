@@ -1,6 +1,6 @@
 # Bourne Again Shell init file
 # Jonas Gorauskas - 2007-03-17 21:03:35
-# Modified: 2014-02-17 21:49:05
+# Modified: 2014-02-18 00:13:27
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -43,9 +43,6 @@ export PATH
 
 # files you make look like rw-------
 umask 077
-
-# start tmux by default
-[[ $TERM != "screen" ]] && exec tmux
 
 # Alias definitions.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
