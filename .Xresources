@@ -1,6 +1,6 @@
 ! X Resources definitions
 ! Created: 2001-11-10 20:04:17 by Jonas Gorauskas
-! Modified: 2014-02-19 23:54:13
+! Modified: 2014-02-20 01:33:22
 !
 ! Notes:
 !  to test, run the following to source the file:
@@ -18,18 +18,49 @@ URxvt*scrollBar: true
 URxvt*scrollBar_right:false
 URxvt*scrollstyle:rxvt
 URxvt*saveLines: 4096
-URxvt*urlLauncher: google-chrome
-URxvt*depth: 24
 URxvt*cursorBlink: true
 URxvt*geometry: 160x50
 URxvt*letterSpace: -1
+
+URxvt.foreground: #dcdccc
+URxvt*background: #3f3f3f
+
+URxvt.saveLines:32767
+URxvt.scrollBar: false
+
 URxvt*font: xft:DejaVu Sans Mono:pixelsize=11
 URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=11
 
+URxvt.perl-ext-common: default,matcher
+URxvt.urlLauncher: google-chrome
+URxvt.matcher.button: 2
+URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
+
+URxvt*colorUL: #c5f779
+URxvt*underlineColor: #c5f779
+
+URxvt*color0: #3f3f3f
+URxvt*color1: #705050
+URxvt*color2: #60b48a
+URxvt*color3: #dfaf8f
+URxvt*color4: #506070
+URxvt*color5: #dc8cc3
+URxvt*color6: #8cd0d3
+URxvt*color7: #DCDCCC
+
+URxvt*color8:  #709080
+URxvt*color9:  #cc9393
+URxvt*color10: #7f9f7f
+URxvt*color11: #f0dfaf
+URxvt*color12: #94bff3
+URxvt*color13: #ec93d3
+URxvt*color14: #93e0e3
+URxvt*color15: #ffffff
+
 !! XTerm definitions
 XTerm*vt100*geometry: 160x60
-XTerm*background: black
-XTerm*foreground: white
+XTerm*background: #3f3f3f
+XTerm*foreground: #dcdccc
 XTerm*pointerColor: firebrick
 XTerm*pointerColorBackground: black
 XTerm*cursorColor: navy
@@ -41,3 +72,28 @@ XTerm*saveLines: 4096
 XTerm*multiClickTime: 250
 XTerm*faceName: DejaVu Sans Mono
 XTerm*faceSize: 9
+
+!black
+xterm*color0:         #353535
+xterm*color8:         #666666
+!red
+xterm*color1:         #AE4747
+xterm*color9:         #EE6363
+!green
+xterm*color2:         #556B2F
+xterm*color10:        #9ACD32
+!brown/yellow
+xterm*color3:         #DAA520
+xterm*color11:        #FFC125
+!blue
+xterm*color4:         #6F99B4
+xterm*color12:        #7C96B0
+!magenta
+xterm*color5:         #8B7B8B
+xterm*color13:        #D8BFD8
+!cyan
+xterm*color6:         #A7A15E
+xterm*color14:        #F0E68C
+!white
+xterm*color7:         #DDDDDD
+xterm*color15:        #FFFFFF
