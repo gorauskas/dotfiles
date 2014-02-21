@@ -1,7 +1,7 @@
 
 # Bourne Again Shell Init Prompt File
 # Jonas Gorauskas [JGG] - 2013-04-19 01:01:38
-# Modified: 2013-12-11 11:46 by jgg
+# Modified: 2014-02-20 23:50:12
 
 function pre_prompt {
     newPWD="${PWD}"
@@ -65,7 +65,7 @@ function prompt() {
         what)   PS1="$bred[$no_color\w/$bred]$green what now...$no_color \$ " ;;
         fancy)
             case "$TERM" in
-                xterm | rxvt)
+                xterm* | rxvt* | urxvt)
                     PS1="$blue┌─[$iceblue\u@\h$blue]─\${fill}─[$iceblue\$newPWD\
 $blue]─┐\n$blue└─[$smoothblue\$(date \"+%F %T\") \$$blue]───>$white "
                     ;;

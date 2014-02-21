@@ -1,6 +1,6 @@
 # Bourne Again Shell init file
 # Jonas Gorauskas - 2007-03-17 21:03:35
-# Modified: 2014-02-18 00:13:27
+# Modified: 2014-02-20 23:55:44
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -17,6 +17,7 @@ shopt -s histappend
 # set the default editor
 export EDITOR=emacsclient
 export VISUAL=emacsclient
+export TERM=xterm-256color
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -62,7 +63,7 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-prompt def
+prompt fancy
 linux_logo -b -f -u -L banner-simp
 
 #EOF
