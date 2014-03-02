@@ -57,43 +57,43 @@ URxvt*color13: #ec93d3
 URxvt*color14: #93e0e3
 URxvt*color15: #ffffff
 
-!! XTerm definitions
-XTerm*vt100*geometry: 160x60
-XTerm*background: #3f3f3f
-XTerm*foreground: #dcdccc
-XTerm*pointerColor: firebrick
-XTerm*pointerColorBackground: black
-XTerm*cursorColor: navy
-XTerm*internalBorder: 3
-XTerm*loginShell: true
-XTerm*scrollBar: false
-XTerm*scrollKey: true
-XTerm*saveLines: 4096
-XTerm*multiClickTime: 250
-XTerm*faceName: DejaVu Sans Mono
-XTerm*faceSize: 9
+!! UXTerm definitions
+UXTerm*vt100*geometry: 160x60
+UXTerm*background: #3f3f3f
+UXTerm*foreground: #dcdccc
+UXTerm*pointerColor: firebrick
+UXTerm*pointerColorBackground: black
+UXTerm*cursorColor: navy
+UXTerm*internalBorder: 3
+UXTerm*loginShell: true
+UXTerm*scrollBar: false
+UXTerm*scrollKey: true
+UXTerm*saveLines: 4096
+UXTerm*multiClickTime: 250
+UXTerm*faceName: DejaVu Sans Mono
+UXTerm*faceSize: 9
 
 !black
-xterm*color0:         #353535
-xterm*color8:         #666666
+uxterm*color0:         #353535
+uxterm*color8:         #666666
 !red
-xterm*color1:         #AE4747
-xterm*color9:         #EE6363
+uxterm*color1:         #AE4747
+uxterm*color9:         #EE6363
 !green
-xterm*color2:         #556B2F
-xterm*color10:        #9ACD32
+uxterm*color2:         #556B2F
+uxterm*color10:        #9ACD32
 !brown/yellow
-xterm*color3:         #DAA520
-xterm*color11:        #FFC125
+uxterm*color3:         #DAA520
+uxterm*color11:        #FFC125
 !blue
-xterm*color4:         #6F99B4
-xterm*color12:        #7C96B0
+uxterm*color4:         #6F99B4
+uxterm*color12:        #7C96B0
 !magenta
-xterm*color5:         #8B7B8B
-xterm*color13:        #D8BFD8
+uxterm*color5:         #8B7B8B
+uxterm*color13:        #D8BFD8
 !cyan
-xterm*color6:         #A7A15E
-xterm*color14:        #F0E68C
+uxterm*color6:         #A7A15E
+uxterm*color14:        #F0E68C
 !white
-xterm*color7:         #DDDDDD
-xterm*color15:        #FFFFFF
+uxterm*color7:         #DDDDDD
+uxterm*color15:        #FFFFFF
