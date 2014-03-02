@@ -9,7 +9,7 @@ function pre_prompt {
     host=$(echo -n $HOSTNAME | sed -e "s/[\.].*//")
     datenow=$(date "+%F %T")
     let promptsize=$(echo -n "┌[$user@$host][${PWD}]┐" | wc -c | tr -d " ")
-    let fillsize=${COLUMNS}-${promptsize}+3
+    let fillsize=${COLUMNS}-${promptsize}
     fill=""
     while [ "$fillsize" -gt "0" ]
     do
