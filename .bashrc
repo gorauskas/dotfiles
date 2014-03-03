@@ -42,8 +42,8 @@ if [ -d "$HOME/bin" ] ; then
 fi
 export PATH
 
-# files you make look like rw-------
-umask 077
+# files you make look like rw-r--r--
+umask 022
 
 # Alias definitions.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
