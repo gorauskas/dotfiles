@@ -1,6 +1,6 @@
 # Bourne Again Shell Aliases File
 # Jonas Gorauskas - 2007-03-17 21:17:05
-# Modified: 2014-02-17 20:09:39
+# Modified: 2014-03-03 23:26:28
 
 # A function to add an alias to the current shell and
 # append it to this file
@@ -36,8 +36,8 @@ seq () {
     echo "$lower"
 }
 
-# User specific aliases and functions
-# Enable color support for ls
+#### USER SPECIFIC ALIASES AND FUNCTIONS
+## Enable color support for ls
 if [ "$TERM" != "dumb" ]; then
     alias dir='ls -alFh --group-directories-first --color=auto --format=long'
     alias ll='ls -aF --color=auto --format=long'
@@ -46,57 +46,122 @@ alias lm='dir | less'
 alias lr='ls -R'      #recursive ls
 alias dots='ls -ldFh .*'
 
-# modified commands
-alias diff='colordiff'              # requires colordiff package
+## Navigation
+# get rid of command not found ##
+alias cd..='cd ..'
+
+# a quick way to get out of current directory ##
+alias ..='cd ..'
+alias .2='cd ../..'
+alias .3='cd ../../..'
+alias .4='cd ../../../..'
+alias .5='cd ../../../../..'
+
+
+### QUERY THE HW
+
+## pass options to free ##
+alias meminfo='free -m -l -t'
+
+## get top process eating memory
+alias psmem='ps auxf | sort -nr -k 4'
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+
+## get top process eating cpu ##
+alias pscpu='ps auxf | sort -nr -k 3'
+alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
+
+## Get server cpu info ##
+alias cpuinfo='lscpu'
+
+## get GPU ram on desktop / laptop##
+alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
+
+
+## SYSADMIN STUFF
+
+# reboot / halt / poweroff
+alias reboot='sudo /sbin/reboot'
+alias poweroff='sudo /sbin/poweroff'
+
+# become root #
+alias root='sudo -i'
+alias su='sudo -i'
+
+# change mode
+alias rw-='chmod 600'
+alias rwx='chmod 700'
+alias r--='chmod 644'
+alias r-x='chmod 755'
+
+# safety features
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -I'                    # 'rm -i' prompts for every file
+alias ln='ln -i'
+alias chown='chown --preserve-root'
+alias chmod='chmod --preserve-root'
+alias chgrp='chgrp --preserve-root'
+
+# system updates
+if [ -f /etc/debian_version ]; then
+    alias ins='sudo apt-get install'
+    alias update='sudo apt-get update && sudo apt-get upgrade --show-upgraded -y'
+elif [ -f /etc/redhat-release ]; then
+    alias ins='sudo yum install'
+    alias update='sudo yum -v -y check-update && sudo yum -v -y upgrade'
+elif [ -f /etc/arch-release ]; then
+    alias ins='echo "please see pacman usage"'
+    alias update='echo "please see pacman usage"'
+fi
+
+# networking
+alias ping='ping -c 5'
+alias fping='ping -c 100 -s 2'
+alias ports='netstat -tulanp'
+alias openports='ss --all --numeric --processes --ipv4 --ipv6'
+
+## shortcut  for iptables and pass it via sudo#
+alias ipt='sudo /sbin/iptables'
+
+# display all rules #
+alias iptlist='sudo /sbin/iptables -L -n -v --line-numbers'
+alias iptlistin='sudo /sbin/iptables -L INPUT -n -v --line-numbers'
+alias iptlistout='sudo /sbin/iptables -L OUTPUT -n -v --line-numbers'
+alias iptlistfw='sudo /sbin/iptables -L FORWARD -n -v --line-numbers'
+alias firewall=iptlist
+
+# get web server headers #
+alias header='curl -I'
+# find out if remote server supports gzip / mod_deflate or not #
+alias headerc='curl -I --compress'
+alias wget='wget -c'
+
+
+## MISCELLANEOUS
+
+# modified existing commands
 alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
 alias more='less'
 alias df='df -h'
 alias du='du -c -h'
 alias mkdir='mkdir -p -v'
 alias nano='nano -w'
-alias ping='ping -c 5'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
 
 # new commands
 alias da='date "+%A, %B %d, %Y [%T]"'
 alias now='date "+%F %T"'
 alias du1='du --max-depth=1'
 alias hist='history | grep'      # requires an argument
-alias openports='ss --all --numeric --processes --ipv4 --ipv6'
 alias pl='ps aux | less'
 alias c='clear'
 alias j='jobs -l'
 alias h='history'
 alias pu="pushd"
 alias po="popd"
-alias nox='emacs -nw'
 alias hn='hostname'
-alias bitch,=sudo          # for the lulz
-alias rw-='chmod 600'
-alias rwx='chmod 700'
-alias r--='chmod 644'
-alias r-x='chmod 755'
-alias e='emacsclient -ca ""'
-
-alias ipy='ipython --autoindent --pprint --gui=gtk --colors=Linux'
-alias py3='python3'
-alias py='python'
-
-if [ -f /etc/debian_version ]; then
-    alias ins='sudo apt-get install'
-    alias update='sudo apt-get update'
-    alias upgrade='sudo apt-get upgrade --show-upgraded -y'
-elif [ -f /etc/redhat-release ]; then
-    alias ins='sudo yum install'
-    alias update='sudo yum -v -y check-update'
-    alias upgrade='sudo yum -v -y upgrade'
-elif [ -f /etc/arch-release ]; then
-    alias ins='echo "please see pacman usage"'
-    alias update='echo "please see pacman usage"'
-    alias upgrade='echo "please see pacman usage"'
-fi
 
 alias clean='echo -n "Are you sure you want to clean this directory? [y/n] ";
         read yorn;
@@ -107,14 +172,23 @@ alias clean='echo -n "Are you sure you want to clean this directory? [y/n] ";
                 echo "Clean operation has been aborted...";
         fi'
 
-# safety features
-alias cp='cp -i'
-alias mv='mv -i'
-alias rm='rm -I'                    # 'rm -i' prompts for every file
-alias ln='ln -i'
-alias chown='chown --preserve-root'
-alias chmod='chmod --preserve-root'
-alias chgrp='chgrp --preserve-root'
+
+## PROGRAMMING
+
+alias diff='colordiff'              # requires colordiff package
+
+# emacs
+alias e='emacsclient -ca ""'
+alias em=emacs
+alias emdi='emacs --debug-init'
+alias enw='emacs -nw'
+alias qem='emacs -q'
+alias sem='sudo emacs'
+
+# python
+alias ipy='ipython --autoindent --pprint --gui=gtk --colors=Linux'
+alias py3='python3'
+alias py='python'
 
 # Some GIT workflow specific aliases
 alias ga='git add'
@@ -130,5 +204,12 @@ alias gra='git remote add'
 alias grr='git remote rm'
 alias gpu='git pull'
 alias gcl='git clone'
+
+
+
+
+
+
+
 
 #EOF
