@@ -1,6 +1,6 @@
 ! X Resources definitions
 ! Created: 2001-11-10 20:04:17 by Jonas Gorauskas
-! Modified: 2014-03-02 16:51:13
+! Modified: 2014-03-16 04:01:21
 !
 ! Notes:
 !  to test, run the following to source the file:
@@ -8,8 +8,6 @@
 !    xrdb < ~/.Xresources
 !
 !  ... and then start XTerm or URxvt to see the changes
-
-Xcursor.theme: PolarCursorTheme-Blue
 
 !! URxvt definitions
 URxvt*termName: rxvt
@@ -30,8 +28,8 @@ URxvt*background: #3f3f3f
 URxvt.saveLines:32767
 !URxvt.scrollBar: false
 
-URxvt*font: xft:DejaVu Sans Mono:pixelsize=11
-URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=11
+URxvt*font: xft:DejaVu Sans Mono:pixelsize=13
+URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=13
 
 URxvt.perl-ext-common: default,matcher
 URxvt.urlLauncher: google-chrome
