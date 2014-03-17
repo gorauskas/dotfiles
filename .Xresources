@@ -1,6 +1,6 @@
 ! X Resources definitions
 ! Created: 2001-11-10 20:04:17 by Jonas Gorauskas
-! Modified: 2014-03-16 04:01:21
+! Modified: 2014-03-16 20:30:13
 !
 ! Notes:
 !  to test, run the following to source the file:
@@ -15,47 +15,60 @@ URxvt*transparent: false
 URxvt*inheritPixmap: false
 URxvt*imLocale: en_US.UTF-8
 URxvt*scrollBar: true
-URxvt*scrollBar_right:false
-URxvt*scrollstyle:rxvt
-URxvt*saveLines: 4096
-URxvt*cursorBlink: true
+URxvt*scrollBar_right: false
+URxvt*scrollstyle: plain
+URxvt*cursorBlink: false
 URxvt*geometry: 160x50
-URxvt*letterSpace: -1
+URxvt*letterSpace: 0
 
-URxvt.foreground: #dcdccc
-URxvt*background: #3f3f3f
+URxvt.foreground: #eeeeee
+URxvt*background: #111111
 
 URxvt.saveLines:32767
-!URxvt.scrollBar: false
 
 URxvt*font: xft:DejaVu Sans Mono:pixelsize=13
 URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=13
 
-URxvt.perl-ext-common: default,matcher
-URxvt.urlLauncher: google-chrome
-URxvt.matcher.button: 2
-URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
 
-URxvt*colorUL: #c5f779
-URxvt*underlineColor: #c5f779
+URxvt.perl-ext-common: default,matcher,tabbed
 
-URxvt*color0: #3f3f3f
-URxvt*color1: #705050
-URxvt*color2: #60b48a
-URxvt*color3: #dfaf8f
-URxvt*color4: #506070
-URxvt*color5: #dc8cc3
-URxvt*color6: #8cd0d3
-URxvt*color7: #DCDCCC
+! clickable URLs
+URxvt.urlLauncher: /usr/bin/google-chrome
+URxvt.matcher.button: 1
+URxvt*colorUL: #006699
+URxvt*underlineColor: #0099CC
 
-URxvt*color8:  #709080
-URxvt*color9:  #cc9393
-URxvt*color10: #7f9f7f
-URxvt*color11: #f0dfaf
-URxvt*color12: #94bff3
-URxvt*color13: #ec93d3
-URxvt*color14: #93e0e3
-URxvt*color15: #ffffff
+! tabbed interface
+URxvt.tabbed.tabbar-fg: 6
+URxvt.tabbed.tabbar-bg: 8
+URxvt.tabbed.tab-fg: 14
+URxvt.tabbed.tab-bg: 8
+
+URxvt*color0: #111111
+URxvt*color8: #333333
+
+URxvt*color1: #CC3333
+URxvt*color9: #FFCCCC
+
+URxvt*color2: #99FF99
+URxvt*color10: #CCCCFF
+
+URxvt*color3: #CCAA00
+URxvt*color11: #FFFF99
+
+URxvt*color4: #99CCFF
+URxvt*color12: #99AABB
+
+URxvt*color5: #CC8833
+URxvt*color13: #EEDD99
+
+URxvt*color6: #BBCCDD
+URxvt*color14: #99CCFF
+
+URxvt*color7: #FFFFFF
+URxvt*color15: #EEEEEE
+
+
 
 !! UXTerm definitions
 UXTerm*vt100*geometry: 160x60
