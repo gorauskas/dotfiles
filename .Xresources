@@ -1,6 +1,6 @@
 ! X Resources definitions
 ! Created: 2001-11-10 20:04:17 by Jonas Gorauskas
-! Modified: 2014-03-16 20:30:13
+! Modified: 2014-03-17 00:00:59
 !
 ! Notes:
 !  to test, run the following to source the file:
@@ -10,103 +10,129 @@
 !  ... and then start XTerm or URxvt to see the changes
 
 !! URxvt definitions
-URxvt*termName: rxvt
-URxvt*transparent: false
-URxvt*inheritPixmap: false
-URxvt*imLocale: en_US.UTF-8
-URxvt*scrollBar: true
-URxvt*scrollBar_right: false
-URxvt*scrollstyle: plain
-URxvt*cursorBlink: false
-URxvt*geometry: 160x50
-URxvt*letterSpace: 0
+URxvt*termName:               rxvt-unicode-256color
+URxvt*transparent:            false
+URxvt*inheritPixmap:          false
+URxvt*imLocale:               en_US.UTF-8
+URxvt*scrollBar:              true
+URxvt*scrollBar_right:        false
+URxvt*scrollstyle:            plain
+URxvt*cursorBlink:            false
+URxvt*geometry:               160x64
+URxvt*letterSpace:            0
+URxvt*urgentOnBell:           true
 
-URxvt.foreground: #eeeeee
-URxvt*background: #111111
+URxvt.saveLines:              32767
 
-URxvt.saveLines:32767
+URxvt*font:                   xft:DejaVu Sans Mono:pixelsize=13
+URxvt*boldFont:               xft:DejaVu Sans Mono:bold:pixelsize=13
 
-URxvt*font: xft:DejaVu Sans Mono:pixelsize=13
-URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=13
-
-
-URxvt.perl-ext-common: default,matcher,tabbed
+URxvt.perl-ext-common:        default,matcher,tabbed
 
 ! clickable URLs
-URxvt.urlLauncher: /usr/bin/google-chrome
-URxvt.matcher.button: 1
-URxvt*colorUL: #006699
-URxvt*underlineColor: #0099CC
+URxvt.urlLauncher:            /usr/bin/google-chrome
+URxvt.matcher.button:         1
 
 ! tabbed interface
-URxvt.tabbed.tabbar-fg: 6
-URxvt.tabbed.tabbar-bg: 8
-URxvt.tabbed.tab-fg: 14
-URxvt.tabbed.tab-bg: 8
+URxvt.tabbed.tabbar-fg:       6
+URxvt.tabbed.tabbar-bg:       8
+URxvt.tabbed.tab-fg:          14
+URxvt.tabbed.tab-bg:          8
 
-URxvt*color0: #111111
-URxvt*color8: #333333
+! Darkburn color-scheme
+URxvt*background:             #111111
+URxvt*foreground:             #eeeeee
+URxvt*cursorColor:            #DCDCCC
+URxvt*cursorColor2:           #FFFFEF
+URxvt*colorUL:                #8CD0D3
+URxvt*underlineColor:         #F0DFAF
+URxvt*colorBD:                #E0CF9F
+URxvt*colorIT:                #656555
 
-URxvt*color1: #CC3333
-URxvt*color9: #FFCCCC
-
-URxvt*color2: #99FF99
-URxvt*color10: #CCCCFF
-
-URxvt*color3: #CCAA00
-URxvt*color11: #FFFF99
-
-URxvt*color4: #99CCFF
-URxvt*color12: #99AABB
-
-URxvt*color5: #CC8833
-URxvt*color13: #EEDD99
-
-URxvt*color6: #BBCCDD
-URxvt*color14: #99CCFF
-
-URxvt*color7: #FFFFFF
-URxvt*color15: #EEEEEE
+URxvt*color0:                 #1E2320
+URxvt*color8:                 #709080
+URxvt*color1:                 #705050
+URxvt*color9:                 #DCA3A3
+URxvt*color2:                 #60B48A
+URxvt*color10:                #C3BF9F
+URxvt*color3:                 #DFAF8F
+URxvt*color11:                #F0DFAF
+URxvt*color4:                 #506070
+URxvt*color12:                #94BFF3
+URxvt*color5:                 #DC8CC3
+URxvt*color13:                #EC93D3
+URxvt*color6:                 #8CD0D3
+URxvt*color14:                #93E0E3
+URxvt*color7:                 #DCDCCC
+URxvt*color15:                #FFFFFF
 
 
+!! xterm definitions
+xterm*geometry:               160x64
+xterm*internalBorder:         0
+xterm*loginShell:             true
+xterm*scrollBar:              true
+xterm*scrollKey:              true
+xterm*multiClickTime:         250
+xterm*faceName:               DejaVu Sans Mono
+xterm*faceSize:               10
+xterm*saveLines:              32767
+xterm*dynamicColors:          on
+xterm*highlightSelection:     true
+xterm*utf8:                   2
+xterm*eightBitInput:          true
+xterm*metaSendsEscape:        true
+xterm*cursorColor:            #DCDCCC
+xterm*pointerColor:           #DCDCCC
+xterm*pointerColorBackground: #111111
 
-!! UXTerm definitions
-UXTerm*vt100*geometry: 160x60
-UXTerm*background: #3f3f3f
-UXTerm*foreground: #dcdccc
-UXTerm*pointerColor: firebrick
-UXTerm*pointerColorBackground: black
-UXTerm*cursorColor: navy
-UXTerm*internalBorder: 3
-UXTerm*loginShell: true
-UXTerm*scrollBar: false
-UXTerm*scrollKey: true
-UXTerm*saveLines: 4096
-UXTerm*multiClickTime: 250
-UXTerm*faceName: DejaVu Sans Mono
-UXTerm*faceSize: 9
+! Darkburn
+xterm*background:             #111111
+xterm*foreground:             #eeeeee
+xterm*color0:                 #1E2320
+xterm*color8:                 #709080
+xterm*color1:                 #705050
+xterm*color9:                 #dca3a3
+xterm*color2:                 #60b48a
+xterm*color10:                #c3bf9f
+xterm*color3:                 #dfaf8f
+xterm*color11:                #f0dfaf
+xterm*color4:                 #506070
+xterm*color12:                #94bff3
+xterm*color5:                 #dc8cc3
+xterm*color13:                #ec93d3
+xterm*color6:                 #8cd0d3
+xterm*color14:                #93e0e3
+xterm*color7:                 #dcdccc
+xterm*color15:                #ffffff
 
-!black
-uxterm*color0:         #353535
-uxterm*color8:         #666666
-!red
-uxterm*color1:         #AE4747
-uxterm*color9:         #EE6363
-!green
-uxterm*color2:         #556B2F
-uxterm*color10:        #9ACD32
-!brown/yellow
-uxterm*color3:         #DAA520
-uxterm*color11:        #FFC125
-!blue
-uxterm*color4:         #6F99B4
-uxterm*color12:        #7C96B0
-!magenta
-uxterm*color5:         #8B7B8B
-uxterm*color13:        #D8BFD8
-!cyan
-uxterm*color6:         #A7A15E
-uxterm*color14:        #F0E68C
-!white
-uxterm*color7:         #DDDDDD
-uxterm*color15:        #FFFFFF
+
+!! Screensaver Lock Dialog
+
+!font settings
+xscreensaver.Dialog.headingFont:        -b&h-lucida-bold-r-*-*-17-*-*-*-*-*-*-*
+xscreensaver.Dialog.bodyFont:           -b&h-lucida-bold-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.labelFont:          -b&h-lucida-medium-r-*-*-14-*-*-*-*-*-*-*
+xscreensaver.Dialog.unameFont:          -b&h-lucida-medium-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.buttonFont:         -b&h-lucida-medium-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.dateFont:           -b&h-lucida-bold-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.passwd.passwdFont:         -b&h-lucidatypewriter-bold-r-*-*-14-140-*-*-*-*-*-*
+!general dialog box (affects main hostname, username, password text)
+xscreensaver.Dialog.foreground:         #ffffff
+xscreensaver.Dialog.background:         #333333
+xscreensaver.Dialog.topShadowColor:     #111111
+xscreensaver.Dialog.bottomShadowColor:  #222222
+xscreensaver.Dialog.Button.foreground:  #333333
+xscreensaver.Dialog.Button.background:  #EEEEEE
+!username/password input box and date text colour
+xscreensaver.Dialog.text.foreground:    #CCCCCC
+xscreensaver.Dialog.text.background:    #000000
+xscreensaver.Dialog.internalBorderWidth:20
+xscreensaver.Dialog.borderWidth:        10
+xscreensaver.Dialog.shadowThickness:    3
+!timeout bar (background is actually determined by Dialog.text.background)
+xscreensaver.passwd.thermometer.foreground:  #ff0000
+xscreensaver.passwd.thermometer.background:  #333333
+xscreensaver.passwd.thermometer.width:       10
+!datestamp format--see the strftime(3) manual page for details
+xscreensaver.dateFormat:                %Y-%m-%d %H:%M:%S
