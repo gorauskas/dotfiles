@@ -1,6 +1,6 @@
 # Bourne Again Shell init file
 # Jonas Gorauskas - 2007-03-17 21:03:35
-# Modified: 2014-03-22 01:01:53
+# Modified: 2014-03-22 01:25:12
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -18,7 +18,6 @@ shopt -s histappend
 export EDITOR=emacsclient
 export VISUAL=emacsclient
 export TERM=xterm-256color
-export SSH_ENV="$HOME/.ssh/environment"
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -62,16 +61,6 @@ fi
 
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
-fi
-
-# Source SSH Settings if applicable
-if [ -f "${SSH_ENV}" ]; then
-    . "{SSH_ENV}" > /dev/null
-    ps -ef | grep ${SSH_AGENT_PID} | grep ssh_agent$ > /dev/null || {
-        start_agent;
-    }
-else
-    start_agent;
 fi
 
 prompt fancy
