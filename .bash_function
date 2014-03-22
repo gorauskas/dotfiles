@@ -1,6 +1,6 @@
 # Bourne Again Shell Init Function File
 # Jonas Gorauskas - 2007.03.17 22:00:00
-# Modified: 2013-12-09 01:01 by jgg
+# Modified: 2014-03-22 00:58:15
 
 # Find a process by name
 function psgrep() {
@@ -85,6 +85,16 @@ function open () {
     xdg-open $1
     echo "Open done!"
 }
+
+function start_agent () {
+    echo "Initializing new SSH agent..."
+    /usr/bin/ssh-agent -s | sed 's/^echo/#echo/' > "${SSH_ENV}"
+    echo "Agent running!"
+    chmod 600 "${SSH_ENV}"
+    . "${SSH_ENV}" > /dev/null
+    /usr/bin/ssh-add;
+}
+
 
 # cd and ls in one
 function cl () {
