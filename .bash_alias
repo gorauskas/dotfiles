@@ -1,6 +1,6 @@
 # Bourne Again Shell Aliases File
 # Jonas Gorauskas - 2007-03-17 21:17:05
-# Modified: 2014-03-03 23:26:28
+# Modified: 2014-03-23 01:49:46
 
 # A function to add an alias to the current shell and
 # append it to this file
@@ -111,7 +111,7 @@ elif [ -f /etc/redhat-release ]; then
     alias ins='sudo yum install'
     alias update='sudo yum -v -y check-update && sudo yum -v -y upgrade'
 elif [ -f /etc/arch-release ]; then
-    alias ins='echo "please see pacman usage"'
+    alias ins='sudo pacman -Sy'
     alias update='echo "please see pacman usage"'
 fi
 
@@ -145,8 +145,9 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias more='less'
-alias df='df -h'
-alias du='du -c -h'
+alias df='df -Tha --total'
+alias du='du -ach | sort -h'
+alias free='free -mt'
 alias mkdir='mkdir -p -v'
 alias nano='nano -w'
 
@@ -186,7 +187,7 @@ alias qem='emacs -q'
 alias sem='sudo emacs'
 
 # python
-alias ipy='ipython --autoindent --pprint --gui=gtk --colors=Linux'
+alias ipy='ipython --autoindent --pprint --colors=Linux'
 alias py3='python3'
 alias py='python'
 
@@ -204,12 +205,5 @@ alias gra='git remote add'
 alias grr='git remote rm'
 alias gpu='git pull'
 alias gcl='git clone'
-
-
-
-
-
-
-
 
 #EOF

@@ -70,3 +70,6 @@ ${top_mem name 2}${alignr}${top mem 2} %
 $font${top_mem name 3}${alignr}${top mem 3} %
 $font${top_mem name 4}${alignr}${top mem 4} %
 $font${top_mem name 5}${alignr}${top mem 5} %
+
+${font droid sans:bold:size=8}H A C K E R  N E W S ${hr 2}
+${font droid sans:normal:size=8}${rss https://news.ycombinator.com/rss 30 item_titles 5}

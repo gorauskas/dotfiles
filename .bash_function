@@ -1,10 +1,10 @@
 # Bourne Again Shell Init Function File
 # Jonas Gorauskas - 2007.03.17 22:00:00
-# Modified: 2014-03-22 01:27:32
+# Modified: 2014-03-23 01:40:58
 
 # Find a process by name
 function psgrep() {
-    ps aux | grep $1 | grep -v grep
+    ps aux | grep -v grep | grep -i -e VSZ -e $1
 }
 
 # Kill a process by Name
