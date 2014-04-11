@@ -15,7 +15,7 @@ export HISTFILESIZE=9999
 shopt -s histappend
 
 # set the default editor
-export EDITOR=emacsclient
+export EDITOR=zile
 export VISUAL=emacsclient
 export TERM=xterm-256color
 
