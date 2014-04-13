@@ -18,14 +18,14 @@ URxvt*scrollBar:              true
 URxvt*scrollBar_right:        false
 URxvt*scrollstyle:            plain
 URxvt*cursorBlink:            false
-URxvt*geometry:               160x64
+URxvt*geometry:               160x60
 URxvt*letterSpace:            0
 URxvt*urgentOnBell:           true
 
 URxvt.saveLines:              32767
 
-URxvt*font:                   xft:DejaVu Sans Mono:pixelsize=13
-URxvt*boldFont:               xft:DejaVu Sans Mono:bold:pixelsize=13
+URxvt*font:                   xft:DejaVu Sans Mono:pixelsize=12
+URxvt*boldFont:               xft:DejaVu Sans Mono:bold:pixelsize=12
 
 URxvt.perl-ext-common:        default,matcher,tabbed
 
@@ -75,7 +75,7 @@ xterm*scrollBar:              true
 xterm*scrollKey:              true
 xterm*multiClickTime:         250
 xterm*faceName:               DejaVu Sans Mono
-xterm*faceSize:               10
+xterm*faceSize:               9
 xterm*saveLines:              32767
 xterm*dynamicColors:          on
 xterm*highlightSelection:     true

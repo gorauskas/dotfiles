@@ -64,6 +64,6 @@ if [ -f /etc/bash_completion ]; then
 fi
 
 prompt fancy
-linux_logo -b -f -u -L banner-simp
+linux_logo -b -f -u -L 1
 
 #EOF

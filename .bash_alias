@@ -164,16 +164,6 @@ alias pu="pushd"
 alias po="popd"
 alias hn='hostname'
 
-alias clean='echo -n "Are you sure you want to clean this directory? [y/n] ";
-        read yorn;
-        if test "$yorn" = "y"; then
-                rm -f \#* *~ .*~ *.bak .*.bak *.tmp .*.tmp core a.out;
-                echo "Directory has been cleaned!";
-        else
-                echo "Clean operation has been aborted...";
-        fi'
-
-
 ## PROGRAMMING
 
 alias diff='colordiff'              # requires colordiff package
