@@ -115,6 +115,8 @@ elif [ -f /etc/arch-release ]; then
     alias update='echo "please see pacman usage"'
 fi
 
+alias Y='yaourt'
+
 # networking
 alias ping='ping -c 5'
 alias fping='ping -c 100 -s 2'
