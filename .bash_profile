@@ -1,6 +1,6 @@
 # Bourne Again Shell Profile
 # Jonas Gorauskas - 2007-03-17 22:38:46
-# Modified: 2014-03-22 01:27:13
+# Modified: 2014-04-27 21:30:12
 
 PATH=$PATH:/usr/sbin/
 BASH_ENV=$HOME/.bashrc
@@ -26,7 +26,7 @@ fi
 # Source SSH Settings if applicable
 if [ -f "${SSH_ENV}" ]; then
     . "{SSH_ENV}" > /dev/null
-    ps -ef | grep ${SSH_AGENT_PID} | grep ssh_agent$ > /dev/null || {
+    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
         start_agent;
     }
 else
