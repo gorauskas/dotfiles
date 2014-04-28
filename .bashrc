@@ -1,6 +1,6 @@
 # Bourne Again Shell init file
 # Jonas Gorauskas - 2007-03-17 21:03:35
-# Modified: 2014-04-27 11:24:51
+# Modified: 2014-04-27 22:15:31
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -57,10 +57,6 @@ fi
 
 if [ -f ~/.bash_prompt ]; then
     . ~/.bash_prompt
-fi
-
-if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
 fi
 
 prompt fancy

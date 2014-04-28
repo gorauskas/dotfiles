@@ -1,6 +1,6 @@
 # Bourne Again Shell Profile
 # Jonas Gorauskas - 2007-03-17 22:38:46
-# Modified: 2014-04-27 21:30:12
+# Modified: 2014-04-27 22:08:15
 
 PATH=$PATH:/usr/sbin/
 BASH_ENV=$HOME/.bashrc
