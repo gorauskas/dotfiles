@@ -6,7 +6,7 @@ PATH=$PATH:/usr/sbin/
 BASH_ENV=$HOME/.bashrc
 
 export BASH_ENV PATH
-unset USERNAME
+#unset USERNAME
 
 export SSH_ENV="$HOME/.ssh/environment"
 
