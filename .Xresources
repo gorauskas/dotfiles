@@ -1,6 +1,6 @@
 ! X Resources definitions
 ! Created: 2001-11-10 20:04:17 by Jonas Gorauskas
-! Modified: 2014-03-18 20:01:52
+! Modified: 2014-05-25 21:57:49
 !
 ! Notes:
 !  to test, run the following to source the file:
@@ -19,7 +19,7 @@ URxvt*scrollBar_right:        false
 URxvt*scrollstyle:            plain
 URxvt*cursorBlink:            false
 URxvt*geometry:               160x60
-URxvt*letterSpace:            0
+URxvt*letterSpace:            -1
 URxvt*urgentOnBell:           true
 
 URxvt.saveLines:              32767

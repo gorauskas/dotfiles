@@ -1,6 +1,6 @@
 # Bourne Again Shell init file
 # Jonas Gorauskas - 2007-03-17 21:03:35
-# Modified: 2014-04-27 22:15:31
+# Modified: 2014-06-05 21:57:55
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -18,6 +18,10 @@ shopt -s histappend
 export EDITOR=zile
 export VISUAL=emacsclient
 export TERM=xterm-256color
+
+# python virtualenv
+export WORKON_HOME=$HOME/.virtualenvs
+[ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && . /usr/local/bin/virtualenvwrapper_lazy.sh
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
