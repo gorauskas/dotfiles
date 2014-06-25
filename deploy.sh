@@ -4,14 +4,17 @@
 # to generate sym links on ~/ to all the files in the repo. This file is
 # intended for use in Linux.
 # Created: 2013-05-06 17:39:39 by Jonas Gorauskas [JGG]
-# Modified: 2014-06-24 23:40:26
+# Modified: 2014-06-25 01:00:36
 
 DF_DIR=${PWD}
 
 read -p "
+Is this system a server? [Y/N] " SYN
+
+read -p "
 This deployment script will symlink relevant dot files
 from $DF_DIR to $HOME
-Proceed? [Y/n] " YN
+Proceed? [Y/N] " YN
 
 if [[ "$YN" == "y" || "$YN" == "Y" ]]; then
     ln -fs ${DF_DIR}/.bash_alias ${HOME}/.bash_alias
@@ -20,26 +23,29 @@ if [[ "$YN" == "y" || "$YN" == "Y" ]]; then
     ln -fs ${DF_DIR}/.bash_profile ${HOME}/.bash_profile
     ln -fs ${DF_DIR}/.bash_prompt ${HOME}/.bash_prompt
     ln -fs ${DF_DIR}/.bashrc ${HOME}/.bashrc
-    ln -fs ${DF_DIR}/.conkyrc ${HOME}/.conkyrc
     ln -fs ${DF_DIR}/.gitconfig ${HOME}/.gitconfig
-    ln -fs ${DF_DIR}/.gitk ${HOME}/.gitk
-    ln -fs ${DF_DIR}/.idlerc ${HOME}/.idlerc
     ln -fs ${DF_DIR}/.inputrc ${HOME}/.inputrc
     ln -fs ${DF_DIR}/mercurial.ini ${HOME}/mercurial.ini
     ln -fs ${DF_DIR}/.tmux.conf ${HOME}/.tmux.conf
     ln -fs ${DF_DIR}/.vim ${HOME}/.vim
     ln -fs ${DF_DIR}/.vimrc ${HOME}/.vimrc
-    ln -fs ${DF_DIR}/.Xresources ${HOME}/.Xresources
 
-    if [ ! -d "${HOME}/bin" ]; then
-        mkdir ${HOME}/bin
-    fi
-    cp ${DF_DIR}/urxvt-launch.sh ${HOME}/bin/urxvt-launch.sh
+    if [[ "$SYN" == "n" || "$SYN" == "N" ]]; then
+        ln -fs ${DF_DIR}/.conkyrc ${HOME}/.conkyrc
+        ln -fs ${DF_DIR}/.gitk ${HOME}/.gitk
+        ln -fs ${DF_DIR}/.idlerc ${HOME}/.idlerc
+        ln -fs ${DF_DIR}/.Xresources ${HOME}/.Xresources
 
-    if [ ! -d "${HOME}/Pictures" ]; then
-        mkdir ${HOME}/Pictures
+        if [ ! -d "${HOME}/bin" ]; then
+            mkdir ${HOME}/bin
+        fi
+        cp ${DF_DIR}/urxvt-launch.sh ${HOME}/bin/urxvt-launch.sh
+
+        if [ ! -d "${HOME}/Pictures" ]; then
+            mkdir ${HOME}/Pictures
+        fi
+        cp -r ${DF_DIR}/tiles/ ${HOME}/Pictures/
     fi
-    cp -r ${DF_DIR}/tiles/ ${HOME}/Pictures/
 
     echo "All Done!"
 elif [[ "$YN" == "n" || "$YN" == "N" ]]; then
