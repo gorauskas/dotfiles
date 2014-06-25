@@ -4,10 +4,9 @@
 # to generate sym links on ~/ to all the files in the repo. This file is
 # intended for use in Linux.
 # Created: 2013-05-06 17:39:39 by Jonas Gorauskas [JGG]
-# Modified: 2014-03-18 22:02:59
+# Modified: 2014-06-24 23:40:26
 
 DF_DIR=${PWD}
-DOTFILES=$(ls -A -I .git -I _* -I RE* -I key* -I *.sh ${DF_DIR})
 
 read -p "
 This deployment script will symlink relevant dot files
@@ -15,10 +14,22 @@ from $DF_DIR to $HOME
 Proceed? [Y/n] " YN
 
 if [[ "$YN" == "y" || "$YN" == "Y" ]]; then
-    for df in ${DOTFILES}; {
-        bf=$(basename ${df});
-        ln -Ffs ${DF_DIR}/${bf} ${HOME}/${bf};
-    }
+    ln -fs ${DF_DIR}/.bash_alias ${HOME}/.bash_alias
+    ln -fs ${DF_DIR}/.bash_function ${HOME}/.bash_function
+    ln -fs ${DF_DIR}/.bash_logout ${HOME}/.bash_logout
+    ln -fs ${DF_DIR}/.bash_profile ${HOME}/.bash_profile
+    ln -fs ${DF_DIR}/.bash_prompt ${HOME}/.bash_prompt
+    ln -fs ${DF_DIR}/.bashrc ${HOME}/.bashrc
+    ln -fs ${DF_DIR}/.conkyrc ${HOME}/.conkyrc
+    ln -fs ${DF_DIR}/.gitconfig ${HOME}/.gitconfig
+    ln -fs ${DF_DIR}/.gitk ${HOME}/.gitk
+    ln -fs ${DF_DIR}/.idlerc ${HOME}/.idlerc
+    ln -fs ${DF_DIR}/.inputrc ${HOME}/.inputrc
+    ln -fs ${DF_DIR}/mercurial.ini ${HOME}/mercurial.ini
+    ln -fs ${DF_DIR}/.tmux.conf ${HOME}/.tmux.conf
+    ln -fs ${DF_DIR}/.vim ${HOME}/.vim
+    ln -fs ${DF_DIR}/.vimrc ${HOME}/.vimrc
+    ln -fs ${DF_DIR}/.Xresources ${HOME}/.Xresources
 
     if [ ! -d "${HOME}/bin" ]; then
         mkdir ${HOME}/bin
