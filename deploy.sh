@@ -4,7 +4,7 @@
 # to generate sym links on ~/ to all the files in the repo. This file is
 # intended for use in Linux.
 # Created: 2013-05-06 17:39:39 by Jonas Gorauskas [JGG]
-# Modified: 2014-06-25 01:00:36
+# Modified: 2014-06-27 00:54:22
 
 DF_DIR=${PWD}
 
@@ -45,6 +45,10 @@ if [[ "$YN" == "y" || "$YN" == "Y" ]]; then
             mkdir ${HOME}/Pictures
         fi
         cp -r ${DF_DIR}/tiles/ ${HOME}/Pictures/
+
+        echo "prompt fancy\n\n#OEF" >> ./.bashrc
+    else
+        echo "prompt def\n\n#EOF" >> ./.bashrc
     fi
 
     echo "All Done!"
