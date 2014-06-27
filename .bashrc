@@ -68,3 +68,8 @@ if [ "$(lsb_release -si)" == "Arch" ]; then
 else
     linux_logo -b -f -u -L banner-simp
 fi
+prompt fancy\n\n#OEF
+
+prompt fancy
+
+#OEF
