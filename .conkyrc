@@ -1,75 +1,73 @@
-background yes
-use_xft yes
-xftfont Droid Sans:size=8
-xftalpha 1
+# - SETTINGS - #
+background no
 update_interval 1.0
-total_run_times 0
-own_window yes
-own_window_class conky
-own_window_type desktop
-own_window_transparent yes
-own_window_argb_visual yes
-own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+cpu_avg_samples 2
+net_avg_samples 2
 double_buffer yes
-minimum_size 240 200
-maximum_width 240
-draw_shades yes
+no_buffers yes
+text_buffer_size 4096
+
+# - WINDOW - #
+own_window yes
+own_window_type normal
+own_window_transparent yes
+own_window_argb_visual no
+own_window_hints undecorated,sticky,skip_taskbar,skip_pager,below
+own_window_colour 000000
+
+# - BORDER - #
+border_inner_margin 1
+border_outer_margin 1
+
+# - SIZE - #
+minimum_size 300 0
+#maximum_width 240
+
+# - POSITION - #
+alignment top_right
+gap_x 50
+gap_y 120
+
+# - DRAWING - #
+draw_shades no
 draw_outline no
 draw_borders no
-draw_graph_borders yes
-default_color white
-default_shade_color black
-default_outline_color white
-alignment top_right
-gap_x 30
-gap_y 30
-no_buffers yes
+draw_graph_borders no
+default_color 999999
+#default_shade_color black
+#default_outline_color white
+
+# - TEXT - #
+use_xft yes
+xftfont Droid Sans:size=10:condensed
+xftalpha 0.8
 uppercase no
-cpu_avg_samples 2
-override_utf8_locale no
+override_utf8_locale yes
+
+# - COLOR - #
+color1 99CCEE
 
 TEXT
-${font droid sans:bold:size=8}D A T E   &   T I M E ${hr 2}
-${alignc 57}${font droid sans:normal:size=28}${time %H:%M:%S}${font}
-${alignc}${time %Y-%m-%d}
+${font Ubuntu:size=30}${alignr}$color1${time %H:%M:%S}
+$color ${voffset -20}${font Ubuntu:size=20}${alignr}${time %a, %b %d %Y}${font}
+${voffset 4}${alignr}$color1$sysname $kernel $machine$color
+${voffset 4}${alignr}Hostname » $color1${nodename}$color
+${voffset 4}${alignr}Uptime » $color1${uptime}$color
 
-${font droid sans:bold:size=8}S Y S T E M ${hr 2}
-${font droid sans:normal:size=8}$sysname $kernel $alignr $machine
-Host:$alignr$nodename
-Uptime:$alignr$uptime
-File System: $alignr${fs_type}
+${font  Poky:size=30}P${voffset -3}${font Impact:size=24}$color1${goto 50}${cpu cpu0}%${color1}${goto 140}${font}${voffset -16}${top name 1}${alignr}${top cpu 1}$color
+${goto 140}${top name 2}${alignr}${top cpu 2}
+${goto 140}${top name 3}${alignr}${top cpu 3}
+${voffset -16}$color1${cpugraph 25,110}$color${goto 140}${voffset 16}${top name 4}${alignr}${top cpu 4}${voffset -20}
 
-${font droid sans:bold:size=8}T O T A L   C P U ${hr 2}
-${font droid sans:normal:size=8}${cpugraph cpu0}
-CPU: ${cpu cpu0}% ${cpubar cpu0}
+${font Poky:size=30}M${goto 55}${font Impact:size=24}${voffset -6}$color1${memperc}%${font size=16}${goto 140}${voffset -16}$color1${mem}$color${voffset 20}${goto 140}${membar 10,120}${voffset -10}
+${voffset 12}${goto 5}${font Poky:size=14}i${font}${voffset -3} SWAP » $color1${swapperc}%$color  -  $color1$swap$color
 
-${font droid sans:bold:size=8}M E M O R Y ${hr 2}
-${font droid sans:normal:size=8}RAM $alignc $mem / $memmax $alignr $memperc%
-$membar
+${font Poky:size=30}y${voffset -10}${goto 50}${font size=16} Root${goto 120}${voffset -22}${font Poky:size=30}y${voffset -10}${font size=16}${goto 170} Home
+${offset 2}${voffset 2}${fs_bar 10,40 /}${goto 50}${voffset -2}${font Dejavu Sans:size=12:condensed:bold}$color1 ${fs_used_perc /} %$color${goto 120}${offset 2}${voffset 2}${fs_bar 10,40 /home}${goto 170}${voffset -2}$color1 ${fs_used_perc /home} %$color
+${offset 2}${voffset 1}${font Dejavu Sans:size=10}I/O » $color1${diskio}$color${alignr 5}${diskiograph 16,180}
 
-${font droid sans:bold:size=8}D I S K S ${hr 2}
-${font droid sans:normal:size=8}/ $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
-${fs_bar /}
-${font droid sans:normal:size=8}/home $alignc ${fs_used /home} / ${fs_size /home} $alignr ${fs_used_perc /home}%
-${fs_bar /home}
-SWAP $alignc ${swap} / ${swapmax} $alignr ${swapperc}%
-${swapbar}
 
-${font droid sans:bold:size=8}N E T W O R K ${hr 2}${if_up eth0}
-${font droid sans:normal:size=8}IP: $alignr ${addr eth0}
-${downspeedgraph eth0}
-DOWN: ${downspeedf eth0} kb/s $alignr total: ${totaldown eth0}
-${upspeedgraph eth0}
-UP: ${upspeedf eth0} kb/s $alignr total: ${totalup eth0}
-${else}
-${font droid sans:bold:size=8}4${font}   Network Unavailable
-${endif}
-${font droid sans:bold:size=8}T O P   P R O C E S S E S ${hr 2}
-${font droid sans:normal:size=8}${top_mem name 1}${alignr}${top mem 1} %
-${top_mem name 2}${alignr}${top mem 2} %
-$font${top_mem name 3}${alignr}${top mem 3} %
-$font${top_mem name 4}${alignr}${top mem 4} %
-$font${top_mem name 5}${alignr}${top mem 5} %
-
-${font droid sans:bold:size=8}H A C K E R  N E W S ${hr 2}
-${font droid sans:normal:size=8}${rss https://news.ycombinator.com/rss 30 item_titles 5}
+${font PizzaDude Bullets:size=24}r${font}${goto 40}${voffset -16}${downspeed eth0}
+${goto 40}${voffset -1}${font Dejavu Sans:size=12:condensed:bold}$color1${totaldown eth0}$font${goto 120}${voffset -16}${downspeedgraph eth0 25,180}$color
+${font PizzaDude Bullets:size=24}v${font}${goto 40}${voffset -16}${upspeed eth0}${alignr 5}
+${goto 40}${voffset -1}${font Dejavu Sans:size=12:condensed:bold}$color1${totalup eth0}$font${goto 120}${voffset -16}${upspeedgraph eth0 25,180}$color${voffset -27}

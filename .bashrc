@@ -1,6 +1,6 @@
 # Bourne Again Shell init file
 # Jonas Gorauskas - 2007-03-17 21:03:35
-# Modified: 2014-06-27 02:42:45
+# Modified: 2014-07-05 23:01:35
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
