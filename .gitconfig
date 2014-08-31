@@ -1,58 +1,68 @@
 [user]
-        name = Jonas Gorauskas\n
-        email = jgorauskas@gmail.com
+    name = Jonas Gorauskas\n
+    email = jgorauskas@gmail.com
 [core]
-        autocrlf = false
-        safecrlf = false
+    autocrlf = false
+    safecrlf = false
 [gui]
-        fontdiff = -family \"DejaVu Sans Mono\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
-        commitmsgwidth = 120
-        encoding = utf-8
-        trustmtime = true
+    fontdiff = -family \"DejaVu Sans Mono\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
+    commitmsgwidth = 120
+    encoding = utf-8
+    trustmtime = true
 [merge]
-        summary = true
+    summary = true
     tool = meld
 [credential]
-        helper = cache --timeout=3600
+    helper = cache --timeout=3600
 [giggle]
-	main-window-maximized = false
-	main-window-geometry = 989x880+829+87
-        file-view-hpane-position = 184
+    main-window-maximized = false
+    main-window-geometry = 989x880+829+87
+    file-view-hpane-position = 184
 [alias]
-        unpushed = log --branches --not --remotes --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-        undo = reset --hard HEAD~1
-        visual = !gitk
-        ls = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate
-        ll = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --numstat
-        lds = log --color --graph --pretty=format:'%Cred%h %ad%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short
-        grep = git ls-files ls-files | grep -i
-        la = !git config -l | grep alias | cut -c 7-
-        cp = cherry-pick
-        st = status -s
-        cl = clone
-        ci = commit
-        co = checkout
-        br = branch
-        diff = diff --word-diff
-        dc = diff --cached
-        ltg = describe --tags --abbrev=0
+    unpushed = log --branches --not --remotes --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    undo = reset --hard HEAD~1
+    visual = !gitk
+    ls = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate
+    ll = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --numstat
+    lds = log --color --graph --pretty=format:'%Cred%h %ad%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short
+    grep = git ls-files ls-files | grep -i
+    la = !git config -l | grep alias | cut -c 7-
+    cp = cherry-pick
+    st = status -s
+    cl = clone
+    ci = commit
+    co = checkout
+    br = branch
+    diff = diff --word-diff
+    dc = diff --cached
+    ltg = describe --tags --abbrev=0
 [color]
-        ui = auto
+    ui = auto
 [color "branch"]
-       current = yellow reverse
-       local = yellow
-       remote = green
+    current = yellow reverse
+    local = yellow
+    remote = green
 [color "diff"]
-       meta = yellow bold
-       frag = magenta bold
-       old = red bold
-       new = green bold
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
 [color "status"]
-       added = yellow
-       changed = green
-       untracked = cyan
+    added = yellow
+    changed = green
+    untracked = cyan
 [push]
-	default = matching
+    default = matching
 [diff]
     tool = meld
-
+[github]
+    user = gorauskas
+[log]
+    date = iso
+    abbrevCommit = true
+[sendemail]
+    smtpuser = jgorauskas@gmail.com
+    smtpserver = smtp.gmail.com
+    smtpserverport = 587
+    smtpencryption = tls
+    suppresscc = all

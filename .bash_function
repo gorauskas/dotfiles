@@ -1,6 +1,6 @@
 # Bourne Again Shell Init Function File
 # Jonas Gorauskas - 2007.03.17 22:00:00
-# Modified: 2014-04-12 22:12:02
+# Modified: 2014-08-31 14:42:38
 
 # Find a process by name
 function psgrep() {
@@ -98,6 +98,17 @@ function clean () {
         echo "Clean operation has been aborted..."
     fi
 }
+
+# Start a simple python httpd on the current directory at the given port
+function websrv () {
+    command -v python >/dev/null 2>&1 || { echo >&2 "I require python but it's not installed.  Aborting."; exit 1; }
+    if [ "$(python -c 'import sys; print(sys.version_info[0])')" -eq 2 ]; then
+        python -m SimpleHTTPServer "$@"
+    else
+        python -m http.server "$@"
+    fi
+}
+
 
 # cd and ls in one
 function cl () {
