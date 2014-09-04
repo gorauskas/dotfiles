@@ -1,6 +1,6 @@
 # Bourne Again Shell Init Function File
 # Jonas Gorauskas - 2007.03.17 22:00:00
-# Modified: 2014-09-02 04:56:10
+# Modified: 2014-09-03 22:04:49
 
 # Find a process by name
 function psgrep() {
@@ -126,9 +126,9 @@ function mcd () {
 }
 
 # get your current internet ip
-function myip () {
-    echo `curl -s http://freegeoip.net/xml/`
-}
+# function myip () {
+#     echo `curl -s http://freegeoip.net/xml/`
+# }
 
 # Git commit and push - CAP
 function cap () {
