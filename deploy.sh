@@ -4,7 +4,7 @@
 # to generate sym links on ~/ to all the files in the repo. This file is
 # intended for use in Linux.
 # Created: 2013-05-06 17:39:39 by Jonas Gorauskas [JGG]
-# Modified: 2014-06-27 02:35:50
+# Modified: 2014-09-07 02:56:34
 
 DF_DIR=${PWD}
 
@@ -50,7 +50,13 @@ if [[ "$YN" == "y" || "$YN" == "Y" ]]; then
         fi
         cp -r ${DF_DIR}/tiles/ ${HOME}/Pictures/
 
-        printf "\nprompt fancy\n\n#OEF\n" >> ./.bashrc
+        printf "%s\n" "\nif [ \"$(lsb_release -si)\" == \"Arch\" ]; then"
+                      "    linux_logo -b -f -u -L 1"
+                      "else"
+                      "    linux_logo -b -f -u -L banner-simp"
+                      "fi\n" >> ./.bashrc;
+
+        printf "\nprompt fancy\n\n#OEF\n" >> ./.bashrc;
     else
         printf "\nprompt def\n\n#EOF\n" >> ./.bashrc
     fi

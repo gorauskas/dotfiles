@@ -1,6 +1,6 @@
 # Bourne Again Shell init file
 # Jonas Gorauskas - 2007-03-17 21:03:35
-# Modified: 2014-07-05 23:01:35
+# Modified: 2014-09-07 02:57:27
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -61,10 +61,4 @@ fi
 
 if [ -f ~/.bash_prompt ]; then
     . ~/.bash_prompt
-fi
-
-if [ "$(lsb_release -si)" == "Arch" ]; then
-    linux_logo -b -f -u -L 1
-else
-    linux_logo -b -f -u -L banner-simp
 fi
