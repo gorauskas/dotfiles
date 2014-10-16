@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Created: 2013-05-06 17:39:39 by Jonas Gorauskas [JGG]
-# Modified: 2014-09-21 12:55:35
+# Modified: 2014-10-16 14:55:30
 
 # The strategy is to git clone the repo to ~/dotfiles and then execute this file
 # to generate sym links on ~/ to all the files in the repo. This file is
@@ -45,6 +45,9 @@ if [[ "$1" == "desktop" ]]; then
         mkdir ${HOME}/bin
     fi
     cp ${DF_DIR}/urxvt-launch.sh ${HOME}/bin/urxvt-launch.sh
+    cp ${DF_DIR}/mysshadd ${HOME}/bin/mysshadd
+    cp ${DF_DIR}/sshkeypwd ${HOME}/bin/sshkeypwd
+    chmod 600 ${HOME}/bin/sshkeypwd
 
     if [ ! -d "${HOME}/Pictures" ]; then
         mkdir ${HOME}/Pictures
