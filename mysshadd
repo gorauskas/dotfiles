@@ -1,7 +1,0 @@
-#!/usr/bin/expect -f
-
-set pass [lindex $argv 0]
-spawn ssh-add /home/jonasg/.ssh/id_rsa
-expect "Enter passphrase for /home/jonasg/.ssh/id_rsa:"
-send "$pass\n";
-interact
