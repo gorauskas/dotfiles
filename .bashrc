@@ -1,6 +1,6 @@
 # Bourne Again Shell init file
 # Jonas Gorauskas - 2007-03-17 21:03:35
-# Modified: 2014-09-07 02:57:27
+# Modified: 2014-11-02 11:48:10
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -22,6 +22,9 @@ export TERM=xterm-256color
 # python virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
 [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && . /usr/local/bin/virtualenvwrapper_lazy.sh
+
+# don't use cowsay with ansible
+export ANSIBLE_NOCOWS=1
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
