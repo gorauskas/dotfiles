@@ -140,8 +140,9 @@ function extract () {
             *.gz)        gunzip $1             ;;
             *.Z)         uncompress $1         ;;
 
-            *.7z)        7z x $1               ;;
-            *.rar)       unrar x $1            ;; 	
+            *.7z)        7z -x $1              ;;
+            *.rar)       unrar -x $1           ;;
+            *.jar)       jar -xvf $1           ;;
 
             *.pax)       cat $1 | pax -r                  ;;
             *.pax.Z)     uncompress $1 --stdout | pax -r  ;;
