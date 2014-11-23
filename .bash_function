@@ -1,6 +1,6 @@
 # Bourne Again Shell Init Function File
 # Jonas Gorauskas - 2007.03.17 22:00:00
-# Modified: 2014-09-03 22:04:49
+# Modified: 2014-11-22 16:14:41
 
 # Find a process by name
 function psgrep() {
@@ -123,6 +123,31 @@ function cl () {
 # make and cd into directory
 function mcd () {
     mkdir -p "$1" && cd "$1";
+}
+
+# extract archives based on extension
+function extract () {
+    if [ -f $1 ]; then
+        case $1 in
+            *.tar.bz2)   tar -jxvf $1          ;;
+            *.tar.gz)    tar -zxvf $1          ;;
+            *.tbz2)      tar -jxvf $1          ;;
+            *.tgz)       tar -zxvf $1          ;;
+            *.tar)       tar -xvf $1           ;;
+            *.bz2)       bunzip2 $1            ;;
+            *.zip)       unzip $1              ;;
+            *.ZIP)       unzip $1              ;;
+            *.gz)        gunzip $1             ;;
+            *.Z)         uncompress $1         ;;
+
+            *.pax)       cat $1 | pax -r                  ;;
+            *.pax.Z)     uncompress $1 --stdout | pax -r  ;;
+
+            *) echo "'$1' cannot be uncompressed wiht extract()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
 }
 
 # get your current internet ip
