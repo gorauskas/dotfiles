@@ -140,10 +140,13 @@ function extract () {
             *.gz)        gunzip $1             ;;
             *.Z)         uncompress $1         ;;
 
+            *.7z)        7z x $1               ;;
+            *.rar)       unrar x $1            ;; 	
+
             *.pax)       cat $1 | pax -r                  ;;
             *.pax.Z)     uncompress $1 --stdout | pax -r  ;;
 
-            *) echo "'$1' cannot be uncompressed wiht extract()" ;;
+            *) echo "'$1' cannot be uncompressed with extract()" ;;
         esac
     else
         echo "'$1' is not a valid file"
