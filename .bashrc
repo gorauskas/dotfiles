@@ -1,6 +1,6 @@
 # Bourne Again Shell init file
 # Jonas Gorauskas - 2007-03-17 21:03:35
-# Modified: 2014-11-02 11:48:10
+# Modified: 2015-01-20 16:07:55
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -21,7 +21,7 @@ export TERM=xterm-256color
 
 # python virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
-[ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && . /usr/local/bin/virtualenvwrapper_lazy.sh
+[ -f /usr/bin/virtualenvwrapper_lazy.sh ] && . /usr/bin/virtualenvwrapper_lazy.sh
 
 # don't use cowsay with ansible
 export ANSIBLE_NOCOWS=1
@@ -39,8 +39,8 @@ esac
 export TITLEBAR
 
 # enable bash completion in interactive shells
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
+if [ -f /usr/share/bash-completion/bash_completion ] && ! shopt -oq posix; then
+    . /usr/share/bash-completion/bash_completion
 fi
 
 # used for various experiments when writing code
