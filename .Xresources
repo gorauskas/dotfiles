@@ -1,6 +1,6 @@
 ! X Resources definitions
 ! Created: 2001-11-10 20:04:17 by Jonas Gorauskas
-! Modified: 2014-05-25 21:57:49
+! Modified: 2015-01-20 18:06:30
 !
 ! Notes:
 !  to test, run the following to source the file:
@@ -118,21 +118,21 @@ xscreensaver.Dialog.buttonFont:         -b&h-lucida-medium-r-*-*-12-*-*-*-*-*-*-
 xscreensaver.Dialog.dateFont:           -b&h-lucida-bold-r-*-*-12-*-*-*-*-*-*-*
 xscreensaver.passwd.passwdFont:         -b&h-lucidatypewriter-bold-r-*-*-14-140-*-*-*-*-*-*
 !general dialog box (affects main hostname, username, password text)
-xscreensaver.Dialog.foreground:         #ffffff
-xscreensaver.Dialog.background:         #333333
+xscreensaver.Dialog.foreground:         #111111
+xscreensaver.Dialog.background:         #ffffff
 xscreensaver.Dialog.topShadowColor:     #111111
 xscreensaver.Dialog.bottomShadowColor:  #222222
-xscreensaver.Dialog.Button.foreground:  #333333
-xscreensaver.Dialog.Button.background:  #EEEEEE
+xscreensaver.Dialog.Button.foreground:  #ffffff
+xscreensaver.Dialog.Button.background:  #666666
 !username/password input box and date text colour
-xscreensaver.Dialog.text.foreground:    #CCCCCC
-xscreensaver.Dialog.text.background:    #000000
-xscreensaver.Dialog.internalBorderWidth:20
-xscreensaver.Dialog.borderWidth:        10
-xscreensaver.Dialog.shadowThickness:    3
+xscreensaver.Dialog.text.foreground:    #ffffff
+xscreensaver.Dialog.text.background:    #666666
+xscreensaver.Dialog.internalBorderWidth:24
+xscreensaver.Dialog.borderWidth:        20
+xscreensaver.Dialog.shadowThickness:    2
 !timeout bar (background is actually determined by Dialog.text.background)
-xscreensaver.passwd.thermometer.foreground:  #ff0000
+xscreensaver.passwd.thermometer.foreground:  #1793D1
 xscreensaver.passwd.thermometer.background:  #333333
-xscreensaver.passwd.thermometer.width:       10
+xscreensaver.passwd.thermometer.width:       16
 !datestamp format--see the strftime(3) manual page for details
 xscreensaver.dateFormat:                %Y-%m-%d %H:%M:%S
