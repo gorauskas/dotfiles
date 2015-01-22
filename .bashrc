@@ -1,6 +1,6 @@
 # Bourne Again Shell init file
 # Jonas Gorauskas - 2007-03-17 21:03:35
-# Modified: 2015-01-20 16:07:55
+# Modified: 2015-01-22 02:20:35
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -21,7 +21,13 @@ export TERM=xterm-256color
 
 # python virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
-[ -f /usr/bin/virtualenvwrapper_lazy.sh ] && . /usr/bin/virtualenvwrapper_lazy.sh
+if [ "$(lsb_release -si)" == "Arch" ]; then
+    # for arch linux
+    [ -f /usr/bin/virtualenvwrapper_lazy.sh ] && . /usr/bin/virtualenvwrapper_lazy.sh
+else
+    # for debian
+    [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && . /usr/bin/local/virtualenvwrapper_lazy.sh
+fi
 
 # don't use cowsay with ansible
 export ANSIBLE_NOCOWS=1
@@ -39,8 +45,16 @@ esac
 export TITLEBAR
 
 # enable bash completion in interactive shells
-if [ -f /usr/share/bash-completion/bash_completion ] && ! shopt -oq posix; then
-    . /usr/share/bash-completion/bash_completion
+if [ "$(lsb_release -si)" == "Arch" ]; then
+    # for arch linux
+    if [ -f /usr/share/bash-completion/bash_completion ] && ! shopt -oq posix; then
+        . /usr/share/bash-completion/bash_completion
+    fi
+else
+    # for debian
+    if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+        . /etc/bash_completion
+    fi
 fi
 
 # used for various experiments when writing code
