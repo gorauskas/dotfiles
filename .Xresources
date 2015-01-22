@@ -1,6 +1,6 @@
 ! X Resources definitions
 ! Created: 2001-11-10 20:04:17 by Jonas Gorauskas
-! Modified: 2015-01-20 18:06:30
+! Modified: 2015-01-21 20:26:45
 !
 ! Notes:
 !  to test, run the following to source the file:
@@ -108,20 +108,19 @@ xterm*color15:                #ffffff
 
 
 !! Screensaver Lock Dialog
-
 !font settings
-xscreensaver.Dialog.headingFont:        -b&h-lucida-bold-r-*-*-17-*-*-*-*-*-*-*
-xscreensaver.Dialog.bodyFont:           -b&h-lucida-bold-r-*-*-12-*-*-*-*-*-*-*
-xscreensaver.Dialog.labelFont:          -b&h-lucida-medium-r-*-*-14-*-*-*-*-*-*-*
-xscreensaver.Dialog.unameFont:          -b&h-lucida-medium-r-*-*-12-*-*-*-*-*-*-*
-xscreensaver.Dialog.buttonFont:         -b&h-lucida-medium-r-*-*-12-*-*-*-*-*-*-*
-xscreensaver.Dialog.dateFont:           -b&h-lucida-bold-r-*-*-12-*-*-*-*-*-*-*
-xscreensaver.passwd.passwdFont:         -b&h-lucidatypewriter-bold-r-*-*-14-140-*-*-*-*-*-*
+xscreensaver.Dialog.headingFont:        -*-droid sans mono-bold-*-*-*-17-120-*-*-*-*-iso10646-*
+xscreensaver.Dialog.bodyFont:           -*-droid sans mono-bold-*-*-*-17-120-*-*-*-*-iso10646-*
+xscreensaver.Dialog.labelFont:          -*-droid sans mono-medium-*-*-*-17-120-*-*-*-*-iso10646-*
+xscreensaver.Dialog.unameFont:          -*-envy code r-bold-*-*-*-17-120-*-*-*-*-iso10646-*
+xscreensaver.Dialog.buttonFont:         -*-droid sans mono-medium-*-*-*-17-120-*-*-*-*-iso10646-*
+xscreensaver.Dialog.dateFont:           -*-droid sans mono-bold-*-*-*-17-120-*-*-*-*-iso10646-*
+xscreensaver.passwd.passwdFont:         -*-envy code r-bold-*-*-*-17-120-*-*-*-*-iso10646-*
 !general dialog box (affects main hostname, username, password text)
 xscreensaver.Dialog.foreground:         #111111
 xscreensaver.Dialog.background:         #ffffff
-xscreensaver.Dialog.topShadowColor:     #111111
-xscreensaver.Dialog.bottomShadowColor:  #222222
+xscreensaver.Dialog.topShadowColor:     #ffffff
+xscreensaver.Dialog.bottomShadowColor:  #ffffff
 xscreensaver.Dialog.Button.foreground:  #ffffff
 xscreensaver.Dialog.Button.background:  #666666
 !username/password input box and date text colour
@@ -133,6 +132,6 @@ xscreensaver.Dialog.shadowThickness:    2
 !timeout bar (background is actually determined by Dialog.text.background)
 xscreensaver.passwd.thermometer.foreground:  #1793D1
 xscreensaver.passwd.thermometer.background:  #333333
-xscreensaver.passwd.thermometer.width:       16
+xscreensaver.passwd.thermometer.width:       12
 !datestamp format--see the strftime(3) manual page for details
 xscreensaver.dateFormat:                %Y-%m-%d %H:%M:%S
