@@ -1,6 +1,6 @@
 ! X Resources definitions
 ! Created: 2001-11-10 20:04:17 by Jonas Gorauskas
-! Modified: 2015-01-21 20:26:45
+! Modified: 2015-02-02 12:18:30
 !
 ! Notes:
 !  to test, run the following to source the file:
@@ -24,20 +24,32 @@ URxvt*urgentOnBell:           true
 
 URxvt.saveLines:              32767
 
-URxvt*font:                   xft:DejaVu Sans Mono:pixelsize=12
-URxvt*boldFont:               xft:DejaVu Sans Mono:bold:pixelsize=12
+URxvt*font:                   xft:DejaVu Sans Mono:pixelsize=13
+URxvt*boldFont:               xft:DejaVu Sans Mono:bold:pixelsize=13
 
-URxvt.perl-ext-common:        default,matcher,tabbed
+URxvt.perl-ext-common:        default,url-select,tabbedex,fullscreen
 
 ! clickable URLs
-URxvt.urlLauncher:            /usr/bin/google-chrome
-URxvt.matcher.button:         1
+URxvt.keysym.C-u:             perl:url-select:select_next
+URxvt.url-select.launcher:    /usr/bin/google-chrome
+URxvt.url-select.underline:   true
 
 ! tabbed interface
-URxvt.tabbed.tabbar-fg:       6
-URxvt.tabbed.tabbar-bg:       8
-URxvt.tabbed.tab-fg:          14
-URxvt.tabbed.tab-bg:          8
+URxvt.tabbed.autohide:        false
+URxvt.tabbed.reopen-on-close: true
+URxvt.tabbed.tabbar-fg:       9
+URxvt.tabbed.tabbar-bg:       1
+URxvt.tabbed.tab-fg:          12
+URxvt.tabbed.tab-bg:          4
+URxvt.keysym.C-t:             perl:tabbedex:new_tab
+URxvt.keysym.C-Tab:           perl:tabbedex:next_tab
+URxvt.keysym.C-S-Tab:         perl:tabbedex:prev_tab
+URxvt.keysym.C-S-Left:        perl:tabbedex:move_tab_left
+URxvt.keysym.C-S-Right:       perl:tabbedex:move_tab_right
+URxvt.keysym.C-S-R:           perl:tabbedex:rename_tab
+
+! fullscreen
+URxvt.keysym.F11:             perl:fullscreen:switch
 
 ! Darkburn color-scheme
 URxvt*background:             #111111
