@@ -1,6 +1,6 @@
 # Bourne Again Shell init file
 # Jonas Gorauskas - 2007-03-17 21:03:35
-# Modified: 2015-02-18 00:02:52
+# Modified: 2015-02-18 00:21:15
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -26,7 +26,7 @@ if [ "$(lsb_release -si)" == "Arch" ]; then
     [ -f /usr/bin/virtualenvwrapper_lazy.sh ] && . /usr/bin/virtualenvwrapper_lazy.sh
 elif [ "$(lsb_release -si)" == "Debian" ]; then
     # for debian
-    [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && . /usr/bin/local/virtualenvwrapper_lazy.sh
+    [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && . /usr/local/bin/virtualenvwrapper_lazy.sh
 fi
 
 # don't use cowsay with ansible
