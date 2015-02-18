@@ -1,6 +1,6 @@
 # Bourne Again Shell init file
 # Jonas Gorauskas - 2007-03-17 21:03:35
-# Modified: 2015-01-22 02:20:35
+# Modified: 2015-02-18 00:02:52
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -24,7 +24,7 @@ export WORKON_HOME=$HOME/.virtualenvs
 if [ "$(lsb_release -si)" == "Arch" ]; then
     # for arch linux
     [ -f /usr/bin/virtualenvwrapper_lazy.sh ] && . /usr/bin/virtualenvwrapper_lazy.sh
-else
+elif [ "$(lsb_release -si)" == "Debian" ]; then
     # for debian
     [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && . /usr/bin/local/virtualenvwrapper_lazy.sh
 fi
@@ -50,7 +50,7 @@ if [ "$(lsb_release -si)" == "Arch" ]; then
     if [ -f /usr/share/bash-completion/bash_completion ] && ! shopt -oq posix; then
         . /usr/share/bash-completion/bash_completion
     fi
-else
+elif [ "$(lsb_release -si)" == "Debian" ]; then
     # for debian
     if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
         . /etc/bash_completion
