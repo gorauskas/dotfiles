@@ -19,13 +19,15 @@ URxvt*scrollBar_right:        false
 URxvt*scrollstyle:            plain
 URxvt*cursorBlink:            false
 URxvt*geometry:               160x60
-URxvt*letterSpace:            -1
+URxvt*letterSpace:            0
 URxvt*urgentOnBell:           true
 
 URxvt.saveLines:              32767
+URxvt.iso14755:               false
+URxvt.iso14755_52:            false
 
-URxvt*font:                   xft:DejaVu Sans Mono:pixelsize=13
-URxvt*boldFont:               xft:DejaVu Sans Mono:bold:pixelsize=13
+URxvt*font:                   xft:Envy Code R:pixelsize=13
+URxvt*boldFont:               xft:Envy Code R:bold:pixelsize=13
 
 URxvt.perl-ext-common:        default,url-select,tabbedex,fullscreen
 
@@ -35,18 +37,14 @@ URxvt.url-select.launcher:    /usr/bin/google-chrome
 URxvt.url-select.underline:   true
 
 ! tabbed interface
+! Use Shift + Up, Left, Right for Rename, Next, Previous respectively
 URxvt.tabbed.autohide:        false
-URxvt.tabbed.reopen-on-close: true
+URxvt.tabbed.reopen-on-close: yes
 URxvt.tabbed.tabbar-fg:       9
 URxvt.tabbed.tabbar-bg:       1
 URxvt.tabbed.tab-fg:          12
 URxvt.tabbed.tab-bg:          4
-URxvt.keysym.C-t:             perl:tabbedex:new_tab
-URxvt.keysym.C-Tab:           perl:tabbedex:next_tab
-URxvt.keysym.C-S-Tab:         perl:tabbedex:prev_tab
-URxvt.keysym.C-S-Left:        perl:tabbedex:move_tab_left
-URxvt.keysym.C-S-Right:       perl:tabbedex:move_tab_right
-URxvt.keysym.C-S-R:           perl:tabbedex:rename_tab
+URxvt.keysym.Control-t:       perl:tabbedex:new_tab
 
 ! fullscreen
 URxvt.keysym.F11:             perl:fullscreen:switch
