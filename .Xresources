@@ -1,6 +1,6 @@
 ! X Resources definitions
 ! Created: 2001-11-10 20:04:17 by Jonas Gorauskas
-! Modified: 2015-02-02 12:18:30
+! Modified: 2015-02-18 00:12:34
 !
 ! Notes:
 !  to test, run the following to source the file:
@@ -26,8 +26,8 @@ URxvt.saveLines:              32767
 URxvt.iso14755:               false
 URxvt.iso14755_52:            false
 
-URxvt*font:                   xft:Envy Code R:pixelsize=13
-URxvt*boldFont:               xft:Envy Code R:bold:pixelsize=13
+URxvt*font:                   xft:Envy Code R:pixelsize=12
+URxvt*boldFont:               xft:Envy Code R:bold:pixelsize=12
 
 URxvt.perl-ext-common:        default,url-select,tabbedex,fullscreen
 
