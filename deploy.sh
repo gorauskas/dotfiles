@@ -24,6 +24,7 @@ if [[ "$1" == "desktop" || "$1" == "server" ]]; then
     ln -v -fs ${DF_DIR}/.gitconfig ${HOME}/.gitconfig
     ln -v -fs ${DF_DIR}/.inputrc ${HOME}/.inputrc
     ln -v -fs ${DF_DIR}/mercurial.ini ${HOME}/mercurial.ini
+    ln -v -fs ${DF_DIR}/.mg ${HOME}/.mg
     ln -v -fs ${DF_DIR}/.tmux.conf ${HOME}/.tmux.conf
     ln -v -fs ${DF_DIR}/.vimrc ${HOME}/.vimrc
 
