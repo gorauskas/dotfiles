@@ -36,9 +36,9 @@
     a = add
     ra = remote add
     rr = remote rm
+    r = remote
     ps = push
     pl = pull
-    a = add
     d = diff
     diff = diff --word-diff
     dc = diff --cached
