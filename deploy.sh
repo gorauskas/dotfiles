@@ -50,6 +50,7 @@ if [[ "$1" == "desktop" ]]; then
     if [ ! -d "${HOME}/Pictures" ]; then
         mkdir ${HOME}/Pictures
     fi
+    [ -d ${HOME}/Pictures/tiles ] && rm -rf ${HOME}/Pictures/tiles
     cp -r ${DF_DIR}/tiles/ ${HOME}/Pictures/
 
     printf "%s\n" "" "if [ \"\$(lsb_release -si)\" == \"Arch\" ]; then" "    linux_logo -b -u -L 1" "else" "    linux_logo -b -u -L banner-simp" "fi" "" >> ./.bashrc;
