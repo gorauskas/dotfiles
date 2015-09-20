@@ -1,6 +1,6 @@
 # Bourne Again Shell Aliases File
 # Jonas Gorauskas - 2007-03-17 21:17:05
-# Modified: 2015-09-19 22:01:48
+# Modified: 2015-09-20 12:49:11
 
 # A function to add an alias to the current shell and
 # append it to this file
@@ -186,12 +186,18 @@ alias py='python'
 
 ## RADIO STATIONS
 
+alias radio_breakbeat='mplayer http://65.23.157.233:7904'
+alias radio_carifun_reggae='mplayer http://69.4.225.73:8070'
+alias radio_chromanova='mplayer http://176.31.123.212:9000'
+alias radio_deep_house='mplayer http://50.7.77.114:8101'
+alias radio_downtempo_cafedelmar='mplayer http://5.135.238.89:9994'
 alias radio_drone_zone='mplayer http://216.129.114.88:8014'
-alias radio_legalize='mplayer http://188.138.101.174:25600'
-alias radio_nirvana='mplayer http://91.121.134.15:9106'
+alias radio_ibiza_global='mplayer http://46.105.171.217:8024'
+alias radio_jamaican_roots='mplayer http://listen.radionomy.com/jamaican-roots-radio'
 alias radio_partyvibe_reggae='mplayer http://listen.radionomy.com/PARTYVIBERADIO-Reggae-Roots-Dancehall-Dub'
 alias radio_partyvibe_trance='mplayer http://listen.radionomy.com/PARTYVIBERADIO-PsychedelicTrance-Progressive-GoaTrance'
-alias radio_urban_slector='mplayer http://198.105.208.77:9998'
+alias radio_rautemusik='mplayer http://193.34.51.44:80'
 alias radio_real_hard_style='mplayer http://62.212.132.53:8326'
+alias radio_world_fusion='mplayer http://5.135.158.160:9000'
 
 #EOF
