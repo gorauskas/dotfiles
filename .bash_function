@@ -1,6 +1,6 @@
 # Bourne Again Shell Init Function File
 # Jonas Gorauskas - 2007.03.17 22:00:00
-# Modified: 2014-11-22 16:14:41
+# Modified: 2015-09-20 13:13:53
 
 # Find a process by name
 function psgrep() {
@@ -171,4 +171,10 @@ function cap () {
 function gdr () {
     git fetch origin ;
     git diff $1..origin/$1;
+}
+
+# use wget to get a full page impression time
+#   robot exclusions will not be loaded
+function full_page_impression_load_time() {
+    time wget -p --delete-after $1 -o /dev/null
 }
