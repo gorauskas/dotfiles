@@ -1,6 +1,6 @@
 # Bourne Again Shell Aliases File
 # Jonas Gorauskas - 2007-03-17 21:17:05
-# Modified: 2015-09-19 21:53:03
+# Modified: 2015-09-19 22:01:48
 
 # A function to add an alias to the current shell and
 # append it to this file
@@ -189,8 +189,8 @@ alias py='python'
 alias radio_drone_zone='mplayer http://216.129.114.88:8014'
 alias radio_legalize='mplayer http://188.138.101.174:25600'
 alias radio_nirvana='mplayer http://91.121.134.15:9106'
-alias radio_partyvibe_raggae='mplayer http://listen.radionomy.com/PARTYVIBERADIO-Reggae-Roots-Dancehall-Dub'
-alias radio_partyvibe_trance='mplayer http://listen.radionomy.com/PARTYVIBERADIO-PsychedelicTrance-Prograssive-GoaTrance'
+alias radio_partyvibe_reggae='mplayer http://listen.radionomy.com/PARTYVIBERADIO-Reggae-Roots-Dancehall-Dub'
+alias radio_partyvibe_trance='mplayer http://listen.radionomy.com/PARTYVIBERADIO-PsychedelicTrance-Progressive-GoaTrance'
 alias radio_urban_slector='mplayer http://198.105.208.77:9998'
 alias radio_real_hard_style='mplayer http://62.212.132.53:8326'
 
