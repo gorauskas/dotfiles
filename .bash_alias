@@ -1,6 +1,6 @@
 # Bourne Again Shell Aliases File
 # Jonas Gorauskas - 2007-03-17 21:17:05
-# Modified: 2014-11-22 16:27:09
+# Modified: 2015-09-19 21:53:03
 
 # A function to add an alias to the current shell and
 # append it to this file
@@ -183,5 +183,15 @@ alias sem='sudo emacs'
 alias ipy='ipython --autoindent --pprint --colors=Linux'
 alias py3='python3'
 alias py='python'
+
+## RADIO STATIONS
+
+alias radio_drone_zone='mplayer http://216.129.114.88:8014'
+alias radio_legalize='mplayer http://188.138.101.174:25600'
+alias radio_nirvana='mplayer http://91.121.134.15:9106'
+alias radio_partyvibe_raggae='mplayer http://listen.radionomy.com/PARTYVIBERADIO-Reggae-Roots-Dancehall-Dub'
+alias radio_partyvibe_trance='mplayer http://listen.radionomy.com/PARTYVIBERADIO-PsychedelicTrance-Prograssive-GoaTrance'
+alias radio_urban_slector='mplayer http://198.105.208.77:9998'
+alias radio_real_hard_style='mplayer http://62.212.132.53:8326'
 
 #EOF
