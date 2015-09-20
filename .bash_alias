@@ -1,6 +1,6 @@
 # Bourne Again Shell Aliases File
 # Jonas Gorauskas - 2007-03-17 21:17:05
-# Modified: 2015-09-20 12:49:11
+# Modified: 2015-09-20 12:53:40
 
 # A function to add an alias to the current shell and
 # append it to this file
@@ -183,6 +183,14 @@ alias sem='sudo emacs'
 alias ipy='ipython --autoindent --pprint --colors=Linux'
 alias py3='python3'
 alias py='python'
+
+# maven
+alias mcc='mvn clean compile'
+alias mci='mvn clean install'
+alias mcp='mvn clean package'
+alias mda='mvn dependency:analyze'
+alias mdt='mvn dependency:tree | less'
+alias mp='mvn package -DskipTests'
 
 ## RADIO STATIONS
 
