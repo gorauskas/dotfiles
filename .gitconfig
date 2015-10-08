@@ -44,6 +44,8 @@
     dc = diff --cached
     ltg = describe --tags --abbrev=0
     count = !git shortlog -sn
+    todo = !git ls-files | xargs grep --color=auto -onE '(TODO|FIXME):.*$'
+    dangling = !git fsck 2> /dev/null | grep '^dangling commit' | awk '{print $3}' | git log --stdin --no-walk
 [color]
     ui = auto
 [color "branch"]
