@@ -15,8 +15,8 @@ export HISTFILESIZE=9999
 shopt -s histappend
 
 # set the default editor
-export EDITOR=zile
-export VISUAL=emacsclient
+export EDITOR=mg
+export VISUAL=$EDITOR
 export TERM=xterm-256color
 
 # python virtualenv
