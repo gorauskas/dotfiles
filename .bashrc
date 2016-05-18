@@ -1,6 +1,9 @@
 # Bourne Again Shell init file
 # Jonas Gorauskas - 2007-03-17 21:03:35
-# Modified: 2015-02-18 00:21:15
+# Modified: 2016-05-18 11:43:09
+
+# Which platform are we running on?
+export PLATFORM=`uname`
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -16,16 +19,25 @@ shopt -s histappend
 
 # set the default editor
 export EDITOR=mg
-export VISUAL=$EDITOR
+export VISUAL=emacsclient
 export TERM=xterm-256color
 
 # python virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
-if [ "$(lsb_release -si)" == "Arch" ]; then
-    # for arch linux
-    [ -f /usr/bin/virtualenvwrapper_lazy.sh ] && . /usr/bin/virtualenvwrapper_lazy.sh
-elif [ "$(lsb_release -si)" == "Debian" ]; then
-    # for debian
+export PROJECT_HOME=$HOME/Projects
+export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+
+if [[ "$PLATFORM" == "Linux" ]]; then
+    if [ "$(lsb_release -si)" == "Arch" ]; then
+        # for arch linux
+        [ -f /usr/bin/virtualenvwrapper_lazy.sh ] && . /usr/bin/virtualenvwrapper_lazy.sh
+    elif [ "$(lsb_release -si)" == "Debian" ]; then
+        # for debian
+        [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && . /usr/local/bin/virtualenvwrapper_lazy.sh
+    fi
+fi
+
+if [[ "$PLATFORM" == "Darwin" ]]; then
     [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && . /usr/local/bin/virtualenvwrapper_lazy.sh
 fi
 
@@ -44,17 +56,23 @@ case $TERM in
 esac
 export TITLEBAR
 
-# enable bash completion in interactive shells
-if [ "$(lsb_release -si)" == "Arch" ]; then
-    # for arch linux
-    if [ -f /usr/share/bash-completion/bash_completion ] && ! shopt -oq posix; then
-        . /usr/share/bash-completion/bash_completion
+if [[ "$PLATFORM" == "Linux" ]]; then
+    # enable bash completion in interactive shells
+    if [ "$(lsb_release -si)" == "Arch" ]; then
+        # for arch linux
+        if [ -f /usr/share/bash-completion/bash_completion ] && ! shopt -oq posix; then
+            . /usr/share/bash-completion/bash_completion
+        fi
+    elif [ "$(lsb_release -si)" == "Debian" ]; then
+        # for debian
+        if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+            . /etc/bash_completion
+        fi
     fi
-elif [ "$(lsb_release -si)" == "Debian" ]; then
-    # for debian
-    if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-        . /etc/bash_completion
-    fi
+fi
+
+if [[ "$PLATFORM" == "Darwin" ]]; then
+    [ -f /usr/local/etc/bash_completion ] && . /usr/local//etc/bash_completion
 fi
 
 # used for various experiments when writing code
