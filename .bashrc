@@ -1,6 +1,6 @@
 # Bourne Again Shell init file
 # Jonas Gorauskas - 2007-03-17 21:03:35
-# Modified: 2016-05-18 11:43:09
+# Modified: 2016-05-26 13:14:12
 
 # Which platform are we running on?
 export PLATFORM=`uname`
@@ -35,10 +35,24 @@ if [[ "$PLATFORM" == "Linux" ]]; then
         # for debian
         [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && . /usr/local/bin/virtualenvwrapper_lazy.sh
     fi
+
+    # enable bash completion in interactive shells
+    if [ "$(lsb_release -si)" == "Arch" ]; then
+        # for arch linux
+        if [ -f /usr/share/bash-completion/bash_completion ] && ! shopt -oq posix; then
+            . /usr/share/bash-completion/bash_completion
+        fi
+    elif [ "$(lsb_release -si)" == "Debian" ]; then
+        # for debian
+        if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+            . /etc/bash_completion
+        fi
+    fi
 fi
 
 if [[ "$PLATFORM" == "Darwin" ]]; then
     [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && . /usr/local/bin/virtualenvwrapper_lazy.sh
+    [ -f /usr/local/etc/bash_completion ] && . /usr/local//etc/bash_completion
 fi
 
 # don't use cowsay with ansible
@@ -55,25 +69,6 @@ case $TERM in
         TITLEBAR="" ;;
 esac
 export TITLEBAR
-
-if [[ "$PLATFORM" == "Linux" ]]; then
-    # enable bash completion in interactive shells
-    if [ "$(lsb_release -si)" == "Arch" ]; then
-        # for arch linux
-        if [ -f /usr/share/bash-completion/bash_completion ] && ! shopt -oq posix; then
-            . /usr/share/bash-completion/bash_completion
-        fi
-    elif [ "$(lsb_release -si)" == "Debian" ]; then
-        # for debian
-        if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-            . /etc/bash_completion
-        fi
-    fi
-fi
-
-if [[ "$PLATFORM" == "Darwin" ]]; then
-    [ -f /usr/local/etc/bash_completion ] && . /usr/local//etc/bash_completion
-fi
 
 # used for various experiments when writing code
 if [ -d "$HOME/bin" ] ; then
