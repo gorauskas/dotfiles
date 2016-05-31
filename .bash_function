@@ -1,6 +1,6 @@
 # Bourne Again Shell Init Function File
 # Jonas Gorauskas - 2007.03.17 22:00:00
-# Modified: 2015-09-20 13:13:53
+# Modified: 2016-05-31 11:42:17
 
 # Find a process by name
 function psgrep() {
@@ -10,7 +10,7 @@ function psgrep() {
 # Kill a process by Name
 function pskill() {
     local pid
-    pid=$(ps ax | grep $1 | grep -v grep | awk '{ print $1 }')
+    pid=$(ps ax | grep -i -e $1 | grep -v grep | awk '{ print $1 }')
     echo -n "Killing $1 (Process $pid) ..."
     kill -9 $pid
     echo "Slaughtered ..."
@@ -29,7 +29,7 @@ function rot13() {
     if [ $# = 0 ] ; then
         tr "[a-m][n-z][A-M][N-Z]" "[n-z][a-m][N-Z][A-M]"
     else
-        tr "[a-m][n-z][A-M][N-Z]" "[n-z][a-m][N-Z][A-M]" < $1
+        echo $1 | tr "[a-m][n-z][A-M][N-Z]" "[n-z][a-m][N-Z][A-M]"
     fi
 }
 
@@ -78,14 +78,6 @@ function envinfo() {
     echo $is
 }
 
-# Open any document with any application
-function open () {
-    T=`xdg-mime query filetype $1`
-    echo "Opening file" $1 "of type" $T "with" `xdg-mime query default $T`
-    xdg-open $1
-    echo "Open done!"
-}
-
 # clean a directory by removing all temp and backup files
 # that were left behind
 function clean () {
@@ -106,17 +98,6 @@ function websrv () {
         python -m SimpleHTTPServer "$@"
     else
         python -m http.server "$@"
-    fi
-}
-
-
-# cd and ls in one
-function cl () {
-    if [ -d "$1" ]; then
-        cd "$1"
-        dir
-    else
-        echo "bash: cl '%1' - Directory not found"
     fi
 }
 
@@ -178,3 +159,27 @@ function gdr () {
 function full_page_impression_load_time() {
     time wget -p --delete-after $1 -o /dev/null
 }
+
+
+# LINUX ONLY
+if [[ "$PLATFORM" == "Linux" ]]; then
+
+    # Open any document with any application
+    function open () {
+        T=`xdg-mime query filetype $1`
+        echo "Opening file" $1 "of type" $T "with" `xdg-mime query default $T`
+        xdg-open $1
+        echo "Open done!"
+    }
+
+    # cd and ls in one
+    function cl () {
+        if [ -d "$1" ]; then
+            cd "$1"
+            dir
+        else
+            echo "bash: cl '%1' - Directory not found"
+        fi
+    }
+
+fi
