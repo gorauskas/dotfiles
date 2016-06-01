@@ -50,7 +50,7 @@ if [[ "$PLATFORM" == "Linux" ]]; then
     fi
 fi
 
-if [[ "$PLATFORM" == "Darwin" ]]; then
+if [[ "$PLATFORM" == "Darwin" || "$PLATFORM" == "FreeBSD" ]]; then
     [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && . /usr/local/bin/virtualenvwrapper_lazy.sh
     [ -f /usr/local/etc/bash_completion ] && . /usr/local//etc/bash_completion
 fi
