@@ -43,7 +43,7 @@ if [ "$TERM" != "dumb" ]; then
         alias dir='ls -alFhtr --group-directories-first --color=auto --time-style=long-iso'
         alias ll='ls -aF --color=auto --format=long'
     fi
-    if [[ "$PLATFORM" == "Darwin" ]]; then
+    if [[ "$PLATFORM" == "Darwin" || "$PLATFORM" == "FreeBSD" ]]; then
         alias dir='ls -alFGhtr'
         alias ll='ls -alFG'
     fi
