@@ -207,7 +207,7 @@ if [[ "$PLATFORM" == "Linux" ]]; then
 
 fi
 
-if [[ "$PLATFORM" == "Darwin" ]]; then
+if [[ "$PLATFORM" == "Darwin" || "$PLATFORM" == "FreeBSD" ]]; then
 
     alias ports='lsof -n -i | grep LISTEN'
     alias df='df -Ha'
@@ -218,9 +218,8 @@ fi
 
 if [[ "$PLATFORM" == "FreeBSD" ]]; then
 
+    unalias df
     alias df='df -Ha -,'
-    alias du='du -akx | sort -n'
-    alias du1='du -s'
 
 fi
 
