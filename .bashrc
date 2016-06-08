@@ -31,7 +31,8 @@ if [[ "$PLATFORM" == "Linux" ]]; then
     if [ "$(lsb_release -si)" == "Arch" ]; then
         # for arch linux
         [ -f /usr/bin/virtualenvwrapper_lazy.sh ] && . /usr/bin/virtualenvwrapper_lazy.sh
-    elif [ "$(lsb_release -si)" == "Debian" ]; then
+    fi
+    if [ "$(lsb_release -si)" == "Debian" ]; then
         # for debian
         [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && . /usr/local/bin/virtualenvwrapper_lazy.sh
     fi
@@ -42,12 +43,14 @@ if [[ "$PLATFORM" == "Linux" ]]; then
         if [ -f /usr/share/bash-completion/bash_completion ] && ! shopt -oq posix; then
             . /usr/share/bash-completion/bash_completion
         fi
-    elif [ "$(lsb_release -si)" == "Debian" ]; then
+    fi
+    if [ "$(lsb_release -si)" == "Debian" ]; then
         # for debian
         if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
             . /etc/bash_completion
         fi
-    elfi [ "$(lsb_release -si)" == "OracleServer" ]; then
+    fi
+    if [ "$(lsb_release -si)" == "OracleServer" ]; then
         # for OEL
         if [ -f /usr/share/bash-completion/bash_completion ] && ! shopt -oq posix; then
             . /usr/share/bash-completion/bash_completion
