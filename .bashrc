@@ -47,12 +47,17 @@ if [[ "$PLATFORM" == "Linux" ]]; then
         if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
             . /etc/bash_completion
         fi
+    elfi [ "$(lsb_release -si)" == "OracleServer" ]; then
+        # for OEL
+        if [ -f /usr/share/bash-completion/bash_completion ] && ! shopt -oq posix; then
+            . /usr/share/bash-completion/bash_completion
+        fi
     fi
 fi
 
 if [[ "$PLATFORM" == "Darwin" || "$PLATFORM" == "FreeBSD" ]]; then
     [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && . /usr/local/bin/virtualenvwrapper_lazy.sh
-    [ -f /usr/local/etc/bash_completion ] && . /usr/local//etc/bash_completion
+    [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 fi
 
 # don't use cowsay with ansible
