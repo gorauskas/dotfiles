@@ -18,6 +18,8 @@
     main-window-maximized = false
     main-window-geometry = 989x880+829+87
     file-view-hpane-position = 184
+[url "git@github.com:gorauskas/"]
+    insteadOf = jgg:
 [alias]
     unpushed = log --branches --not --remotes --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     undo = reset --hard HEAD~1
