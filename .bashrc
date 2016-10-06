@@ -25,15 +25,16 @@ export TERM=xterm-256color
 # python virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Projects
-export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 
 if [[ "$PLATFORM" == "Linux" ]]; then
     if [ "$(lsb_release -si)" == "Arch" ]; then
         # for arch linux
+        export VIRTUALENVWRAPPER_SCRIPT=/usr/bin/virtualenvwrapper.sh
         [ -f /usr/bin/virtualenvwrapper_lazy.sh ] && . /usr/bin/virtualenvwrapper_lazy.sh
     fi
     if [ "$(lsb_release -si)" == "Debian" ]; then
         # for debian
+        export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
         [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && . /usr/local/bin/virtualenvwrapper_lazy.sh
     fi
 
@@ -59,6 +60,7 @@ if [[ "$PLATFORM" == "Linux" ]]; then
 fi
 
 if [[ "$PLATFORM" == "Darwin" || "$PLATFORM" == "FreeBSD" ]]; then
+    export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
     [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && . /usr/local/bin/virtualenvwrapper_lazy.sh
     [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 fi
