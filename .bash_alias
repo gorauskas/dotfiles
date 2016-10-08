@@ -40,11 +40,13 @@ seq () {
 ## Enable color support for ls
 if [ "$TERM" != "dumb" ]; then
     if [[ "$PLATFORM" == "Linux" ]]; then
-        alias dir='ls -alFhtr --group-directories-first --color=auto --time-style=long-iso'
+        alias dir='ls -alFh --group-directories-first --color=auto --time-style=long-iso'
+        alias dirt='ls -alFhtr --group-directories-first --color=auto --time-style=long-iso'
         alias ll='ls -aF --color=auto --format=long'
     fi
     if [[ "$PLATFORM" == "Darwin" || "$PLATFORM" == "FreeBSD" ]]; then
-        alias dir='ls -alFGhtr'
+        alias dir='ls -alFGh'
+        alias dirt='ls -alFGhtr'
         alias ll='ls -alFG'
     fi
 fi
