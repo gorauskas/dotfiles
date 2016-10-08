@@ -146,8 +146,10 @@ alias qem='emacs -q'
 alias sem='sudo emacs'
 
 # python
-alias ipy='ipython --autoindent --pprint --colors=Linux'
-alias ipy3='ipython3 --autoindent --pprint --colors=Linux'
+# The 2 aliases to ipython below are changing to ensure that ipython is
+# loaded from inside an venv when in one
+alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
+
 alias py3='python3'
 alias py='python'
 
