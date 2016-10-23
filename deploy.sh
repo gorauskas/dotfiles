@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Created: 2013-05-06 17:39:39 by Jonas Gorauskas [JGG]
-# Modified: 2015-02-18 00:06:05
+# Modified: 2016-10-22 22:06:17
 
 # The strategy is to git clone the repo to ~/dotfiles and then execute this file
 # to generate sym links on ~/ to all the files in the repo. This file is
@@ -57,11 +57,11 @@ if [[ "$1" == "desktop" ]]; then
 	printf "%s\n" "" "if [ \"\$(lsb_release -si)\" == \"Arch\" ]; then" "    linux_logo -b -u -L 1" "else" "    linux_logo -b -u -L banner-simp" "fi" "" >> ./.bashrc;
     fi
 
-    printf "\nprompt def\n\n#OEF\n" >> ./.bashrc;
+    # printf "\nprompt def\n\n#OEF\n" >> ./.bashrc;
 
 elif [[ "$1" == "server" ]]; then
 
-    printf "\nprompt def\n\n#EOF\n" >> ./.bashrc
+    # printf "\nprompt def\n\n#EOF\n" >> ./.bashrc
 
 else
 
