@@ -61,6 +61,7 @@ if [[ "$1" == "desktop" ]]; then
 
 elif [[ "$1" == "server" ]]; then
 
+    echo ' ';
     # printf "\nprompt def\n\n#EOF\n" >> ./.bashrc
 
 else
