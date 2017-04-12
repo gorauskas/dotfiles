@@ -132,6 +132,9 @@ alias po="popd"
 alias hn='hostname'
 alias reload='. ~/.bashrc'
 
+# copy a stream into the X clipboard; e.g. "cat file | xcopy"
+alias xcopy="xclip -i -selection clipboard"
+
 ## PROGRAMMING
 
 alias diff='colordiff'              # requires colordiff package
