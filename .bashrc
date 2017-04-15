@@ -1,6 +1,6 @@
 # Bourne Again Shell init file
 # Jonas Gorauskas - 2007-03-17 21:03:35
-# Modified: 2016-05-26 13:14:12
+# Modified: 2017-04-16 11:26:57
 
 # Which platform are we running on?
 export PLATFORM=`uname`
