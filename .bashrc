@@ -19,7 +19,7 @@ shopt -s histappend
 
 # set the default editor
 export EDITOR=mg
-export VISUAL=emacsclient
+export VISUAL=mg
 export TERM=xterm-256color
 
 # python virtualenv
