@@ -102,3 +102,10 @@ fi
 if [ -f ~/.bash_prompt ]; then
     . ~/.bash_prompt
 fi
+
+if [ "$(lsb_release -si)" == "Arch" ]; then
+    linux_logo -b -u -L 1
+else
+    linux_logo -b -u -L banner-simp
+fi
+

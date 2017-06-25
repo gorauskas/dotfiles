@@ -33,7 +33,7 @@ URxvt.perl-ext-common:        default,url-select,tabbedex,fullscreen
 
 ! clickable URLs
 URxvt.keysym.C-u:             perl:url-select:select_next
-URxvt.url-select.launcher:    /usr/bin/google-chrome
+URxvt.url-select.launcher:    /usr/bin/google-chrome-stable
 URxvt.url-select.underline:   true
 
 ! tabbed interface
