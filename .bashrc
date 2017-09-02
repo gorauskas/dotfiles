@@ -60,6 +60,7 @@ if [[ "$PLATFORM" == "Linux" ]]; then
 fi
 
 if [[ "$PLATFORM" == "Darwin" || "$PLATFORM" == "FreeBSD" ]]; then
+    export SHELL_SESSION_HISTORY=0
     export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
     [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && . /usr/local/bin/virtualenvwrapper_lazy.sh
     [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
