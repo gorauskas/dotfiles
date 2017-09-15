@@ -187,3 +187,13 @@ if [[ "$PLATFORM" == "Linux" ]]; then
     }
 
 fi
+
+if [[ "$PLATFORM" == "Darwin" ]]; then
+
+    # enable ruby / chef on the shell
+    function ruby-env () {
+        eval "$(rbenv init -)"
+        eval "$(~/.chefvm/bin/chefvm init -)"
+    }
+
+fi

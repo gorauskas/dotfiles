@@ -59,11 +59,20 @@ if [[ "$PLATFORM" == "Linux" ]]; then
     fi
 fi
 
-if [[ "$PLATFORM" == "Darwin" || "$PLATFORM" == "FreeBSD" ]]; then
-    export SHELL_SESSION_HISTORY=0
+if [[ "$PLATFORM" == "FreeBSD" ]]; then
     export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
     [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && . /usr/local/bin/virtualenvwrapper_lazy.sh
     [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+fi
+
+if [[ "$PLATFORM" == "Darwin" ]]; then
+    export SHELL_SESSION_HISTORY=0
+
+    export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+    [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && . /usr/local/bin/virtualenvwrapper_lazy.sh
+    [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+
+    export PATH="/usr/local/sbin:$PATH"
 fi
 
 # don't use cowsay with ansible
@@ -83,9 +92,8 @@ export TITLEBAR
 
 # used for various experiments when writing code
 if [ -d "$HOME/bin" ] ; then
-    PATH=$HOME/bin:$PATH
+    export PATH=$HOME/bin:$PATH
 fi
-export PATH
 
 # files you make look like rw-r--r--
 umask 022
