@@ -24,7 +24,7 @@
     visual = !gitk
     ls = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate
     ll = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --numstat
-    lds = log --color --graph --pretty=format:'%Cred%h %ad%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short
+    lds = log --color --graph --pretty=format:'%Cred%h %ad%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%ae>%Creset' --abbrev-commit --decorate --date=short
     la = !git config -l | grep alias | cut -c 7-
     cp = cherry-pick
     st = status -sb
