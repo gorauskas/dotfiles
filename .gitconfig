@@ -1,6 +1,5 @@
 [user]
-    name = Jonas Gorauskas\n
-    email = jgorauskas@gmail.com
+	useConfigOnly = true
 [core]
     autocrlf = false
     safecrlf = false
