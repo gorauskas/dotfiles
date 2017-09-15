@@ -12,7 +12,6 @@
     summary = true
     tool = meld
 [credential]
-    helper = cache --timeout=3600
 [giggle]
     main-window-maximized = false
     main-window-geometry = 989x880+829+87
