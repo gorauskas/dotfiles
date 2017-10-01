@@ -1,6 +1,6 @@
 # Bourne Again Shell Init Function File
 # Jonas Gorauskas - 2007.03.17 22:00:00
-# Modified: 2016-10-29 14:37:19
+# Modified: 2017-09-30 14:53:50
 
 # Find a process by name
 function psgrep() {
@@ -163,6 +163,17 @@ function full_page_impression_load_time() {
 # musical ping - requires the sox package be isntalled
 function mping() {
     ping $@ | awk -F[=\ ] '/time=/{t=$(NF-1);f=2000-14*log(t^18);c="play -q -n synth 1 pl "f"&";print $0;system(c)}';
+}
+
+# aws s3 sync
+function s3up() {
+    echo "Sync up to $1";
+    aws s3 sync . s3://$1/ ;
+}
+
+function s3down() {
+    echo "Sync down from $1";
+    aws s3 sync s3://$1/ . ;
 }
 
 # LINUX ONLY
