@@ -1,6 +1,6 @@
 # Bourne Again Shell Init Function File
 # Jonas Gorauskas - 2007.03.17 22:00:00
-# Modified: 2017-09-30 14:53:50
+# Modified: 2017-10-08 13:12:10
 
 # Find a process by name
 function psgrep() {
@@ -195,16 +195,6 @@ if [[ "$PLATFORM" == "Linux" ]]; then
         else
             echo "bash: cl '%1' - Directory not found"
         fi
-    }
-
-fi
-
-if [[ "$PLATFORM" == "Darwin" ]]; then
-
-    # enable ruby / chef on the shell
-    function ruby-env () {
-        eval "$(rbenv init -)"
-        eval "$(~/.chefvm/bin/chefvm init -)"
     }
 
 fi

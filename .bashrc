@@ -1,6 +1,6 @@
 # Bourne Again Shell init file
 # Jonas Gorauskas - 2007-03-17 21:03:35
-# Modified: 2017-04-16 11:26:57
+# Modified: 2017-10-08 13:16:02
 
 # Which platform are we running on?
 export PLATFORM=`uname`
@@ -110,4 +110,8 @@ fi
 
 if [ -f ~/.bash_prompt ]; then
     . ~/.bash_prompt
+fi
+
+if [ -f ~/Documents/Coupa/coupa.sh ]; then
+    . ~/Documents/Coupa/coupa.sh
 fi
