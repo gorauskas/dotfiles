@@ -1,6 +1,6 @@
 # Bourne Again Shell init file
 # Jonas Gorauskas - 2007-03-17 21:03:35
-# Modified: 2017-10-08 13:16:02
+# Modified: 2017-10-29 11:03:27
 
 # Which platform are we running on?
 export PLATFORM=`uname`
@@ -43,6 +43,9 @@ if [[ "$PLATFORM" == "Linux" ]]; then
         # for arch linux
         if [ -f /usr/share/bash-completion/bash_completion ] && ! shopt -oq posix; then
             . /usr/share/bash-completion/bash_completion
+        fi
+        if [ -f /usr/share/doc/pkgfile/command-not-found.bash ]; then
+            . /usr/share/doc/pkgfile/command-not-found.bash
         fi
     fi
     if [ "$(lsb_release -si)" == "Debian" ]; then
