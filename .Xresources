@@ -1,6 +1,6 @@
 ! X Resources definitions
 ! Created: 2001-11-10 20:04:17 by Jonas Gorauskas
-! Modified: 2015-02-18 00:12:34
+! Modified: 2017-10-29 10:06:19
 !
 ! Notes:
 !  to test, run the following to source the file:
@@ -44,7 +44,7 @@ URxvt.tabbed.tabbar-fg:       9
 URxvt.tabbed.tabbar-bg:       1
 URxvt.tabbed.tab-fg:          12
 URxvt.tabbed.tab-bg:          4
-URxvt.keysym.Control-t:       perl:tabbedex:new_tab
+! URxvt.keysym.Control-t:       perl:tabbedex:new_tab
 
 ! fullscreen
 URxvt.keysym.F11:             perl:fullscreen:switch
