@@ -1,6 +1,6 @@
 # Bourne Again Shell init file
 # Jonas Gorauskas - 2007-03-17 21:03:35
-# Modified: 2017-10-29 11:03:27
+# Modified: 2017-10-29 11:11:42
 
 # Which platform are we running on?
 export PLATFORM=`uname`
@@ -16,6 +16,9 @@ export HISTFILESIZE=9999
 
 # append to the history file, don't overwrite it
 shopt -s histappend
+
+# automagically `cd` when entering just a path
+shopt -s autocd
 
 # set the default editor
 export EDITOR=ec
