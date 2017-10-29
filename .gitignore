@@ -1,3 +1,6 @@
 # JGG Dotfiles Ignore list
 
 liquidprompt/
+.vim/
+.vimrc
+_vimrc

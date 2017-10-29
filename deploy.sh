@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Created: 2013-05-06 17:39:39 by Jonas Gorauskas [JGG]
-# Modified: 2017-04-16 11:24:10
+# Modified: 2017-10-29 13:28:22
 
 # The strategy is to git clone the repo to ~/dotfiles and then execute this file
 # to generate sym links on ~/ to all the files in the repo. This file is
@@ -15,6 +15,7 @@ DF_DIR=${PWD}
 
 if [[ "$1" == "desktop" || "$1" == "server" ]]; then
 
+    echo "setup general links"
     ln -v -fs ${DF_DIR}/.bash_alias ${HOME}/.bash_alias
     ln -v -fs ${DF_DIR}/.bash_function ${HOME}/.bash_function
     ln -v -fs ${DF_DIR}/.bash_logout ${HOME}/.bash_logout
@@ -26,15 +27,23 @@ if [[ "$1" == "desktop" || "$1" == "server" ]]; then
     ln -v -fs ${DF_DIR}/mercurial.ini ${HOME}/mercurial.ini
     ln -v -fs ${DF_DIR}/.mg ${HOME}/.mg
     ln -v -fs ${DF_DIR}/.tmux.conf ${HOME}/.tmux.conf
-    ln -v -fs ${DF_DIR}/.vimrc ${HOME}/.vimrc
+
+    echo "  setup liquid prompt"
+    git clone https://github.com/nojhan/liquidprompt.git
+    ln -v -fs ${DF_DIR}/liquidpromptrc ~/.config/liquidpromptrc
+
+    echo "  setup vim"
+    git clone https://github.com/gorauskas/vimconf.git
+    ln -v -fs ${DF_DIR}/vimconf/.vimrc ${HOME}/.vimrc
 
     [ -h ${HOME}/.vim ] && rm ${HOME}/.vim
-    ln -v -fs ${DF_DIR}/.vim/ ${HOME}/.vim
+    ln -v -fs ${DF_DIR}/vimconf/.vim/ ${HOME}/.vim
 
 fi
 
 if [[ "$1" == "desktop" ]]; then
 
+    echo "setup desktop links"
     ln -v -fs ${DF_DIR}/.conkyrc ${HOME}/.conkyrc
     ln -v -fs ${DF_DIR}/.gitk ${HOME}/.gitk
     ln -v -fs ${DF_DIR}/.Xresources ${HOME}/.Xresources
@@ -57,13 +66,12 @@ if [[ "$1" == "desktop" ]]; then
         printf "%s\n" "" "if [ \"\$(lsb_release -si)\" == \"Arch\" ]; then" "    linux_logo -b -u -L 1" "else" "    linux_logo -b -u -L banner-simp" "fi" "" >> ./.bashrc;
     fi
 
-    git clone https://github.com/nojhan/liquidprompt.git
-    ln -v -fs ${DF_DIR}/liquidpromptrc ~/.config/liquidpromptrc
-
 elif [[ "$1" == "server" ]]; then
 
-    git clone https://github.com/nojhan/liquidprompt.git
-    ln -v -fs ${DF_DIR}/liquidpromptrc ~/.config/liquidpromptrc
+    echo "setup server "
+    if [ ! -d "${HOME}/bin" ]; then
+        mkdir ${HOME}/bin
+    fi
 
 else
 
