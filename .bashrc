@@ -21,8 +21,8 @@ shopt -s histappend
 shopt -s autocd
 
 # set the default editor
-export EDITOR=ec
-export VISUAL=ec
+export EDITOR=mg
+export VISUAL=mg
 export TERM=xterm-256color
 
 # python virtualenv
