@@ -197,4 +197,8 @@ if [[ "$PLATFORM" == "Linux" ]]; then
         fi
     }
 
+    # create 16 char password using /dev/urandom
+    function mkpwd () {
+        LC_ALL=C tr -dc '[:graph:]' < /dev/urandom | head -c ${1:-16}; echo;
+    }
 fi
