@@ -1,5 +1,7 @@
 [user]
 	useConfigOnly = true
+	email = jgorauskas@gmail.com
+	name = Jonas Gorauskas
 [core]
     autocrlf = false
     safecrlf = false
