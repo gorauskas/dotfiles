@@ -1,11 +1,132 @@
 # Bourne Again Shell Init Prompt File
 # Jonas Gorauskas [JGG] - 2013-04-19 01:01:38
-# Modified: 2017-04-16 11:25:03
+# Modified: 2018-07-18 11:31:12
 
-# Using liquid prompt
+# Liquid prompt does not work very well with the Linux Subsystem for Windows
+# or MinGW or with very large Git repos. So on Windows we use a different prompt.
+iswin=$(uname -r | cut -d- -f3)
+ismingw=$(uname -a | cut -d' ' -f1 | cut -d_ -f1)
 
-[[ $- = *i* ]] || return;
+# Using liquid prompt, but not on Windows
+if [[ $iswin != "Microsoft" || $ismingw != "MINGW64" ]]; then
+    [[ $- = *i* ]] || return;
 
-if [ -f ~/dotfiles/liquidprompt/liquidprompt ]; then
-    . ~/dotfiles/liquidprompt/liquidprompt;
+    if [ -f ~/dotfiles/liquidprompt/liquidprompt ]; then
+        . ~/dotfiles/liquidprompt/liquidprompt;
+    fi
+fi
+
+if [[ $iswin == "Microsoft" || $ismingw == "MINGW64" ]]; then
+    function pre_prompt {
+        newPWD="${PWD}"
+        user="whoami"
+        host=$(echo -n $HOSTNAME | sed -e "s/[\.].*//")
+        datenow=$(date "+%F %T")
+        let promptsize=$(echo -n "┌[$user@$host][${PWD}]┐" | wc -c | tr -d " ")
+        let fillsize=${COLUMNS}-${promptsize}
+        fill=""
+        while [ "$fillsize" -gt "0" ]
+        do
+            fill="${fill}─"
+            let fillsize=${fillsize}-1
+        done
+        if [ "$fillsize" -lt "0" ]
+        then
+            let cutt=3-${fillsize}
+            newPWD="...$(echo -n $PWD | sed -e "s/\(^.\{$cutt\}\)\(.*\)/\2/")"
+        fi
+    }
+
+    export PROMPT_COMMAND=pre_prompt
+    export PS2='> '
+
+    export black="\[\033[0;38;5;0m\]"
+    export red="\[\033[0;38;5;1m\]"
+    export bred="\[\033[1;31m\]"
+    export orange="\[\033[0;38;5;130m\]"
+    export green="\[\033[0;38;5;2m\]"
+    export yellow="\[\033[0;38;5;3m\]"
+    export blue="\[\033[0;38;5;4m\]"
+    export bblue="\[\033[0;38;5;12m\]"
+    export magenta="\[\033[0;38;5;55m\]"
+    export cyan="\[\033[0;38;5;6m\]"
+    export white="\[\033[0;38;5;7m\]"
+    export coldblue="\[\033[0;38;5;33m\]"
+    export smoothblue="\[\033[0;38;5;111m\]"
+    export iceblue="\[\033[0;38;5;45m\]"
+    export turqoise="\[\033[0;38;5;50m\]"
+    export smoothgreen="\[\033[0;38;5;42m\]"
+    export no_color="\[\033[0m\]"
+
+    # Dynamic Prompt String
+    function prompt() {
+        case "$1" in
+            d)      PS1='$(dirs) \$ '               ;;
+            n)      PS1='\$ '                       ;;
+            hsw)    PS1='\h[$SHLVL]: \w \$ '        ;;
+            hw)     PS1='\h: \w \$ '                ;;
+            sh)     PS1='[$SHLVL] \h\$ '            ;;
+            sw)     PS1='[$SHLVL] \w \$ '           ;;
+            uh)     PS1='\u@\h\$ '                  ;;
+            uhsHw)  PS1='\u@\h[$SHLVL]:\#: \w \$ '  ;;
+            uhsw)   PS1='\u@\h[$SHLVL]: \w \$ '     ;;
+            uhw)    PS1='\u@\h: \w \$ '             ;;
+            uw)     PS1='(\u) \w \$ '               ;;
+            w)      PS1='\w \$ '                    ;;
+            def)    PS1="$coldblue[$green\!$white:$green\#$coldblue] [$iceblue\t$coldblue] $smoothblue\u$white@$smoothblue\h $coldblue[$iceblue\w$coldblue]$green\n➤  $no_color" ;;
+            tuW)    PS1="[\t \u:\W]\$ "             ;;
+            tuhW)   PS1="[\t \u@\h:\W]\$ "          ;;
+            what)   PS1="$bred[$no_color\w/$bred]$green what now...$no_color \$ " ;;
+            fancy)
+                case "$TERM" in
+                    xterm* | rxvt* | urxvt)
+                        PS1="$blue┌─[$bblue\u@\h$blue]─\${fill}─[$bblue\$newPWD\
+$blue]─┐\n$blue└─[$white\$(date \"+%F %T\") \$$blue]───>$white "
+                        ;;
+                    screen | screen-256color)
+                        PS1="$blue┌─[$iceblue\u@\h$blue]─\${fill}─[$iceblue\$newPWD\
+$blue]─┐\n$blue└─[$smoothblue\$(date \"+%F %T\") \$$blue]───>$white "
+                        ;;
+                    *)
+                        PS1="┌─[\u@\h]─\${fill}─[\$newPWD\
+]─┐\n└─[\$(date \"+%F %T\") \$]───> "
+                        ;;
+                esac
+                ;;
+            ?)      echo '
+Interactivelly change the shell prompt string.
+Version 0.4 - Jonas Gorauskas
+
+  Usage: prompt [option]
+         ... where option is one of the following:
+    d     - Shows the current directory path
+    n     - Shows a # for root and a $ for other users
+    hsw   - Shows hostname, shell level variable, and current working
+            directory
+    hw    - Shows hostname and current working directory
+    sh    - Shows shell level variable and hostname
+    sw    - Shows shell level variable and current working directory
+    uh    - Shows current user name and hostname
+    uhsHw - Shows current user name, hostname, shell level variable,
+            comand level variable, and current working directory
+    uhsw  - Shows current user name, hostname, shell level variable,
+            and current working directory
+    uhw   - Shows current user name, hostname, and currentf working
+            directory
+    uw    - Shows current user name and current working directory
+    w     - Shows the current working directory
+    tuW   - Shows the current time in HH:MM:SS format, the current user
+            name and the current working directory
+    tuhW  - Shows the current time in HH:MM:SS format, the current user
+            name, the hostname and the current working directory
+    def   - This is the default colorful prompt. Shows the current time
+            in HH:MM:SS format, the hostname, and the basename of the
+            current working directory
+    fancy - A fancy colorful prompt that spans 2 lines. It displays the
+            current user and hostname, the current working directory,
+            and the current date and time in ISO format.
+    ?     - Shows this help message' ;;
+        esac
+    }
+
 fi
