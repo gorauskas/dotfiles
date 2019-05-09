@@ -30,19 +30,22 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Projects
 
 if [[ "$PLATFORM" == "Linux" ]]; then
-    if [ "$(lsb_release -si)" == "Arch" ]; then
+    DISTRO=$(lsb_release -si)
+
+    if [ "${DISTRO}" == "Arch" ]; then
         # for arch linux
         export VIRTUALENVWRAPPER_SCRIPT=/usr/bin/virtualenvwrapper.sh
         [ -f /usr/bin/virtualenvwrapper_lazy.sh ] && . /usr/bin/virtualenvwrapper_lazy.sh
     fi
-    if [ "$(lsb_release -si)" == "Debian" ]; then
+
+    if [[ "${DISTRO}" == "Debian" || "${DISTRO}" == "Ubuntu" ]]; then
         # for debian
         export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
         [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && . /usr/local/bin/virtualenvwrapper_lazy.sh
     fi
 
     # enable bash completion in interactive shells
-    if [ "$(lsb_release -si)" == "Arch" ]; then
+    if [ "${DISTRO}" == "Arch" ]; then
         # for arch linux
         if [ -f /usr/share/bash-completion/bash_completion ] && ! shopt -oq posix; then
             . /usr/share/bash-completion/bash_completion
@@ -51,13 +54,15 @@ if [[ "$PLATFORM" == "Linux" ]]; then
             . /usr/share/doc/pkgfile/command-not-found.bash
         fi
     fi
-    if [ "$(lsb_release -si)" == "Debian" ]; then
+
+    if [[ "${DISTRO}" == "Debian" || "${DISTRO}" == "Ubuntu" ]]; then
         # for debian
         if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
             . /etc/bash_completion
         fi
     fi
-    if [ "$(lsb_release -si)" == "OracleServer" ]; then
+
+    if [ "${DISTRO}" == "OracleServer" ]; then
         # for OEL
         if [ -f /usr/share/bash-completion/bash_completion ] && ! shopt -oq posix; then
             . /usr/share/bash-completion/bash_completion
@@ -117,8 +122,4 @@ fi
 
 if [ -f ~/.bash_prompt ]; then
     . ~/.bash_prompt
-fi
-
-if [ -f ~/Documents/Coupa/coupa.sh ]; then
-    . ~/Documents/Coupa/coupa.sh
 fi
