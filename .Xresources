@@ -26,8 +26,8 @@ URxvt.saveLines:              32767
 URxvt.iso14755:               false
 URxvt.iso14755_52:            false
 
-URxvt*font:                   xft:Envy Code R:pixelsize=12
-URxvt*boldFont:               xft:Envy Code R:bold:pixelsize=12
+URxvt*font:                   xft:Fira Code R:pixelsize=14
+URxvt*boldFont:               xft:Fira Code R:bold:pixelsize=14
 
 URxvt.perl-ext-common:        default,url-select,tabbedex,fullscreen
 
@@ -84,8 +84,8 @@ xterm*loginShell:             true
 xterm*scrollBar:              true
 xterm*scrollKey:              true
 xterm*multiClickTime:         250
-xterm*faceName:               DejaVu Sans Mono
-xterm*faceSize:               9
+xterm*faceName:               Fira Code
+xterm*faceSize:               10
 xterm*saveLines:              32767
 xterm*dynamicColors:          on
 xterm*highlightSelection:     true
