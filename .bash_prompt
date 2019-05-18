@@ -16,7 +16,7 @@ if [[ $iswin != "Microsoft" || $ismingw != "MINGW64" ]]; then
     fi
 fi
 
-if [[ $iswin == "Microsoft" || $ismingw == "MINGW64" ]]; then
+if [[ $iswin == "Microsoft" || $ismingw == "MINGW64" || $ismingw == "CYGWIN" ]]; then
     function pre_prompt {
         newPWD="${PWD}"
         user="whoami"

@@ -39,7 +39,7 @@ seq () {
 #### USER SPECIFIC ALIASES AND FUNCTIONS
 ## Enable color support for ls
 if [ "$TERM" != "dumb" ]; then
-    if [[ "$PLATFORM" == "Linux" ]]; then
+    if [[ "$PLATFORM" == "Linux" || "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MINGW64_NT" ]]; then
         alias dir='ls -alFh --group-directories-first --color=auto --time-style=long-iso'
         alias dirt='ls -alFhtr --group-directories-first --color=auto --time-style=long-iso'
         alias ll='ls -aF --color=auto --format=long'
@@ -165,7 +165,7 @@ alias mdt='mvn dependency:tree | less'
 alias mp='mvn package -DskipTests'
 
 # LINUX ONLY Aliases
-if [[ "$PLATFORM" == "Linux" ]]; then
+if [[ "$PLATFORM" == "Linux" || "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MINGW64_NT" ]]; then
     ## pass options to free ##
     alias meminfo='free -m -l -t'
 
