@@ -3,7 +3,7 @@
 # Modified: 2017-10-29 11:11:42
 
 # Which platform are we running on?
-export PLATFORM=`uname`
+export PLATFORM=`uname | cut -d"-" -f1`
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -85,6 +85,10 @@ if [[ "$PLATFORM" == "Darwin" ]]; then
     [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
     export PATH="/usr/local/sbin:$PATH"
+fi
+
+if [[ "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MINGW64_NT" ]]; then
+    [ -f /usr/share/bash_completion/bash_completion ] && . /usr/share/bash_completion/bash_completion
 fi
 
 # don't use cowsay with ansible
