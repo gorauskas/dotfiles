@@ -28,6 +28,7 @@ export TERM=xterm-256color
 # python virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Projects
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 
 if [[ "$PLATFORM" == "Linux" ]]; then
     DISTRO=$(lsb_release -si)
