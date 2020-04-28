@@ -19,7 +19,7 @@ URxvt*scrollBar_right:        false
 URxvt*scrollstyle:            plain
 URxvt*cursorBlink:            false
 URxvt*geometry:               160x60
-URxvt*letterSpace:            0
+URxvt*letterSpace:            -1
 URxvt*urgentOnBell:           true
 
 URxvt.saveLines:              32767
@@ -29,25 +29,7 @@ URxvt.iso14755_52:            false
 URxvt*font:                   xft:Fira Code:pixelsize=14
 URxvt*boldFont:               xft:Fira Code:bold:pixelsize=14
 
-URxvt.perl-ext-common:        default,url-select,tabbedex,fullscreen
-
-! clickable URLs
-URxvt.keysym.C-u:             perl:url-select:select_next
-URxvt.url-select.launcher:    /usr/bin/google-chrome-stable
-URxvt.url-select.underline:   true
-
-! tabbed interface
-! Use Shift + Up, Left, Right for Rename, Next, Previous respectively
-URxvt.tabbed.autohide:        false
-URxvt.tabbed.reopen-on-close: yes
-URxvt.tabbed.tabbar-fg:       9
-URxvt.tabbed.tabbar-bg:       1
-URxvt.tabbed.tab-fg:          12
-URxvt.tabbed.tab-bg:          4
-! URxvt.keysym.Control-t:       perl:tabbedex:new_tab
-
-! fullscreen
-URxvt.keysym.F11:             perl:fullscreen:switch
+URxvt.perl-ext-common:        default
 
 ! --- URXVT TERMINAL COLORS ---
 ! --- special colors ---
@@ -97,15 +79,17 @@ xterm*loginShell:             true
 xterm*scrollBar:              true
 xterm*scrollKey:              true
 xterm*multiClickTime:         250
-xterm*faceName:               Fira Code
-xterm*faceSize:               10
+xterm*faceName:               Inconsolata
+xterm*faceSize:               11
+xterm*renderFont:             true
+xterm*scaleHeight:            1.0
 xterm*saveLines:              32767
 xterm*dynamicColors:          on
 xterm*highlightSelection:     true
 xterm*utf8:                   2
 xterm*eightBitInput:          true
 xterm*metaSendsEscape:        true
-xterm*cursorColor:            #DCDCCC
+!!xterm*cursorColor:            #DCDCCC
 xterm*pointerColor:           #DCDCCC
 xterm*pointerColorBackground: #111111
 
@@ -150,31 +134,4 @@ xterm*color7:                 #d9d9d9
 ! bright_white
 xterm*color15:                #ffffff
 
-!! Screensaver Lock Dialog
-!font settings
-xscreensaver.Dialog.headingFont:        -*-droid sans mono-bold-*-*-*-17-120-*-*-*-*-iso10646-*
-xscreensaver.Dialog.bodyFont:           -*-droid sans mono-bold-*-*-*-17-120-*-*-*-*-iso10646-*
-xscreensaver.Dialog.labelFont:          -*-droid sans mono-medium-*-*-*-17-120-*-*-*-*-iso10646-*
-xscreensaver.Dialog.unameFont:          -*-envy code r-bold-*-*-*-17-120-*-*-*-*-iso10646-*
-xscreensaver.Dialog.buttonFont:         -*-droid sans mono-medium-*-*-*-17-120-*-*-*-*-iso10646-*
-xscreensaver.Dialog.dateFont:           -*-droid sans mono-bold-*-*-*-17-120-*-*-*-*-iso10646-*
-xscreensaver.passwd.passwdFont:         -*-envy code r-bold-*-*-*-17-120-*-*-*-*-iso10646-*
-!general dialog box (affects main hostname, username, password text)
-xscreensaver.Dialog.foreground:         #111111
-xscreensaver.Dialog.background:         #ffffff
-xscreensaver.Dialog.topShadowColor:     #ffffff
-xscreensaver.Dialog.bottomShadowColor:  #ffffff
-xscreensaver.Dialog.Button.foreground:  #ffffff
-xscreensaver.Dialog.Button.background:  #666666
-!username/password input box and date text colour
-xscreensaver.Dialog.text.foreground:    #ffffff
-xscreensaver.Dialog.text.background:    #666666
-xscreensaver.Dialog.internalBorderWidth:24
-xscreensaver.Dialog.borderWidth:        20
-xscreensaver.Dialog.shadowThickness:    2
-!timeout bar (background is actually determined by Dialog.text.background)
-xscreensaver.passwd.thermometer.foreground:  #1793D1
-xscreensaver.passwd.thermometer.background:  #333333
-xscreensaver.passwd.thermometer.width:       12
-!datestamp format--see the strftime(3) manual page for details
-xscreensaver.dateFormat:                %Y-%m-%d %H:%M:%S
+
