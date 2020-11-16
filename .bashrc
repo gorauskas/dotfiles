@@ -2,6 +2,8 @@
 # Jonas Gorauskas - 2007-03-17 21:03:35
 # Modified: 2017-10-29 11:11:42
 
+export GPG_TTY=$(tty)
+
 # Which platform are we running on?
 export PLATFORM=`uname | cut -d"-" -f1`
 
@@ -128,3 +130,11 @@ fi
 if [ -f ~/.bash_prompt ]; then
     . ~/.bash_prompt
 fi
+
+if [ -f ~/.bash_figure ]; then
+    . ~/.bash_figure
+fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="~/.sdkman"
+[[ -s "~/.sdkman/bin/sdkman-init.sh" ]] && source "~/.sdkman/bin/sdkman-init.sh"
