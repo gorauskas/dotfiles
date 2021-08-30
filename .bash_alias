@@ -1,3 +1,4 @@
+
 # Bourne Again Shell Aliases File
 # Jonas Gorauskas - 2007-03-17 21:17:05
 # Modified: 2017-09-30 14:48:13
@@ -116,7 +117,6 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias more='less'
-alias mkdir='mkdir -p -v'
 alias nano='nano -w'
 
 # new commands
@@ -163,6 +163,34 @@ alias mcp='mvn clean package'
 alias mda='mvn dependency:analyze'
 alias mdt='mvn dependency:tree | less'
 alias mp='mvn package -DskipTests'
+
+# docker
+alias dco=docker-compose-fn
+alias dcu="docker-compose up -d"
+alias dcd="docker-compose down"
+alias dcr=docker-compose-run
+alias dex=docker-exec
+alias di=docker-inspect
+alias dim="docker images"
+alias dip=docker-ips
+alias dl=docker-logs
+alias dnames=docker-names
+alias dps="docker ps"
+alias dpsa="docker ps -a"
+alias drmc=docker-remove-exited # containers
+alias drmid=docker-remove-dangling-images
+alias drun=docker-run
+alias dsp="docker system prune --all"
+alias dsrm=docker-stop-remove # the container
+
+# kubernetes
+alias kc=kubectl
+alias kx=kubectx
+alias kns=kubens
+alias kgp="kubectl get pods"
+alias kgs="kubectl get secrets"
+alias kgc="kubectl get configmaps"
+alias kpf="kubectl port-forward"
 
 # LINUX ONLY Aliases
 if [[ "$PLATFORM" == "Linux" || "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MINGW64_NT" ]]; then
