@@ -1,3 +1,4 @@
+
 # Bourne Again Shell init file
 # Jonas Gorauskas - 2007-03-17 21:03:35
 # Modified: 2017-10-29 11:11:42
@@ -135,6 +136,17 @@ if [ -f ~/.bash_figure ]; then
     . ~/.bash_figure
 fi
 
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/jonasg/bin/google-cloud-sdk/path.bash.inc' ]; then . '/home/jonasg/bin/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/jonasg/bin/google-cloud-sdk/completion.bash.inc' ]; then . '/home/jonasg/bin/google-cloud-sdk/completion.bash.inc'; fi
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="~/.sdkman"
-[[ -s "~/.sdkman/bin/sdkman-init.sh" ]] && source "~/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="/home/jonasg/.sdkman"
+[[ -s "/home/jonasg/.sdkman/bin/sdkman-init.sh" ]] && source "/home/jonasg/.sdkman/bin/sdkman-init.sh"
+source "$HOME/.cargo/env"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
