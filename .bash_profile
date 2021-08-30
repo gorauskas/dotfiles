@@ -23,4 +23,3 @@ fi
 
 #EOF
 
-export PATH="$HOME/.cargo/bin:$PATH"
