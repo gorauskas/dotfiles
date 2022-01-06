@@ -78,3 +78,5 @@
     smtpserverport = 587
     smtpencryption = tls
     suppresscc = all
+[init]
+	defaultBranch = main
