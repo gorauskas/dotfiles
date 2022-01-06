@@ -141,7 +141,7 @@ alias diff='colordiff'              # requires colordiff package
 alias g='git'
 
 # emacs
-alias e='emacsclient -ca ""'
+alias e='emacsclient -ca emacs'
 alias em=emacs
 alias emdi='emacs --debug-init'
 alias enw='emacs -nw'
