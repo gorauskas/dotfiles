@@ -11,11 +11,13 @@ export PLATFORM=`uname | cut -d"-" -f1`
 if [[ "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MINGW64_NT" ]]; then
 
     echo "setup on windows"
+    cp ./.bash_exports ${HOME}/.bash_exports
     cp ./.bash_alias ${HOME}/.bash_alias
     cp ./.bash_function ${HOME}/.bash_function
     cp ./.bash_logout ${HOME}/.bash_logout
     cp ./.bash_profile ${HOME}/.bash_profile
     cp ./.bash_prompt ${HOME}/.bash_prompt
+    cp ./.bash_dev ${HOME}/.bash_dev
     cp ./.bashrc ${HOME}/.bashrc
     cp ./.gitconfig ${HOME}/.gitconfig
     cp ./.inputrc ${HOME}/.inputrc
@@ -35,22 +37,20 @@ else
 
     if [[ "$1" == "desktop" || "$1" == "server" ]]; then
 
-	echo "setup general links"
-	ln -v -fs ${DF_DIR}/.bash_alias ${HOME}/.bash_alias
+	    echo "setup general links"
+        ln -v -fs ${DF_DIR}/.bash_exports ${HOME}/.bash_exports
+	    ln -v -fs ${DF_DIR}/.bash_alias ${HOME}/.bash_alias
         ln -v -fs ${DF_DIR}/.bash_function ${HOME}/.bash_function
         ln -v -fs ${DF_DIR}/.bash_logout ${HOME}/.bash_logout
         ln -v -fs ${DF_DIR}/.bash_profile ${HOME}/.bash_profile
         ln -v -fs ${DF_DIR}/.bash_prompt ${HOME}/.bash_prompt
+        ln -v -fs ${DF_DIR}/.bash_dev ${HOME}/.bash_dev
         ln -v -fs ${DF_DIR}/.bashrc ${HOME}/.bashrc
         ln -v -fs ${DF_DIR}/.gitconfig ${HOME}/.gitconfig
         ln -v -fs ${DF_DIR}/.inputrc ${HOME}/.inputrc
         ln -v -fs ${DF_DIR}/mercurial.ini ${HOME}/mercurial.ini
         ln -v -fs ${DF_DIR}/.mg ${HOME}/.mg
         ln -v -fs ${DF_DIR}/.tmux.conf ${HOME}/.tmux.conf
-
-        echo "  setup liquid prompt"
-        git clone https://github.com/nojhan/liquidprompt.git
-        ln -v -fs ${DF_DIR}/liquidpromptrc ~/.config/liquidpromptrc
 
         echo "  setup vim"
         git clone https://github.com/gorauskas/vimconf.git
