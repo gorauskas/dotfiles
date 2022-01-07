@@ -247,7 +247,8 @@ if [[ "$PLATFORM" == "Darwin" || "$PLATFORM" == "FreeBSD" ]]; then
     alias df='df -Ha'
     alias du='du -akx | sort -n'
     alias du1='du -s'
-
+    alias nukeds="find ./ -type f | grep .DS_Store | xargs rm"
+    
 fi
 
 if [[ "$PLATFORM" == "FreeBSD" ]]; then
