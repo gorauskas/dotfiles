@@ -1,0 +1,83 @@
+# Bourne Again Shell exports file
+
+# If this is an xterm set the title to user@host:dir
+case $TERM in
+    xterm*|rxvt*)
+        TITLEBAR='\[\033]0;\u@\h:\W\007\]' ;;
+    *)
+        TITLEBAR="" ;;
+esac
+export TITLEBAR
+
+# Which platform are we running on?
+export PLATFORM=`uname | cut -d"-" -f1`
+export DISTRO=$(lsb_release -si)
+
+# set the default editor
+export EDITOR=mg
+export VISUAL=mg
+export TERM=xterm-256color
+
+export GPG_TTY=$(tty)
+
+# don't put duplicate lines in the history. See bash(1) for more options
+# ... or force ignoredups and ignorespace
+export HISTCONTROL=ignoredups:erasedups:ignorespace
+export HISTTIMEFORMAT='%F %T '
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+export HISTSIZE=4096
+export HISTFILESIZE=9999
+
+# PROMPT
+export PROMPT_COMMAND=pre_prompt
+export PS2='> '
+
+export black="\[\033[0;38;5;0m\]"
+export red="\[\033[0;38;5;1m\]"
+export bred="\[\033[1;31m\]"
+export orange="\[\033[0;38;5;130m\]"
+export green="\[\033[0;38;5;2m\]"
+export yellow="\[\033[0;38;5;3m\]"
+export blue="\[\033[0;38;5;4m\]"
+export bblue="\[\033[0;38;5;12m\]"
+export magenta="\[\033[0;38;5;55m\]"
+export cyan="\[\033[0;38;5;6m\]"
+export white="\[\033[0;38;5;7m\]"
+export coldblue="\[\033[0;38;5;33m\]"
+export smoothblue="\[\033[0;38;5;111m\]"
+export iceblue="\[\033[0;38;5;45m\]"
+export turqoise="\[\033[0;38;5;50m\]"
+export smoothgreen="\[\033[0;38;5;42m\]"
+export no_color="\[\033[0m\]"
+
+# DEVELOPMENT
+# python virtualenv
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Projects
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+
+# don't use cowsay with ansible
+export ANSIBLE_NOCOWS=1
+
+# don't send .NET telemetry
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+# golang
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/go
+
+# kotlin / java / spring
+export SPRING_PROFILES_ACTIVE=development
+export SDKMAN_DIR="$HOME/.sdkman"
+
+# js / node
+export NVM_DIR="$HOME/.nvm"
+
+# google cloud
+export PATH="$PATH:$HOME/bin/google-cloud-sdk/bin"
+
+# used for various experiments when writing code
+if [ -d "$HOME/bin" ] ; then
+    export PATH=$HOME/bin:$PATH
+fi

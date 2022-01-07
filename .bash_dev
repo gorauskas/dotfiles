@@ -1,0 +1,91 @@
+# Bourne Again Shell 
+# software development related stuff
+
+# python
+if [[ "$PLATFORM" == "Linux" ]]; then
+    if [ "${DISTRO}" == "Arch" ]; then
+        # for arch linux
+        export VIRTUALENVWRAPPER_SCRIPT=/usr/bin/virtualenvwrapper.sh
+        [ -f /usr/bin/virtualenvwrapper_lazy.sh ] && . /usr/bin/virtualenvwrapper_lazy.sh
+    fi
+
+    if [[ "${DISTRO}" == "Debian" || "${DISTRO}" == "Ubuntu" ]]; then
+        # for debian
+        export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+        [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && . /usr/local/bin/virtualenvwrapper_lazy.sh
+    fi
+
+    # enable bash completion in interactive shells
+    if [ "${DISTRO}" == "Arch" ]; then
+        # for arch linux
+        if [ -f /usr/share/bash-completion/bash_completion ] && ! shopt -oq posix; then
+            . /usr/share/bash-completion/bash_completion
+        fi
+        if [ -f /usr/share/doc/pkgfile/command-not-found.bash ]; then
+            . /usr/share/doc/pkgfile/command-not-found.bash
+        fi
+    fi
+
+    if [[ "${DISTRO}" == "Debian" || "${DISTRO}" == "Ubuntu" ]]; then
+        # for debian
+        if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+            . /etc/bash_completion
+        fi
+    fi
+
+    if [ "${DISTRO}" == "OracleServer" ]; then
+        # for OEL
+        if [ -f /usr/share/bash-completion/bash_completion ] && ! shopt -oq posix; then
+            . /usr/share/bash-completion/bash_completion
+        fi
+    fi
+fi
+
+if [[ "$PLATFORM" == "FreeBSD" ]]; then
+    export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+    [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && . /usr/local/bin/virtualenvwrapper_lazy.sh
+    [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+fi
+
+if [[ "$PLATFORM" == "Darwin" ]]; then
+    export SHELL_SESSION_HISTORY=0
+
+    export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+    export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+    [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && . /usr/local/bin/virtualenvwrapper_lazy.sh
+    [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+
+    export PATH="/usr/local/sbin:$PATH"
+fi
+
+if [[ "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MINGW64_NT" ]]; then
+    [ -f /usr/share/bash_completion/bash_completion ] && . /usr/share/bash_completion/bash_completion
+fi
+
+# google cloud
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f "$HOME/bin/google-cloud-sdk/path.bash.inc" ]; then 
+    . "$HOME/bin/google-cloud-sdk/path.bash.inc"; 
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f "$HOME/bin/google-cloud-sdk/completion.bash.inc" ]; then 
+    . "$HOME/bin/google-cloud-sdk/completion.bash.inc"; 
+fi
+
+# nvm / node
+
+# This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  
+
+# This loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  
+
+# golang
+source <(kubectl completion bash)
+source "$HOME/.cargo/env"
+
+# sdkman
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
