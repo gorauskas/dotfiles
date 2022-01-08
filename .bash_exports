@@ -18,6 +18,8 @@ export EDITOR=mg
 export VISUAL=mg
 export TERM=xterm-256color
 
+# Let GnuPG know which key you normally use
+export GPGKEY=0x6248AD25FA54FC97
 export GPG_TTY=$(tty)
 
 # don't put duplicate lines in the history. See bash(1) for more options
@@ -30,26 +32,12 @@ export HISTSIZE=4096
 export HISTFILESIZE=9999
 
 # PROMPT
-export PROMPT_COMMAND=pre_prompt
+export GIT_PS1_SHOWUPSTREAM="auto"     # '<' behind, '>' ahead, '<>' diverged, '=' no difference
+export GIT_PS1_SHOWDIRTYSTATE=1        # staged '+', unstaged '*'
+export GIT_PS1_SHOWSTASHSTATE=1        # '$' something is stashed
+export GIT_PS1_SHOWUNTRACKEDFILES=1    # '%' untracked files
+export PROMPT_COMMAND=set_prompt
 export PS2='> '
-
-export black="\[\033[0;38;5;0m\]"
-export red="\[\033[0;38;5;1m\]"
-export bred="\[\033[1;31m\]"
-export orange="\[\033[0;38;5;130m\]"
-export green="\[\033[0;38;5;2m\]"
-export yellow="\[\033[0;38;5;3m\]"
-export blue="\[\033[0;38;5;4m\]"
-export bblue="\[\033[0;38;5;12m\]"
-export magenta="\[\033[0;38;5;55m\]"
-export cyan="\[\033[0;38;5;6m\]"
-export white="\[\033[0;38;5;7m\]"
-export coldblue="\[\033[0;38;5;33m\]"
-export smoothblue="\[\033[0;38;5;111m\]"
-export iceblue="\[\033[0;38;5;45m\]"
-export turqoise="\[\033[0;38;5;50m\]"
-export smoothgreen="\[\033[0;38;5;42m\]"
-export no_color="\[\033[0m\]"
 
 # DEVELOPMENT
 # python virtualenv
