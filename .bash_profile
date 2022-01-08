@@ -7,9 +7,6 @@ BASH_ENV=$HOME/.bashrc
 
 export BASH_ENV PATH
 
-# Let GnuPG know which key you normally use
-export GPGKEY=0x6248AD25FA54FC97
-
 # Let the SSH Agent know how to communicate with GPG Agent.
 unset SSH_AGENT_PID
 if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
@@ -22,4 +19,3 @@ if [ -f ~/.bashrc ]; then
 fi
 
 #EOF
-

@@ -1,95 +1,81 @@
 # Bourne Again Shell Init Prompt File
 # Jonas Gorauskas
 
-function pre_prompt {
-    newPWD="${PWD}"
-    user="whoami"
-    host=$(echo -n $HOSTNAME | sed -e "s/[\.].*//")
-    datenow=$(date "+%F %T")
-    let promptsize=$(echo -n "┌[$user@$host][${PWD}]┐" | wc -c | tr -d " ")
-    let fillsize=${COLUMNS}-${promptsize}
-    fill=""
-    while [ "$fillsize" -gt "0" ]
-    do
-        fill="${fill}─"
-        let fillsize=${fillsize}-1
-    done
-    if [ "$fillsize" -lt "0" ]
-    then
-        let cutt=3-${fillsize}
-        newPWD="...$(echo -n $PWD | sed -e "s/\(^.\{$cutt\}\)\(.*\)/\2/")"
-    fi
-}
+if [ -f "${HOME}/dotfiles/.git-prompt.sh" ]; then
+    . "${HOME}/dotfiles/.git-prompt.sh";
+fi
 
-# Dynamic Prompt String
-function prompt() {
-    case "$1" in
-        d)      PS1='$(dirs) \$ '               ;;
-        n)      PS1='\$ '                       ;;
-        hsw)    PS1='\h[$SHLVL]: \w \$ '        ;;
-        hw)     PS1='\h: \w \$ '                ;;
-        sh)     PS1='[$SHLVL] \h\$ '            ;;
-        sw)     PS1='[$SHLVL] \w \$ '           ;;
-        uh)     PS1='\u@\h\$ '                  ;;
-        uhsHw)  PS1='\u@\h[$SHLVL]:\#: \w \$ '  ;;
-        uhsw)   PS1='\u@\h[$SHLVL]: \w \$ '     ;;
-        uhw)    PS1='\u@\h: \w \$ '             ;;
-        uw)     PS1='(\u) \w \$ '               ;;
-        w)      PS1='\w \$ '                    ;;
-        def)    PS1="$coldblue[$green\!$white:$green\#$coldblue] [$iceblue\t$coldblue] $smoothblue\u$white@$smoothblue\h $coldblue[$iceblue\w$coldblue]$green\n➤  $no_color" ;;
-        tuW)    PS1="[\t \u:\W]\$ "             ;;
-        tuhW)   PS1="[\t \u@\h:\W]\$ "          ;;
-        what)   PS1="$bred[$no_color\w/$bred]$green what now...$no_color \$ " ;;
-        fancy)
-            case "$TERM" in
-                xterm* | rxvt* | urxvt)
-                    PS1="$smoothblue┌─[$iceblue\u@\h$smoothblue]─\${fill}─[$iceblue\$newPWD\
-$smoothblue]─┐\n$smoothblue└─[$green\$(date \"+%F %T\") $white\$$smoothblue]──➤$no_color "
-                    ;;
-                screen | screen-256color)
-                    PS1="$smoothblue┌─[$iceblue\u@\h$smoothblue]─\${fill}─[$iceblue\$newPWD\
-$smoothblue]─┐\n$smoothblue└─[$green\$(date \"+%F %T\") \$$smoothblue]──➤$no_color "
-                    ;;
-                *)
-                    PS1="┌─[\u@\h]─\${fill}─[\$newPWD\
-]─┐\n└─[\$(date \"+%F %T\") \$]───> "
-                    ;;
-            esac
-            ;;
-        ?)      echo '
-Interactivelly change the shell prompt string.
-Version 0.4 - Jonas Gorauskas
+function font() {
+    local esc="\033"
+    local formatted="\[${esc}[0m\]"
 
-  Usage: prompt [option]
-         ... where option is one of the following:
-    d     - Shows the current directory path
-    n     - Shows a # for root and a $ for other users
-    hsw   - Shows hostname, shell level variable, and current working
-            directory
-    hw    - Shows hostname and current working directory
-    sh    - Shows shell level variable and hostname
-    sw    - Shows shell level variable and current working directory
-    uh    - Shows current user name and hostname
-    uhsHw - Shows current user name, hostname, shell level variable,
-            comand level variable, and current working directory
-    uhsw  - Shows current user name, hostname, shell level variable,
-            and current working directory
-    uhw   - Shows current user name, hostname, and currentf working
-            directory
-    uw    - Shows current user name and current working directory
-    w     - Shows the current working directory
-    tuW   - Shows the current time in HH:MM:SS format, the current user
-            name and the current working directory
-    tuhW  - Shows the current time in HH:MM:SS format, the current user
-            name, the hostname and the current working directory
-    def   - This is the default colorful prompt. Shows the current time
-            in HH:MM:SS format, the hostname, and the basename of the
-            current working directory
-    fancy - A fancy colorful prompt that spans 2 lines. It displays the
-            current user and hostname, the current working directory,
-            and the current date and time in ISO format.
-    ?     - Shows this help message' ;;
+    case $# in 
+        2) formatted="\[${esc}[${1};5;${2}m\]"                     ;;
+        3) formatted="\[${esc}[${2};${1};5;${3}m\]"                ;;
+        4) formatted="\[${esc}[${2};${3};${1};5;${4}m\]"           ;;
+        5) formatted="\[${esc}[${2};${3};${4};${1};5;${5}m\]"      ;;
+        6) formatted="\[${esc}[${2};${3};${4};${5};${1};5;${6}m\]" ;;
     esac
+
+    echo ${formatted}
 }
 
-prompt fancy
+function set_prompt() {
+    # bg + fg
+    local bg="48"
+    local fg="38"
+
+    # colors
+    local black="16"
+    local blue="27"
+    local smoothblue="81"
+    local iceblue="45"
+    local cyan="51"
+    local green="46"
+    local fgreen="122"
+    local orange="202"
+    local purple="201"
+    local furple="69"
+    local red="196"
+    local white="15"
+    local yellow="3"
+    local fyellow="193"
+
+    # controls
+    local blink_off="25"
+    local blink_on="5"
+    local bold="1"
+    local italic="3"
+    local dim="2"
+    local inverse_off="27"
+    local inverse_on="7"
+    local normal="22"
+    local reset="0"
+    local transparent="8"
+    local underline_off="24"
+    local underline_on="4" 
+
+    # info
+    local cwd="\W"
+    local date="\d"
+    local host="\h"
+    local pwd="\w"
+    local shell="\s"
+    local time="\t"
+    local datetime=$(date "+%F %T")
+    local user="\u"   
+    local files=$(ls -A | wc -l | tr -d '[:space:]')
+    local total_size=$(ls -lah | grep -m 1 total | sed 's/total //')
+    local uptime=$(uptime | awk -F ' up ' '{print $2}' | awk -F ',' '{print $1}' | awk '{$1=$1;print}')
+
+    local git_info=$(__git_ps1)
+
+    if [[ ${git_info} ]]; then
+        git_info="$(font ${fg} ${italic} ${fyellow})${git_info}$(font)"
+    fi
+
+    PS1="$(font ${fg} ${furple})┌─[$(font ${fg} ${bold} ${italic} ${iceblue})${user}$(font)@$(font ${fg} ${bold} ${italic} ${iceblue})${host}$(font)$(font ${fg} ${furple})]"
+    PS1+="──[$(font ${fg} ${smoothblue})${cwd}$(font) $(font ${fg} ${italic} ${white})${files} files, ${total_size}$(font)$(font ${fg} ${furple})]"
+    PS1+="──[$(font ${fg} ${fgreen})${pwd}$(font)${git_info}$(font ${fg} ${furple})]"
+    PS1+="\n└─[$(font ${fg} ${iceblue})${datetime}$(font) $(font ${fg} ${italic} ${white})up ${uptime}$(font)$(font ${fg} ${furple})]──➤$(font) "
+}

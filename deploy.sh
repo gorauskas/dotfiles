@@ -38,13 +38,8 @@ else
     if [[ "$1" == "desktop" || "$1" == "server" ]]; then
 
 	    echo "setup general links"
-        ln -v -fs ${DF_DIR}/.bash_exports ${HOME}/.bash_exports
-	    ln -v -fs ${DF_DIR}/.bash_alias ${HOME}/.bash_alias
-        ln -v -fs ${DF_DIR}/.bash_function ${HOME}/.bash_function
         ln -v -fs ${DF_DIR}/.bash_logout ${HOME}/.bash_logout
         ln -v -fs ${DF_DIR}/.bash_profile ${HOME}/.bash_profile
-        ln -v -fs ${DF_DIR}/.bash_prompt ${HOME}/.bash_prompt
-        ln -v -fs ${DF_DIR}/.bash_dev ${HOME}/.bash_dev
         ln -v -fs ${DF_DIR}/.bashrc ${HOME}/.bashrc
         ln -v -fs ${DF_DIR}/.gitconfig ${HOME}/.gitconfig
         ln -v -fs ${DF_DIR}/.inputrc ${HOME}/.inputrc
