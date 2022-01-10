@@ -9,6 +9,15 @@
 !
 !  ... and then start XTerm or URxvt to see the changes
 
+!! Font defaults
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+Xft.autohint:   false
+Xft.lcdfilter:  lcddefault
+
 !! URxvt definitions
 URxvt*termName:               rxvt-unicode-256color
 URxvt*transparent:            false
@@ -17,7 +26,7 @@ URxvt*imLocale:               en_US.UTF-8
 URxvt*scrollBar:              true
 URxvt*scrollBar_right:        false
 URxvt*scrollstyle:            plain
-URxvt*cursorBlink:            false
+URxvt*cursorBlink:            true
 URxvt*geometry:               160x60
 URxvt*letterSpace:            -1
 URxvt*urgentOnBell:           true
@@ -26,55 +35,28 @@ URxvt.saveLines:              32767
 URxvt.iso14755:               false
 URxvt.iso14755_52:            false
 
-URxvt*font:                   xft:Fira Code:pixelsize=14
-URxvt*boldFont:               xft:Fira Code:bold:pixelsize=14
+URxvt*font:                   xft:Inconsolata:pixelsize=14
+URxvt*boldFont:               xft:Inconsolata:bold:pixelsize=14
 
-URxvt.perl-ext-common:        default
+URxvt.perl-ext-common:        default,matcher,resize-font,selection-to-clipboard,tabbed
 
-! --- URXVT TERMINAL COLORS ---
-! --- special colors ---
-URxvt*background:             #262626
-URxvt*foreground:             #d9d9d9
-URxvt*cursorColor:            #FFD800
-URxvt*cursorColor2:           #FFD800
+URxvt.underlineURLs:          True
+URxvt.url-launcher:           /usr/bin/xdg-open
+URxvt.matcher.button:         1
+URxvt.matcher.rend.0:         Uline Bold fg8
 
-! --- standard colors ---
-! black
-URxvt*color0:                 #000000
-! bright_black
-URxvt*color8:                 #262626
-! red
-URxvt*color1:                 #b37f7f
-! bright_red
-URxvt*color9:                 #d9bfbf
-! green
-URxvt*color2:                 #7fb37f
-! bright_green
-URxvt*color10:                #bfd9bf
-! yellow
-URxvt*color3:                 #b3b37f
-! bright_yellow
-URxvt*color11:                #d9d9bf
-! blue
-URxvt*color4:                 #7f7fb3
-! bright_blue
-URxvt*color12:                #bfbfd9
-! magenta
-URxvt*color5:                 #b37fb3
-! bright_magenta
-URxvt*color13:                #d9bfd9
-! cyan
-URxvt*color6:                 #7fb3b3
-! bright_cyan
-URxvt*color14:                #bfd9d9
-! white
-URxvt*color7:                 #d9d9d9
-! bright_white
-URxvt*color15:                #ffffff
+URxvt.clipboard.autocopy:     true
+URxvt.keysym.M-c:             perl:clipboard:copy
+URxvt.keysym.M-v:             perl:clipboard:paste
+
+URxvt.tabbed.tabbar-fg: 14
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 12
+URxvt.tabbed.tab-bg: 0
 
 !! xterm definitions
 xterm*geometry:               160x64
-xterm*internalBorder:         0
+xterm*internalBorder:         10
 xterm*loginShell:             true
 xterm*scrollBar:              true
 xterm*scrollKey:              true
@@ -86,52 +68,40 @@ xterm*scaleHeight:            1.0
 xterm*saveLines:              32767
 xterm*dynamicColors:          on
 xterm*highlightSelection:     true
-xterm*utf8:                   2
+xterm*utf8:                   1
 xterm*eightBitInput:          true
 xterm*metaSendsEscape:        true
-!!xterm*cursorColor:            #DCDCCC
-xterm*pointerColor:           #DCDCCC
-xterm*pointerColorBackground: #111111
+xterm*cursorBlink:            true
 
-! --- XTERM TERMINAL COLORS ---
-! --- special colors ---
-xterm*background:             #262626
-xterm*foreground:             #d9d9d9
-xterm*cursorColor:            #FFD800
-xterm*cursorColor2:           #FFD800
+! --- URXVT + XTERM TERMINAL COLORS ---
+! special
+*.foreground:   #ffffff
+*.background:   #000000
+*.cursorColor:  #F5A400
+*.pointerColor: #ffffff
+*.pointerColorBackground: #333333
 
-! --- standard colors ---
 ! black
-xterm*color0:                 #000000
-! bright_black
-xterm*color8:                 #262626
+*.color0:       #1e2320
+*.color8:       #709080
 ! red
-xterm*color1:                 #b37f7f
-! bright_red
-xterm*color9:                 #d9bfbf
+*.color1:       #705050
+*.color9:       #dca3a3
 ! green
-xterm*color2:                 #7fb37f
-! bright_green
-xterm*color10:                #bfd9bf
+*.color2:       #60b48a
+*.color10:      #c3bf9f
 ! yellow
-xterm*color3:                 #b3b37f
-! bright_yellow
-xterm*color11:                #d9d9bf
+*.color3:       #dfaf8f
+*.color11:      #f0dfaf
 ! blue
-xterm*color4:                 #7f7fb3
-! bright_blue
-xterm*color12:                #bfbfd9
+*.color4:       #506070
+*.color12:      #94bff3
 ! magenta
-xterm*color5:                 #b37fb3
-! bright_magenta
-xterm*color13:                #d9bfd9
+*.color5:       #dc8cc3
+*.color13:      #ec93d3
 ! cyan
-xterm*color6:                 #7fb3b3
-! bright_cyan
-xterm*color14:                #bfd9d9
+*.color6:       #8cd0d3
+*.color14:      #93e0e3
 ! white
-xterm*color7:                 #d9d9d9
-! bright_white
-xterm*color15:                #ffffff
-
-
+*.color7:       #dcdccc
+*.color15:      #ffffff
