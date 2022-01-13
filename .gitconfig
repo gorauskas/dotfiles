@@ -10,6 +10,7 @@
     commitmsgwidth = 120
     encoding = utf-8
     trustmtime = true
+	historybrowser = gitk
 [merge]
     summary = true
     tool = meld
@@ -80,3 +81,8 @@
     suppresscc = all
 [init]
 	defaultBranch = main
+[cola]
+	spellcheck = false
+	blameviewer = git gui blame
+	theme = flat-dark-blue
+	icontheme = dark
