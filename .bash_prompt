@@ -1,8 +1,8 @@
 # Bourne Again Shell Init Prompt File
 # Jonas Gorauskas
 
-if [ -f "${HOME}/dotfiles/.git-prompt.sh" ]; then
-    . "${HOME}/dotfiles/.git-prompt.sh";
+if [ -f "${HOME}/dotfiles/git-prompt.sh" ]; then
+    . "${HOME}/dotfiles/git-prompt.sh";
 fi
 
 function font() {
@@ -77,7 +77,7 @@ function set_prompt() {
     PS1="$(font ${fg} ${furple})┌─[$(font ${fg} ${bold} ${italic} ${iceblue})${user}$(font)@$(font ${fg} ${bold} ${italic} ${iceblue})${host}$(font)$(font ${fg} ${furple})]"
     PS1+="──[$(font ${fg} ${smoothblue})${cwd}$(font) $(font ${fg} ${italic} ${white})${files} files, ${total_size}$(font)$(font ${fg} ${furple})]"
     PS1+="──[$(font ${fg} ${fgreen})${pwd}$(font)${git_info}$(font ${fg} ${furple})]"
-    PS1+="\n└─[$(font ${fg} ${iceblue})${datetime}$(font) $(font ${fg} ${italic} ${white})up ${uptime}$(font)$(font ${fg} ${furple})]──➤$(font) "
+    PS1+="\n└─[$(font ${fg} ${iceblue})${datetime}$(font) $(font ${fg} ${italic} ${white})up ${uptime}$(font)$(font ${fg} ${furple})]──>$(font) "
 
     # set terminal window title also
     if [ $0 == "bash" ]; then
