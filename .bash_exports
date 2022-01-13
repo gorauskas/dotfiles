@@ -36,6 +36,7 @@ export GIT_PS1_SHOWUPSTREAM="auto"     # '<' behind, '>' ahead, '<>' diverged, '
 export GIT_PS1_SHOWDIRTYSTATE=1        # staged '+', unstaged '*'
 export GIT_PS1_SHOWSTASHSTATE=1        # '$' something is stashed
 export GIT_PS1_SHOWUNTRACKEDFILES=1    # '%' untracked files
+export GIT_PS1_SHOWCOLORHINTS=1
 export PROMPT_COMMAND=set_prompt
 export PS2='> '
 

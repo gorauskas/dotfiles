@@ -78,4 +78,11 @@ function set_prompt() {
     PS1+="──[$(font ${fg} ${smoothblue})${cwd}$(font) $(font ${fg} ${italic} ${white})${files} files, ${total_size}$(font)$(font ${fg} ${furple})]"
     PS1+="──[$(font ${fg} ${fgreen})${pwd}$(font)${git_info}$(font ${fg} ${furple})]"
     PS1+="\n└─[$(font ${fg} ${iceblue})${datetime}$(font) $(font ${fg} ${italic} ${white})up ${uptime}$(font)$(font ${fg} ${furple})]──>$(font) "
+
+    # set terminal window title also
+    if [ $0 == "bash" ]; then
+        echo -en "\033]0;${PWD##*/}\007";
+    else
+        echo -en "\033]0;$0\007";
+    fi
 }
