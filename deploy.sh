@@ -47,7 +47,8 @@ else
         ln -v -fs ${DF_DIR}/.mg ${HOME}/.mg
         ln -v -fs ${DF_DIR}/.tmux.conf ${HOME}/.tmux.conf
 
-        echo "  setup vim"
+        echo "setup vim"
+        [ -d ./vimconf ] && rm -rf ./vimconf
         git clone https://github.com/gorauskas/vimconf.git
         ln -v -fs ${DF_DIR}/vimconf/.vimrc ${HOME}/.vimrc
 
