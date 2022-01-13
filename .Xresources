@@ -35,8 +35,8 @@ URxvt.saveLines:              32767
 URxvt.iso14755:               false
 URxvt.iso14755_52:            false
 
-URxvt*font:                   xft:Inconsolata:pixelsize=14
-URxvt*boldFont:               xft:Inconsolata:bold:pixelsize=14
+URxvt*font:                   xft:Fira Code:pixelsize=14
+URxvt*boldFont:               xft:Fira Code:bold:pixelsize=14
 
 URxvt.perl-ext-common:        default,matcher,resize-font,selection-to-clipboard,tabbed
 
@@ -61,7 +61,7 @@ xterm*loginShell:             true
 xterm*scrollBar:              true
 xterm*scrollKey:              true
 xterm*multiClickTime:         250
-xterm*faceName:               Inconsolata
+xterm*faceName:               Fira Code
 xterm*faceSize:               11
 xterm*renderFont:             true
 xterm*scaleHeight:            1.0
