@@ -148,6 +148,12 @@ alias enw='emacs -nw'
 alias qem='emacs -q'
 alias sem='sudo emacs'
 
+# lisp
+alias lisp='rlwrap sbcl'
+alias csi='rlwrap chicken-csi'
+alias guile='rlwrap guile'
+alias gambit='gambitc'
+
 # python
 # The 2 aliases to ipython below are changing to ensure that ipython is
 # loaded from inside an venv when in one
