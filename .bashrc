@@ -43,8 +43,8 @@ if [ -f "${HOME}/dotfiles/.bash_prompt" ]; then
     . "${HOME}/dotfiles/.bash_prompt";
 fi
 
-if [ -f "${HOME}/dotfiles/.bash_figure" ]; then  # hidden
-    . "${HOME}/dotfiles/.bash_figure";
+if [ -f "${HOME}/.bash_figure" ]; then  # hidden
+    . "${HOME}/.bash_figure";
 fi
 
 if [ -f "${HOME}/dotfiles/.bash_dev" ]; then
