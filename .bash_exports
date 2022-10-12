@@ -53,7 +53,7 @@ export ANSIBLE_NOCOWS=1
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 # golang
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 export GOPATH=$HOME/go
 
 # kotlin / java / spring
