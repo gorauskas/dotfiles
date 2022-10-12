@@ -2,6 +2,7 @@
     useConfigOnly = true
     email = jgorauskas@gmail.com
     name = Jonas Gorauskas
+    signingkey = 7518056FB8EA3099
 [core]
     autocrlf = false
     safecrlf = false
@@ -10,7 +11,7 @@
     commitmsgwidth = 120
     encoding = utf-8
     trustmtime = true
-	historybrowser = gitk
+    historybrowser = gitk
 [merge]
     summary = true
     tool = meld
@@ -22,33 +23,37 @@
 [url "git@github.com:gorauskas/"]
     insteadOf = jgg:
 [alias]
-    unpushed = log --branches --not --remotes --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-    undo = reset --hard HEAD~1
-    visual = !gitk
-    ls = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate
-    ll = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --numstat
-    lds = log --color --graph --pretty=format:'%Cred%h %ad%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%ae>%Creset' --abbrev-commit --decorate --date=short
-    la = !git config -l | grep alias | cut -c 7-
-    cp = cherry-pick
-    st = status -sb
-    cl = clone
-    m = commit -m
-    ma = commit -am
-    c = checkout
-    b = branch
     a = add
-    ra = remote add
-    rr = remote rm
-    r = remote
-    ps = push
-    pl = pull
+    b = branch
+    br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
+    cl = clone
+    cm = commit -m
+    cma = commit -am
+    co = checkout
+    cob = checkout -b
+    count = !git shortlog -sn
+    cp = cherry-pick
     d = diff
     diff = diff --word-diff
-    dc = diff --cached
-    ltg = describe --tags --abbrev=0
-    count = !git shortlog -sn
-    todo = !git ls-files | xargs grep --color=auto -onE '(TODO|FIXME):.*$'
     dangling = !git fsck 2> /dev/null | grep '^dangling commit' | awk '{print $3}' | git log --stdin --no-walk
+    dc = diff --cached
+    ds = diff --staged
+    la = !git config -l | grep alias | cut -c 7-
+    ldl = log --color --graph --pretty=format:'%Cred%h %ad%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%ae>%Creset' --abbrev-commit --decorate
+    lds = log --color --graph --pretty=format:'%Cred%h %ad%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%ae>%Creset' --abbrev-commit --decorate --date=short
+    ll = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --numstat
+    ls = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate
+    ltg = describe --tags --abbrev=0
+    pl = pull
+    ps = push
+    r = remote
+    ra = remote add
+    rr = remote rm
+    st = status -sb
+    todo = !git ls-files | xargs grep --color=auto -onE '(TODO|FIXME):.*$'
+    undo = reset --hard HEAD~1
+    unpushed = log --branches --not --remotes --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    visual = !gitk
 [color]
     ui = auto
 [color "branch"]
@@ -80,9 +85,16 @@
     smtpencryption = tls
     suppresscc = all
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [cola]
-	spellcheck = false
-	blameviewer = git gui blame
-	theme = flat-dark-blue
-	icontheme = dark
+    spellcheck = false
+    blameviewer = git gui blame
+    theme = flat-dark-blue
+    icontheme = dark
+[commit]
+    gpgsign = true
+[safe]
+    directory = /home/jonasg/Figure
+    directory = /home/jonasg/Projects
+[gpg]
+    program = /usr/bin/gpg2
