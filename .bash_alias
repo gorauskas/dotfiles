@@ -241,7 +241,7 @@ if [[ "$PLATFORM" == "Linux" || "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MI
     alias openports='ss --all --numeric --processes --ipv4 --ipv6'
 
     alias df='df -Tha --total'
-    alias du='du -ach | sort -h'
+    alias dus='du -ach | sort -h'
     alias du1='du --max-depth=1'
     alias free='free -mt'
 
@@ -251,7 +251,7 @@ if [[ "$PLATFORM" == "Darwin" || "$PLATFORM" == "FreeBSD" ]]; then
 
     alias ports='lsof -n -i | grep LISTEN'
     alias df='df -Ha'
-    alias du='du -akx | sort -n'
+    alias dus='du -akx | sort -n'
     alias du1='du -s'
     alias nukeds="find ./ -type f | grep .DS_Store | xargs rm"
     
