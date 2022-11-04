@@ -65,7 +65,7 @@ function set_prompt() {
     local datetime=$(date "+%F %T")
     local user="\u"   
     local files=$(ls -A | wc -l | tr -d '[:space:]')
-    local total_size=$(du -Pschx .[!.]* ./* 2>/dev/null | tail -1 | sed 's/\ttotal//')
+    local total_size=$(du -sch | tail -1 | sed 's/\ttotal//')
     local uptime=$(uptime | awk -F ' up ' '{print $2}' | awk -F ',' '{print $1}' | awk '{$1=$1;print}')
 
     local git_info=$(__git_ps1)
