@@ -6,6 +6,7 @@
 [core]
     autocrlf = false
     safecrlf = false
+    pager = most
 [gui]
     fontdiff = -family \"DejaVu Sans Mono\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
     commitmsgwidth = 120
