@@ -106,6 +106,15 @@ function mcd () {
     mkdir -p "$1" && cd "$1";
 }
 
+# page with `most` if present, otherwise use `less`
+function pg() {
+    if [ -x "$(command -v most)" ]; then
+        most "$1";
+    else
+        less "$1";
+    fi
+}
+
 # extract archives based on extension
 function extract () {
     if [ -f $1 ]; then
