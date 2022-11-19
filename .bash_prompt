@@ -1,88 +1,90 @@
 # Bourne Again Shell Init Prompt File
 # Jonas Gorauskas
 
-if [ -f "${HOME}/dotfiles/git-prompt.sh" ]; then
-    . "${HOME}/dotfiles/git-prompt.sh";
-fi
+eval "$(oh-my-posh init bash --config ~/.poshthemes/chips.omp.json)"
 
-function font() {
-    local esc="\033"
-    local formatted="\[${esc}[0m\]"
+# if [ -f "${HOME}/dotfiles/git-prompt.sh" ]; then
+#     . "${HOME}/dotfiles/git-prompt.sh";
+# fi
 
-    case $# in 
-        2) formatted="\[${esc}[${1};5;${2}m\]"                     ;;
-        3) formatted="\[${esc}[${2};${1};5;${3}m\]"                ;;
-        4) formatted="\[${esc}[${2};${3};${1};5;${4}m\]"           ;;
-        5) formatted="\[${esc}[${2};${3};${4};${1};5;${5}m\]"      ;;
-        6) formatted="\[${esc}[${2};${3};${4};${5};${1};5;${6}m\]" ;;
-    esac
+# function font() {
+#     local esc="\033"
+#     local formatted="\[${esc}[0m\]"
+# 
+#     case $# in 
+#         2) formatted="\[${esc}[${1};5;${2}m\]"                     ;;
+#         3) formatted="\[${esc}[${2};${1};5;${3}m\]"                ;;
+#         4) formatted="\[${esc}[${2};${3};${1};5;${4}m\]"           ;;
+#         5) formatted="\[${esc}[${2};${3};${4};${1};5;${5}m\]"      ;;
+#         6) formatted="\[${esc}[${2};${3};${4};${5};${1};5;${6}m\]" ;;
+#     esac
+# 
+#     echo ${formatted}
+# }
 
-    echo ${formatted}
-}
-
-function set_prompt() {
-    # bg + fg
-    local bg="48"
-    local fg="38"
-
-    # colors
-    local black="16"
-    local blue="27"
-    local smoothblue="81"
-    local iceblue="45"
-    local cyan="51"
-    local green="46"
-    local fgreen="122"
-    local orange="202"
-    local purple="201"
-    local furple="69"
-    local red="196"
-    local white="15"
-    local yellow="3"
-    local fyellow="193"
-
-    # controls
-    local blink_off="25"
-    local blink_on="5"
-    local bold="1"
-    local italic="3"
-    local dim="2"
-    local inverse_off="27"
-    local inverse_on="7"
-    local normal="22"
-    local reset="0"
-    local transparent="8"
-    local underline_off="24"
-    local underline_on="4" 
-
-    # info
-    local cwd="\W"
-    local date="\d"
-    local host="\h"
-    local pwd="\w"
-    local shell="\s"
-    local time="\t"
-    local datetime=$(date "+%F %T")
-    local user="\u"   
-    local files=$(ls -A | wc -l | tr -d '[:space:]')
-    # local total_size=$(du -sch 2>/dev/null | tail -1 | sed 's/\ttotal//')
-    local uptime=$(uptime | awk -F ' up ' '{print $2}' | awk -F ',' '{print $1}' | awk '{$1=$1;print}')
-
-    local git_info=$(__git_ps1)
-
-    if [[ ${git_info} ]]; then
-        git_info="$(font ${fg} ${italic} ${fyellow})${git_info}$(font)"
-    fi
-
-    PS1="$(font ${fg} ${furple})┌─[$(font ${fg} ${bold} ${italic} ${iceblue})${user}$(font)@$(font ${fg} ${bold} ${italic} ${iceblue})${host}$(font)$(font ${fg} ${furple})]"
-    PS1+="──[$(font ${fg} ${italic} ${white})${files} files$(font)$(font ${fg} ${furple})]"
-    PS1+="──[$(font ${fg} ${fgreen})${pwd}$(font)${git_info}$(font ${fg} ${furple})]"
-    PS1+="\n└─[$(font ${fg} ${iceblue})${datetime}$(font) $(font ${fg} ${italic} ${white})up ${uptime}$(font)$(font ${fg} ${furple})]──>$(font) "
-
-    # set terminal window title also
-    if [ $0 == "bash" ]; then
-        echo -en "\033]0;${PWD##*/}\007";
-    else
-        echo -en "\033]0;$0\007";
-    fi
-}
+# function set_prompt() {
+#     # bg + fg
+#     local bg="48"
+#     local fg="38"
+# 
+#     # colors
+#     local black="16"
+#     local blue="27"
+#     local smoothblue="81"
+#     local iceblue="45"
+#     local cyan="51"
+#     local green="46"
+#     local fgreen="122"
+#     local orange="202"
+#     local purple="201"
+#     local furple="69"
+#     local red="196"
+#     local white="15"
+#     local yellow="3"
+#     local fyellow="193"
+# 
+#     # controls
+#     local blink_off="25"
+#     local blink_on="5"
+#     local bold="1"
+#     local italic="3"
+#     local dim="2"
+#     local inverse_off="27"
+#     local inverse_on="7"
+#     local normal="22"
+#     local reset="0"
+#     local transparent="8"
+#     local underline_off="24"
+#     local underline_on="4" 
+# 
+#     # info
+#     local cwd="\W"
+#     local date="\d"
+#     local host="\h"
+#     local pwd="\w"
+#     local shell="\s"
+#     local time="\t"
+#     local datetime=$(date "+%F %T")
+#     local user="\u"   
+#     local files=$(ls -A | wc -l | tr -d '[:space:]')
+#     # local total_size=$(du -sch 2>/dev/null | tail -1 | sed 's/\ttotal//')
+#     local uptime=$(uptime | awk -F ' up ' '{print $2}' | awk -F ',' '{print $1}' | awk '{$1=$1;print}')
+# 
+#     local git_info=$(__git_ps1)
+# 
+#     if [[ ${git_info} ]]; then
+#         git_info="$(font ${fg} ${italic} ${fyellow})${git_info}$(font)"
+#     fi
+# 
+#     PS1="$(font ${fg} ${furple})┌─[$(font ${fg} ${bold} ${italic} ${iceblue})${user}$(font)@$(font ${fg} ${bold} ${italic} ${iceblue})${host}$(font)$(font ${fg} ${furple})]"
+#     PS1+="──[$(font ${fg} ${italic} ${white})${files} files$(font)$(font ${fg} ${furple})]"
+#     PS1+="──[$(font ${fg} ${fgreen})${pwd}$(font)${git_info}$(font ${fg} ${furple})]"
+#     PS1+="\n└─[$(font ${fg} ${iceblue})${datetime}$(font) $(font ${fg} ${italic} ${white})up ${uptime}$(font)$(font ${fg} ${furple})]──>$(font) "
+# 
+#     # set terminal window title also
+#     if [ $0 == "bash" ]; then
+#         echo -en "\033]0;${PWD##*/}\007";
+#     else
+#         echo -en "\033]0;$0\007";
+#     fi
+# }
