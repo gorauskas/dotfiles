@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Created: 2013-05-06 17:39:39 by Jonas Gorauskas [JGG]
-# Modified: 2017-10-29 13:28:22
+# Modified: 2022-11-19 13:28:22
 
 # The strategy is to git clone the repo to ~/dotfiles and then execute this file
 # to generate sym links on ~/ to all the files in the repo. This file is intended
@@ -46,6 +46,11 @@ else
         ln -v -fs ${DF_DIR}/mercurial.ini ${HOME}/mercurial.ini
         ln -v -fs ${DF_DIR}/.mg ${HOME}/.mg
         ln -v -fs ${DF_DIR}/.tmux.conf ${HOME}/.tmux.conf
+
+        echo "setup alacritty"
+        [ -d ~/.config/alacritty/ ] || mkdir -p ~/.config/alacritty/
+        ln -v -fs ${DF_DIR}/.alacritty.yml ${HOME}/.config/alacritty/alacritty.yml
+        ln -v -fs ${DF_DIR}/.alacritty-themes/colors ${HOME}/.config/alacritty/colors
 
         echo "setup vim"
         [ -d ./vimconf ] && rm -rf ./vimconf
