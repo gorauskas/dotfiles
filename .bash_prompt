@@ -1,7 +1,7 @@
 # Bourne Again Shell Init Prompt File
 # Jonas Gorauskas
 
-eval "$(oh-my-posh init bash --config ~/.poshthemes/chips.omp.json)"
+eval "$(oh-my-posh init bash --config ~/.poshthemes/tokyo.omp.json)"
 
 # if [ -f "${HOME}/dotfiles/git-prompt.sh" ]; then
 #     . "${HOME}/dotfiles/git-prompt.sh";
