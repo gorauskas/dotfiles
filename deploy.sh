@@ -12,6 +12,7 @@ if [[ "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MINGW64_NT" ]]; then
 
     echo "setup on windows"
     cp ./.bash_exports ${HOME}/.bash_exports
+    cp ./.bash_bind ${HOME}/.bash_bind
     cp ./.bash_alias ${HOME}/.bash_alias
     cp ./.bash_function ${HOME}/.bash_function
     cp ./.bash_logout ${HOME}/.bash_logout
@@ -20,7 +21,6 @@ if [[ "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MINGW64_NT" ]]; then
     cp ./.bash_dev ${HOME}/.bash_dev
     cp ./.bashrc ${HOME}/.bashrc
     cp ./.gitconfig ${HOME}/.gitconfig
-    cp ./.inputrc ${HOME}/.inputrc
     cp ./mercurial.ini ${HOME}/mercurial.ini
     cp ./.mg ${HOME}/.mg
     cp ./.tmux.conf ${HOME}/.tmux.conf
@@ -42,7 +42,6 @@ else
         ln -v -fs ${DF_DIR}/.bash_profile ${HOME}/.bash_profile
         ln -v -fs ${DF_DIR}/.bashrc ${HOME}/.bashrc
         ln -v -fs ${DF_DIR}/.gitconfig ${HOME}/.gitconfig
-        ln -v -fs ${DF_DIR}/.inputrc ${HOME}/.inputrc
         ln -v -fs ${DF_DIR}/mercurial.ini ${HOME}/mercurial.ini
         ln -v -fs ${DF_DIR}/.mg ${HOME}/.mg
         ln -v -fs ${DF_DIR}/.tmux.conf ${HOME}/.tmux.conf
@@ -50,7 +49,7 @@ else
         echo "setup alacritty"
         [ -d ~/.config/alacritty/ ] || mkdir -p ~/.config/alacritty/
         ln -v -fs ${DF_DIR}/.alacritty.yml ${HOME}/.config/alacritty/alacritty.yml
-        ln -v -fs ${DF_DIR}/.alacritty-themes/colors ${HOME}/.config/alacritty/colors
+        ln -v -fs ${DF_DIR}/.alacritty-themes/colors ${HOME}/.config/alacritty/colors/
 
         echo "setup posh"
         [ -L ~/.poshthemes ] || ln -v -fs ${DF_DIR}/.poshthemes ${HOME}/.poshthemes
