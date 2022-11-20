@@ -52,6 +52,9 @@ else
         ln -v -fs ${DF_DIR}/.alacritty.yml ${HOME}/.config/alacritty/alacritty.yml
         ln -v -fs ${DF_DIR}/.alacritty-themes/colors ${HOME}/.config/alacritty/colors
 
+        echo "setup posh"
+        [ -L ~/.poshthemes ] || ln -v -fs ${DF_DIR}/.poshthemes ${HOME}/.poshthemes
+
         echo "setup vim"
         [ -d ./vimconf ] && rm -rf ./vimconf
         git clone https://github.com/gorauskas/vimconf.git

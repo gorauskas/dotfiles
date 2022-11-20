@@ -18,7 +18,7 @@ font:
     family: ShureTechMono Nerd Font
     style: Bold Italic
 
-  size: 13
+  size: 14
 
 window:
   title: Alacritty
@@ -39,13 +39,16 @@ dpi:
   y: 96.0
 
 cursor:
-  style: Block
+  style: 
+    shape: Block
+    blinking: Always
+  blink_interval: 333
   unfocused_hollow: true
 
 live_config_reload: true
 
 colors:
-  # COLORSCHEME: base16-spacemacs-256.yml
+  # COLORSCHEME: base16-spacemacs-256.yml modified
   # Default colors
   primary:
     background: '0x1f2022'
@@ -54,7 +57,7 @@ colors:
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
     text: '0x1f2022'
-    cursor: '0xa3a3a3'
+    cursor: '0xe8a317'
 
   # Normal colors
   normal:

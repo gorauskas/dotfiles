@@ -144,11 +144,6 @@ function extract () {
     fi
 }
 
-# get your current internet ip
-# function myip () {
-#     echo `curl -s http://freegeoip.net/xml/`
-# }
-
 # Git commit and push - CAP
 function cap () {
     git add . ;
@@ -163,26 +158,9 @@ function gdr () {
     git diff $1..origin/$1;
 }
 
-# use wget to get a full page impression time
-#   robot exclusions will not be loaded
-function full_page_impression_load_time() {
-    time wget -p --delete-after $1 -o /dev/null
-}
-
 # musical ping - requires the sox package be isntalled
 function mping() {
     ping $@ | awk -F[=\ ] '/time=/{t=$(NF-1);f=2000-14*log(t^18);c="play -q -n synth 1 pl "f"&";print $0;system(c)}';
-}
-
-# aws s3 sync
-function s3up() {
-    echo "Sync up to $1";
-    aws s3 sync . s3://$1/ ;
-}
-
-function s3down() {
-    echo "Sync down from $1";
-    aws s3 sync s3://$1/ . ;
 }
 
 # docker

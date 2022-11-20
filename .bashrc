@@ -9,25 +9,48 @@ case $- in
       *) return;;
 esac
 
+# files you make look like rw-r--r--
+umask 022
+
 if [ -f "${HOME}/dotfiles/.bash_exports" ]; then
     . "${HOME}/dotfiles/.bash_exports";
 fi
 
-# append to the history file, don't overwrite it
-shopt -s histappend
+if [ -f "${HOME}/dotfiles/.bash_bind" ]; then
+    . "${HOME}/dotfiles/.bash_bind";
+fi
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# automagically `cd` when entering just a path
-shopt -s autocd
+# Prevent file overwrite on stdout redirection
+# Use `>|` to force redirection to an existing file
+set -o noclobber
+
+# Turn on recursive globbing (enables ** to recurse all directories)
+shopt -s globstar 2> /dev/null
+
+# Case-insensitive globbing (used in pathname expansion)
+shopt -s nocaseglob;
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# Save multi-line commands as one command
+shopt -s cmdhist
+
+# Prepend cd to directory names automatically
+shopt -s autocd 2> /dev/null
+
+# Correct spelling errors during tab-completion
+shopt -s dirspell 2> /dev/null
+
+# Correct spelling errors in arguments supplied to cd
+shopt -s cdspell 2> /dev/null
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# files you make look like rw-r--r--
-umask 022
 
 # Alias definitions.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.

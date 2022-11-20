@@ -32,13 +32,6 @@ if [[ "$PLATFORM" == "Linux" ]]; then
             . /etc/bash_completion
         fi
     fi
-
-    if [ "${DISTRO}" == "OracleServer" ]; then
-        # for OEL
-        if [ -f /usr/share/bash-completion/bash_completion ] && ! shopt -oq posix; then
-            . /usr/share/bash-completion/bash_completion
-        fi
-    fi
 fi
 
 if [[ "$PLATFORM" == "FreeBSD" ]]; then
@@ -74,16 +67,19 @@ if [ -f "$HOME/bin/google-cloud-sdk/completion.bash.inc" ]; then
     . "$HOME/bin/google-cloud-sdk/completion.bash.inc"; 
 fi
 
-# nvm / node
+# this loads kubectl completions
+if [ -f "$HOME/.kube/kubectl_completion_bash.inc" ]; then
+    . "$HOME/.kube/kubectl_completion_bash.inc";
+fi
 
+# nvm / node
 # This loads nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  
 
 # This loads nvm bash_completion
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  
 
-# golang
-source <(kubectl completion bash)
+# rust
 source "$HOME/.cargo/env"
 
 # sdkman
