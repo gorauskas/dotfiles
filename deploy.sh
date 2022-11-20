@@ -48,8 +48,12 @@ else
 
         echo "setup alacritty"
         [ -d ~/.config/alacritty/ ] || mkdir -p ~/.config/alacritty/
-        ln -v -fs ${DF_DIR}/.alacritty.yml ${HOME}/.config/alacritty/alacritty.yml
-        ln -v -fs ${DF_DIR}/.alacritty-themes/colors ${HOME}/.config/alacritty/colors/
+        pushd ${HOME}/.config/alacritty &>/dev/null
+        echo "  create links for alacritty $DF_DIR from $PWD"
+        ln -v -fs ${DF_DIR}/.alacritty.yml alacritty.yml
+        [ -L ./colors ] && rm colors
+        ln -v -fs ${DF_DIR}/.alacritty-themes/colors colors
+        popd &>/dev/null
 
         echo "setup posh"
         [ -L ~/.poshthemes ] || ln -v -fs ${DF_DIR}/.poshthemes ${HOME}/.poshthemes
