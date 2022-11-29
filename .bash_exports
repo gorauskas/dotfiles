@@ -1,14 +1,5 @@
 # Bourne Again Shell exports file
 
-# If this is an xterm set the title to user@host:dir
-case $TERM in
-    xterm*|rxvt*)
-        TITLEBAR='\[\033]0;\u@\h:\W\007\]' ;;
-    *)
-        TITLEBAR="" ;;
-esac
-export TITLEBAR
-
 # Which platform are we running on?
 export PLATFORM=`uname | cut -d"-" -f1`
 export DISTRO=$(lsb_release -si)
@@ -16,7 +7,8 @@ export DISTRO=$(lsb_release -si)
 # set the default editor
 export EDITOR=mg
 export VISUAL=mg
-export TERM=xterm-256color
+# export TERM=xterm-256color
+export TERM=alacritty
 
 # Let GnuPG know which key you normally use
 export GPGKEY=0x6248AD25FA54FC97
