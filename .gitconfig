@@ -50,7 +50,7 @@
     r = remote
     ra = remote add
     rr = remote rm
-    st = status -sb
+    st = status -sbu
     todo = !git ls-files | xargs grep --color=auto -onE '(TODO|FIXME):.*$'
     undo = reset --hard HEAD~1
     unpushed = log --branches --not --remotes --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
