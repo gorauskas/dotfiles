@@ -21,7 +21,8 @@ font:
   size: 14
 
 window:
-  title: Alacritty
+  title: Terminal
+  dynamic_title: true
   dimensions:
     columns: 160
     lines: 48
