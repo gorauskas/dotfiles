@@ -28,7 +28,7 @@ URxvt*scrollBar_right:        false
 URxvt*scrollstyle:            plain
 URxvt*cursorBlink:            true
 URxvt*geometry:               160x60
-URxvt*letterSpace:            -1
+!! URxvt*letterSpace:            -1
 URxvt*urgentOnBell:           true
 
 URxvt.saveLines:              32767
