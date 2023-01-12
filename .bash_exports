@@ -3,6 +3,7 @@
 # Which platform are we running on?
 export PLATFORM=`uname | cut -d"-" -f1`
 export DISTRO=$(lsb_release -si)
+export TZ="America/Los_Angeles"
 
 # set the default editor
 export EDITOR=mg
