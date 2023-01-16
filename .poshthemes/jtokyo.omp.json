@@ -11,65 +11,39 @@
                     "type": "session"
                 },
                 {
-                    "foreground": "#4f97d7",
+                    "foreground": "#7eb8da",
                     "properties": {
-                        "style": "dallas",
+                        "style": "austin",
                         "threshold": 0
                     },
                     "style": "diamond",
-                    "template": "[<#ffffff>\uf252</> {{ .FormattedMs }}s]",
+                    "template": "[<#ffffff>\uf252</> <#ffd800>{{ .FormattedMs }}</>]",
                     "type": "executiontime"
-                },
-                {
-                    "properties": {
-                        "root_icon": "\uf292"
-                    },
-                    "style": "diamond",
-                    "template": "\uf0e7",
-                    "type": "root"
-                },
-                {
-                    "foreground": "#4f97d7",
-                    "style": "diamond",
-                    "template": "[<#ffffff>\uf85a</> RAM: {{ (div ((sub .PhysicalTotalMemory .PhysicalFreeMemory)|float64) 1000000000.0) }}/{{ (div .PhysicalTotalMemory 1000000000.0) }}GB]",
-                    "type": "sysinfo"
                 },
                 {
                     "foreground": "#7eb8da",
                     "properties": {
-                        "time_format": "Monday at 3:04:05 PM"
+                        "time_format": "2006-01-02 15:04:05"
                     },
                     "style": "diamond",
                     "template": "[<#ffffff>\uf5ef</> {{ .CurrentDate | date .Format }}]",
                     "type": "time"
                 },
                 {
-                    "foreground": "#67b11d",
+                    "foreground": "#7eb8da",
                     "properties": {
                         "fetch_stash_count": true,
                         "fetch_status": true,
                         "fetch_upstream_icon": true
                     },
                     "style": "plain",
-                    "template": "[<#ffffff>{{ .UpstreamIcon }}</>{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} <#ffffff>\uf044</> {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} <#ffffff>\uf046</> {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} <#ffffff>\uf692</> {{ .StashCount }}{{ end }}]",
+                    "template": "[<#ffffff>{{ .UpstreamIcon }}</> <#67b11d>{{ .HEAD }}</>{{if .BranchStatus }}<#67b11d>{{ .BranchStatus }}</>{{ end }}{{ if .Working.Changed }} <#ffffff>\uf044</> <#67b11d>{{ .Working.String }}</>{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} <#67b11d>|</>{{ end }}{{ if .Staging.Changed }} <#ffffff>\uf046</> <#67b11d>{{ .Staging.String }}</>{{ end }}{{ if gt .StashCount 0 }} <#ffffff>\uf692</> <#67b11d>{{ .StashCount }}</>{{ end }}]",
                     "type": "git"
                 },
                 {
-                    "foreground": "#67b11d",
+                    "foreground": "#7eb8da",
                     "style": "plain",
-                    "template": "[{{ .Profile }}{{if .Region}}@{{ .Region }}{{ end }}]",
-                    "type": "aws"
-                },
-                {
-                    "foreground": "#67b11d",
-                    "style": "plain",
-                    "template": "[\uf0e7]",
-                    "type": "root"
-                },
-                {
-                    "foreground": "#ee3351",
-                    "style": "powerline",
-                    "template": "[<#ffffff>\ufc8d</> Error, check your command]",
+                    "template": "[<#ffffff>\ufc8d</> <#ee3351>ERROR: {{ .Code }}</>{{ if .Meaning }} <#ffffff>=></> <#ee3351>{{ .Meaning }}</>{{ end }}]",
                     "type": "exit"
                 }
             ],
@@ -81,11 +55,20 @@
             "segments": [
                 {
                     "foreground": "#7eb8da",
+                    "style": "plain",
+                    "properties": {
+                        "style": "full"
+                    },
+                    "template": "\u2516[<#ffffff>\uE235</> <#ffd800>{{ .Venv }}</><#ffffff>::</><#ffd800>{{ .Full }}</>]",
+                    "type": "python"
+                },
+                {
+                    "foreground": "#7eb8da",
                     "properties": {
                         "style": "full"
                     },
                     "style": "plain",
-                    "template": "\u2516[<#2d9574>{{ .Path }}</>]",
+                    "template": "{{ if not .Env.VIRTUAL_ENV }}\u2516{{ end }}[<#67b11d>{{ .Path }}</>]",
                     "type": "path"
                 }
             ],
