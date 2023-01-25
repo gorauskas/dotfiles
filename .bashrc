@@ -12,6 +12,10 @@ esac
 # files you make look like rw-r--r--
 umask 022
 
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+fi
+
 if [ -f "${HOME}/dotfiles/.bash_exports" ]; then
     . "${HOME}/dotfiles/.bash_exports";
 fi
