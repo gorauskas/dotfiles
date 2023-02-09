@@ -89,3 +89,13 @@ colors:
     - {index: 19, color: '0x444155'}
     - {index: 20, color: '0xb8b8b8'}
     - {index: 21, color: '0xe8e8e8'}
+
+key_bindings:
+  - { key: V,        mods: Control|Shift, action: Paste                 }
+  - { key: C,        mods: Control|Shift, action: Copy                  }
+  - { key: Q,        mods: Control|Shift, action: Quit                  }
+  - { key: Return,   mods: Control|Shift, action: SpawnNewInstance      }
+  - { key: PageUp,    mods: Shift,   action: ScrollPageUp,   mode: ~Alt }
+  - { key: PageDown,  mods: Shift,   action: ScrollPageDown, mode: ~Alt }
+  - { key: Home,      mods: Shift,   action: ScrollToTop,    mode: ~Alt }
+  - { key: End,       mods: Shift,   action: ScrollToBottom, mode: ~Alt }
