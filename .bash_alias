@@ -139,6 +139,7 @@ alias xcopy="xclip -i -selection clipboard"
 
 alias diff='colordiff'              # requires colordiff package
 alias g='git'
+alias gw='./gradlew'
 
 # emacs
 alias e='emacsclient -ca emacs'
