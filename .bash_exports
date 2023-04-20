@@ -71,3 +71,8 @@ export PATH="$PATH:$HOME/bin/google-cloud-sdk/bin"
 if [ -d "$HOME/bin" ] ; then
     export PATH=$HOME/bin:$PATH
 fi
+
+# used for emacs
+if [ -d "$HOME/.emacs.d/bin" ] ; then
+    export PATH=$HOME/.emacs.d/bin:$PATH
+fi
