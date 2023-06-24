@@ -8,8 +8,8 @@ export TZ="America/Los_Angeles"
 # set the default editor
 export EDITOR=mg
 export VISUAL=mg
-# export TERM=xterm-256color
-export TERM=alacritty
+export TERM=xterm-256color
+# export TERM=alacritty
 
 # Let GnuPG know which key you normally use
 export GPGKEY=0x6248AD25FA54FC97
@@ -52,6 +52,12 @@ export ANSIBLE_NOCOWS=1
 
 # don't send .NET telemetry
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+# raspberry pi pico C sdk
+export PICO_SDK_PATH=~/Projects/pico/pico-sdk
+export PICO_EXAMPLES_PATH=~/Projects/pico/pico-examples
+export PICO_EXTRAS_PATH=~/Projects/pico/pico-extras
+export PICO_PLAYGROUND_PATH=~/Projects/pico/pico-playground
 
 # golang
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
