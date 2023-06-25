@@ -2,7 +2,7 @@
 # Jonas Gorauskas
 
 # https://ohmyposh.dev/
-eval "$(oh-my-posh init bash --config ~/.poshthemes/jtokyo.omp.json)"
+eval "$(oh-my-posh init bash --config ~/.poshthemes/jonas.omp.json)"
 
 # term title bar
 case ${TERM} in
