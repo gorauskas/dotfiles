@@ -34,6 +34,9 @@
     cob = checkout -b
     count = !git shortlog -sn
     cp = cherry-pick
+    cfs = config commit.gpgsign true
+    cffu = config user.email 'jgorauskas@figure.com'
+    cffs = config user.signingkey 'FC4F13FFCF078B57'
     d = diff
     diff = diff --word-diff
     dangling = !git fsck 2> /dev/null | grep '^dangling commit' | awk '{print $3}' | git log --stdin --no-walk
