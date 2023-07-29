@@ -25,6 +25,7 @@ if [[ "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MINGW64_NT" ]]; then
     cp ./.mg ${HOME}/.mg
     cp ./.tmux.conf ${HOME}/.tmux.conf
     cp ./.minttyrc ${HOME}/.minttyrc
+    cp ./.dir_colors ${HOME}/.dir_colors
 
 else
 
@@ -37,7 +38,7 @@ else
 
     if [[ "$1" == "desktop" || "$1" == "server" ]]; then
 
-	    echo "setup general links"
+        echo "setup general links"
         ln -v -fs ${DF_DIR}/.bash_logout ${HOME}/.bash_logout
         ln -v -fs ${DF_DIR}/.bash_profile ${HOME}/.bash_profile
         ln -v -fs ${DF_DIR}/.bashrc ${HOME}/.bashrc
@@ -45,6 +46,7 @@ else
         ln -v -fs ${DF_DIR}/mercurial.ini ${HOME}/mercurial.ini
         ln -v -fs ${DF_DIR}/.mg ${HOME}/.mg
         ln -v -fs ${DF_DIR}/.tmux.conf ${HOME}/.tmux.conf
+        ln -v -fs ${DF_DIR}/.dir_colors ${HOME}/.dir_colors
 
         echo "setup alacritty"
         [ -d ~/.config/alacritty/ ] || mkdir -p ~/.config/alacritty/

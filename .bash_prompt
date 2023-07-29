@@ -1,6 +1,8 @@
 # Bourne Again Shell Init Prompt File
 # Jonas Gorauskas
 
+PROMPT_COMMAND=""
+
 # https://ohmyposh.dev/
 eval "$(oh-my-posh init bash --config ~/.poshthemes/jonas.omp.json)"
 
