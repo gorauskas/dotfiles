@@ -30,6 +30,7 @@ URxvt*cursorBlink:            true
 URxvt*geometry:               160x60
 URxvt*letterSpace:            -1
 URxvt*urgentOnBell:           true
+URxvt*depth:                  32
 
 URxvt.saveLines:              32767
 URxvt.iso14755:               false
@@ -49,9 +50,9 @@ URxvt.clipboard.autocopy:     true
 URxvt.keysym.M-c:             perl:clipboard:copy
 URxvt.keysym.M-v:             perl:clipboard:paste
 
-URxvt.tabbed.tabbar-fg: 14
-URxvt.tabbed.tabbar-bg: 0
-URxvt.tabbed.tab-fg: 12
+URxvt.tabbed.tabbar-fg: 12
+URxvt.tabbed.tabbar-bg: 8
+URxvt.tabbed.tab-fg: 10
 URxvt.tabbed.tab-bg: 0
 
 !! xterm definitions
@@ -73,44 +74,45 @@ xterm*eightBitInput:          true
 xterm*metaSendsEscape:        true
 xterm*cursorBlink:            true
 
-! --- URXVT + XTERM TERMINAL COLORS ---
-#define nord0 #242833
-#define nord1 #2E3440
-#define nord2 #3B4252
-#define nord3 #434C5E
-#define nord4 #D8DEE9
-#define nord5 #E5E9F0
-#define nord6 #ECEFF4
-#define nord7 #8FBCBB
-#define nord8 #88C0D0
-#define nord9 #81A1C1
-#define nord10 #5E81AC
-#define nord11 #BF616A
-#define nord12 #D08770
-#define nord13 #EBCB8B
-#define nord14 #A3BE8C
-#define nord15 #B48EAD
+! --- URXVT + XTERM TERMINAL COLORS [CHARCOAL DARK] ---
+#define cb00 #0D0D0D
+#define cb01 #B22222
+#define cb02 #00CD66
+#define cb03 #CDBE70
+#define cb04 #7AC5CD
+#define cb05 #CD96CD
+#define cb06 #00C5CD
+#define cb07 #DCDCDC
+
+#define cb08 #333333
+#define cb09 #FF7F50
+#define cb10 #00FF7F
+#define cb11 #FFEC8B
+#define cb12 #98F5FF
+#define cb13 #FFBBFF
+#define cb14 #00F5FF
+#define cb15 #F5F5F5
 
 ! special
-*.foreground:   nord4
-*.background:   nord0
-*.cursorColor:  nord4
+*.foreground:   cb15
+*.background:   cb00
+*.cursorColor:  cb09
 *fading: 35
-*fadeColor: nord3
+*fadeColor: cb08
 
-*.color0: nord1
-*.color1: nord11
-*.color2: nord14
-*.color3: nord13
-*.color4: nord9
-*.color5: nord15
-*.color6: nord8
-*.color7: nord5
-*.color8: nord3
-*.color9: nord11
-*.color10: nord14
-*.color11: nord13
-*.color12: nord9
-*.color13: nord15
-*.color14: nord7
-*.color15: nord6
+*.color0: cb00
+*.color1: cb01
+*.color2: cb02
+*.color3: cb03
+*.color4: cb04
+*.color5: cb05
+*.color6: cb06
+*.color7: cb07
+*.color8: cb08
+*.color9: cb09
+*.color10: cb10
+*.color11: cb11
+*.color12: cb12
+*.color13: cb13
+*.color14: cb14
+*.color15: cb15
