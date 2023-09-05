@@ -74,6 +74,10 @@ if [ -f "${HOME}/.bash_figure" ]; then  # hidden
     . "${HOME}/.bash_figure";
 fi
 
+if [ -f "${HOME}/dotfiles/.Xresources" ]; then
+    xrdb -merge "${HOME}/dotfiles/.Xresources";
+fi
+
 if [ -f "${HOME}/dotfiles/.bash_dev" ]; then
     . "${HOME}/dotfiles/.bash_dev";
 fi

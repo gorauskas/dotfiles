@@ -5,45 +5,45 @@
             "alignment": "left",
             "segments": [
                 {
-                    "foreground": "#81A1C1",
+                    "foreground": "#98F5FF",
                     "style": "plain",
-                    "template": "\u250f[{{ .UserName }}@{{ .HostName }}]",
+                    "template": "<#7AC5CD>\u250f[</>{{ .UserName }}@{{ .HostName }}<#7AC5CD>]</>",
                     "type": "session"
                 },
                 {
-                    "foreground": "#D08770",
+                    "foreground": "#FF7F50",
                     "properties": {
                         "style": "austin",
                         "threshold": 0
                     },
                     "style": "diamond",
-                    "template": "<#81A1C1>[</>{{ .FormattedMs }}<#81A1C1>]</>",
+                    "template": "<#7AC5CD>[</>{{ .FormattedMs }}<#7AC5CD>]</>",
                     "type": "executiontime"
                 },
                 {
-                    "foreground": "#81A1C1",
+                    "foreground": "#98F5FF",
                     "properties": {
                         "time_format": "2006-01-02 15:04:05"
                     },
                     "style": "diamond",
-                    "template": "[{{ .CurrentDate | date .Format }}]",
+                    "template": "<#7AC5CD>[</>{{ .CurrentDate | date .Format }}<#7AC5CD>]</>",
                     "type": "time"
                 },
                 {
-                    "foreground": "#A3BE8C",
+                    "foreground": "#00CD66",
                     "properties": {
                         "fetch_stash_count": true,
                         "fetch_status": true,
                         "fetch_upstream_icon": true
                     },
                     "style": "plain",
-                    "template": "<#81A1C1>[</>{{ .HEAD }}{{if .BranchStatus }}{{ .BranchStatus }}{{ end }}{{ if or .Working.Changed .Staging.Changed }}\u200A<#4C566A>\u276A</><#B48EAD>\u2213{{ end }}{{ if .Working.Changed }}\u200A{{ .Working.String }}\u2297{{ end }}{{ if .Staging.Changed }}\u200A{{ .Staging.String }}\u2295{{ end }}{{ if gt .StashCount 0 }}\u200A{{ .StashCount }}\u229A{{ end }}{{ if or .Working.Changed .Staging.Changed }}</><#4C566A>\u276B</>{{ end }}<#81A1C1>]</>",
+                    "template": "<#7AC5CD>[</>{{ .HEAD }}{{if .BranchStatus }}{{ .BranchStatus }}{{ end }}{{ if or .Working.Changed .Staging.Changed }}\u200A<#333333>\u276A</><#CD96CD>\u2213{{ end }}{{ if .Working.Changed }}\u200A{{ .Working.String }}\u2297{{ end }}{{ if .Staging.Changed }}\u200A{{ .Staging.String }}\u2295{{ end }}{{ if gt .StashCount 0 }}\u200A{{ .StashCount }}\u229A{{ end }}{{ if or .Working.Changed .Staging.Changed }}</><#333333>\u276B</>{{ end }}<#7AC5CD>]</>",
                     "type": "git"
                 },
                 {
-                    "foreground": "#BF616A",
+                    "foreground": "#B22222",
                     "style": "plain",
-                    "template": "<#81A1C1>[</>ERR:{{ .Code }}{{ if .Meaning }}<#4C566A>=></>{{ .Meaning }}{{ end }}<#81A1C1>]</>",
+                    "template": "<#7AC5CD>[</>ERR:{{ .Code }}{{ if .Meaning }}<#333333>=></>{{ .Meaning }}{{ end }}<#7AC5CD>]</>",
                     "type": "exit"
                 }
             ],
@@ -56,20 +56,20 @@
                 {
                     "type": "text",
                     "style": "plain",
-                    "foreground": "#81A1C1",
+                    "foreground": "#7AC5CD",
                     "template": "\u2517"
                 },
                 {
-                    "foreground": "#EBCB8B",
+                    "foreground": "#CDBE70",
                     "style": "plain",
-                    "template": "<#81A1C1>[</>Py:{{ .Full }}{{ if .Venv }}<#4C566A>::</>{{ .Venv }}{{ end }}<#81A1C1>]</>",
+                    "template": "<#7AC5CD>[</>Py:{{ .Full }}{{ if .Venv }}<#333333>::</>{{ .Venv }}{{ end }}<#7AC5CD>]</>",
                     "type": "python"
                 },
                 {
                     "type": "java",
                     "style": "plain",
-                    "foreground": "#EBCB8B",
-                    "template": "<#81A1C1>[</><b>JVM</b>:{{ .Major }}<#81A1C1>]</>",
+                    "foreground": "#CDBE70",
+                    "template": "<#7AC5CD>[</><b>JVM</b>:{{ .Major }}<#7AC5CD>]</>",
                     "properties": {
                         "fetch_version": true,
                         "display_mode": "files"
@@ -78,20 +78,20 @@
                 {
                     "type": "kotlin",
                     "style": "plain",
-                    "foreground": "#EBCB8B",
-                    "template": "<#81A1C1>[</><b>K</b>:{{ .Full }}<#81A1C1>]</>",
+                    "foreground": "#CDBE70",
+                    "template": "<#7AC5CD>[</><b>K</b>:{{ .Full }}<#7AC5CD>]</>",
                     "properties": {
                         "fetch_version": true,
                         "display_mode": "files"
                     }
                 },
                 {
-                    "foreground": "#81A1C1",
+                    "foreground": "#7AC5CD",
                     "properties": {
                         "style": "full"
                     },
                     "style": "plain",
-                    "template": "[<#A3BE8C>{{ .Path }}</>]",
+                    "template": "[<#00FF7F>{{ .Path }}</>]",
                     "type": "path"
                 }
             ],
@@ -102,9 +102,9 @@
             "newline": true,
             "segments": [
                 {
-                    "foreground": "#81A1C1",
+                    "foreground": "#7AC5CD",
                     "style": "plain",
-                    "template": "<#D8DEE9>\u03bb</> \u27a4",
+                    "template": "<#DCDCDC>\u03bb</> \u27a4",
                     "type": "text"
                 }
             ],
