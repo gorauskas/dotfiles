@@ -1,0 +1,109 @@
+[user]
+    useConfigOnly = true
+    email = jgorauskas@figure.com
+    name = Jonas Gorauskas
+    signingkey = FC4F13FFCF078B57
+[core]
+    autocrlf = false
+    safecrlf = false
+    pager = most
+[gui]
+    fontdiff = -family \"DejaVu Sans Mono\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
+    commitmsgwidth = 120
+    encoding = utf-8
+    trustmtime = true
+    historybrowser = gitk
+[merge]
+    summary = true
+    tool = meld
+[credential]
+[giggle]
+    main-window-maximized = false
+    main-window-geometry = 989x880+829+87
+    file-view-hpane-position = 184
+[url "git@github.com:jonasg13/"]
+    insteadOf = jgg:
+[alias]
+    a = add
+    b = branch
+    br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
+    cl = clone
+    cm = commit -m
+    cma = commit -am
+    co = checkout
+    cob = checkout -b
+    count = !git shortlog -sn
+    cp = cherry-pick
+    cfs = config commit.gpgsign true
+    cffu = config user.email 'jgorauskas@figure.com'
+    cffs = config user.signingkey 'FC4F13FFCF078B57'
+    d = diff
+    diff = diff --word-diff
+    dangling = !git fsck 2> /dev/null | grep '^dangling commit' | awk '{print $3}' | git log --stdin --no-walk
+    dc = diff --cached
+    ds = diff --staged
+    la = !git config -l | grep alias | cut -c 7-
+    ldl = log --color --graph --pretty=format:'%Cred%h %ad%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%ae>%Creset' --abbrev-commit --decorate
+    lds = log --color --graph --pretty=format:'%Cred%h %ad%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%ae>%Creset' --abbrev-commit --decorate --date=short
+    ll = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --numstat
+    ls = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate
+    ltg = describe --tags --abbrev=0
+    pl = pull
+    ps = push
+    r = remote
+    ra = remote add
+    rr = remote rm
+    st = status -sbu
+    todo = !git ls-files | xargs grep --color=auto -onE '(TODO|FIXME):.*$'
+    undo = reset --hard HEAD~1
+    unpushed = log --branches --not --remotes --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    visual = !gitk
+[color]
+    ui = auto
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+[push]
+    default = matching
+[diff]
+    tool = meld
+[github]
+    user = gorauskas
+[log]
+    date = iso
+    abbrevCommit = true
+[sendemail]
+    smtpuser = jgorauskas@gmail.com
+    smtpserver = smtp.gmail.com
+    smtpserverport = 587
+    smtpencryption = tls
+    suppresscc = all
+[init]
+    defaultBranch = main
+[cola]
+    spellcheck = false
+    blameviewer = git gui blame
+    theme = flat-dark-blue
+    icontheme = dark
+[commit]
+    gpgsign = true
+[safe]
+    directory = /Users/jonasgorauskas/Figure
+    directory = /Users/jonasgorauskas/Projects
+[gpg]
+    program = /usr/local/MacGPG2/bin/gpg2
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
