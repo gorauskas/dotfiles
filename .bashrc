@@ -12,8 +12,14 @@ esac
 # files you make look like rw-r--r--
 umask 022
 
+if [ -s /opt/homebrew/bin/brew ]; then 
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi 
+
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
+elif [ -f /opt/homebrew/etc/bash_completion ]; then
+    . /opt/homebrew/etc/bash_completion
 fi
 
 if [ -f "${HOME}/dotfiles/.bash_exports" ]; then
@@ -74,7 +80,7 @@ if [ -f "${HOME}/.bash_figure" ]; then  # hidden
     . "${HOME}/.bash_figure";
 fi
 
-if [ -f "${HOME}/dotfiles/.Xresources" ]; then
+if [[ -f "${HOME}/dotfiles/.Xresources" && "$PLATFORM" == "Linux" ]]; then
     xrdb -merge "${HOME}/dotfiles/.Xresources";
 fi
 
