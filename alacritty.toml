@@ -1,0 +1,144 @@
+live_config_reload = true
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "#333333"
+blue = "#98F5FF"
+cyan = "#00F5FF"
+green = "#00FF7F"
+magenta = "#FFBBFF"
+red = "#FF7F50"
+white = "#F5F5F5"
+yellow = "#FFEC8B"
+
+[colors.cursor]
+cursor = "#FF7F50"
+text = "#333333"
+
+[colors.dim]
+black = "#0D0D0D"
+blue = "#7AC5CD"
+cyan = "#00C5CD"
+green = "#00CD66"
+magenta = "#CD96CD"
+red = "#B22222"
+white = "#DCDCDC"
+yellow = "#CDBE70"
+
+[colors.normal]
+black = "#0D0D0D"
+blue = "#7AC5CD"
+cyan = "#00C5CD"
+green = "#00CD66"
+magenta = "#CD96CD"
+red = "#B22222"
+white = "#DCDCDC"
+yellow = "#CDBE70"
+
+[colors.primary]
+background = "#0D0D0D"
+dim_foreground = "#DCDCDC"
+foreground = "#F5F5F5"
+
+[colors.search.matches]
+background = "#333333"
+foreground = "#F5F5F5"
+
+[colors.selection]
+background = "#483d8b"
+text = "CellForeground"
+
+[colors.vi_mode_cursor]
+cursor = "#FF7F50"
+text = "#333333"
+
+[cursor]
+blink_interval = 333
+unfocused_hollow = true
+
+[cursor.style]
+blinking = "Always"
+shape = "Block"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 10
+
+[font.bold]
+family = "IosevkaTerm Nerd Font Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "IosevkaTerm Nerd Font Mono"
+style = "Bold Italic"
+
+[font.italic]
+family = "IosevkaTerm Nerd Font Mono"
+style = "Italic"
+
+[font.normal]
+family = "IosevkaTerm Nerd Font Mono"
+style = "Regular"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "Quit"
+key = "Q"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "Return"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "ScrollPageUp"
+key = "PageUp"
+mode = "~Alt"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollPageDown"
+key = "PageDown"
+mode = "~Alt"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollToTop"
+key = "Home"
+mode = "~Alt"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollToBottom"
+key = "End"
+mode = "~Alt"
+mods = "Shift"
+
+[scrolling]
+history = 9999
+
+[window]
+dynamic_title = true
+title = "Terminal"
+
+[window.dimensions]
+columns = 160
+lines = 48
+
+[window.padding]
+x = 5
+y = 5
