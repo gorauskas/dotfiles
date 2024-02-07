@@ -1,7 +1,7 @@
 live_config_reload = true
 
 [shell]
-program = "/opt/homebrew/bin/bash"
+program = "bash"
 args = ["-l"]
 
 [colors]
@@ -70,11 +70,23 @@ shape = "Block"
 TERM = "xterm-256color"
 
 [font]
-normal = { family = "ShureTechMono Nerd Font Mono", style = "Regular" }
-bold = { family = "ShureTechMono Nerd Font Mono", style = "Bold" }
-italic = { family = "ShureTechMono Nerd Font Mono", style = "Italic" }
-bold_italic = { family = "ShureTechMono Nerd Font Mono", style = "Bold Italic" }
-size = 20
+size = 10
+
+[font.bold]
+family = "IosevkaTerm Nerd Font Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "IosevkaTerm Nerd Font Mono"
+style = "Bold Italic"
+
+[font.italic]
+family = "IosevkaTerm Nerd Font Mono"
+style = "Italic"
+
+[font.normal]
+family = "IosevkaTerm Nerd Font Mono"
+style = "Regular"
 
 [[keyboard.bindings]]
 action = "Paste"
@@ -124,7 +136,6 @@ mods = "Shift"
 history = 9999
 
 [window]
-option_as_alt = "OnlyLeft"
 dynamic_title = true
 title = "Terminal"
 

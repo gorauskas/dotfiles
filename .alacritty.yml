@@ -3,22 +3,22 @@ env:
 
 font:
   normal:
-    family: ShureTechMono Nerd Font
+    family: IosevkaTerm Nerd Font Mono
     style: Regular
 
   bold:
-    family: ShureTechMono Nerd Font
+    family: IosevkaTerm Nerd Font Mono
     style: Bold
 
   italic:
-    family: ShureTechMono Nerd Font
+    family: IosevkaTerm Nerd Font Mono
     style: Italic
 
   bold_italic:
-    family: ShureTechMono Nerd Font
+    family: IosevkaTerm Nerd Font Mono
     style: Bold Italic
 
-  size: 14
+  size: 13
 
 window:
   title: Terminal
@@ -66,9 +66,6 @@ colors:
     matches:
       foreground: "#F5F5F5"
       background: "#333333"
-    footer_bar:
-      background: "#3B4252"
-      foreground: "#d8dee9"
   normal:
     black: "#0D0D0D"
     red: "#B22222"
