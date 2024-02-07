@@ -46,8 +46,8 @@ if [ "$TERM" != "dumb" ]; then
         alias ll='ls -aF --color=auto --format=long'
     fi
     if [[ "$PLATFORM" == "Darwin" || "$PLATFORM" == "FreeBSD" ]]; then
-        alias dir='ls -alFGh'
-        alias dirt='ls -alFGhtr'
+        alias dir='ls -alFGhp -D "%F %T" --color=always'
+        alias dirt='ls -alFGhtr --color=auto'
         alias ll='ls -alFG'
     fi
 fi
@@ -214,7 +214,6 @@ if [[ "$PLATFORM" == "Linux" || "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MI
     alias chmod='chmod --preserve-root'
     alias chgrp='chgrp --preserve-root'
 
-
     # system updates
     if [ -f /etc/debian_version ]; then
         alias ins='sudo apt-get install'
@@ -245,25 +244,20 @@ if [[ "$PLATFORM" == "Linux" || "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MI
     alias dus='du -ach | sort -h'
     alias du1='du --max-depth=1'
     alias free='free -mt'
-
 fi
 
 if [[ "$PLATFORM" == "Darwin" || "$PLATFORM" == "FreeBSD" ]]; then
-
     alias ports='lsof -n -i | grep LISTEN'
     alias df='df -Ha'
     alias dus='du -akx | sort -n'
     alias du1='du -s'
     alias nukeds="find ./ -type f | grep .DS_Store | xargs rm"
-    
+    alias htop='sudo htop'
 fi
 
 if [[ "$PLATFORM" == "FreeBSD" ]]; then
-
     unalias df
     alias df='df -Ha -,'
-
 fi
-
 
 #EOF

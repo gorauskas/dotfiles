@@ -1,8 +1,27 @@
 # Bourne Again Shell exports file
 
+# brew stuff
+if [ -d "/opt/homebrew" ] ; then
+    export HOMEBREW_PREFIX="/opt/homebrew";
+    export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+    export HOMEBREW_REPOSITORY="/opt/homebrew";
+    export PATH="/opt/homebrew/opt/curl/bin${PATH:+:${PATH}}"
+    export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH:+:${PATH}}";
+    export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
+    export CPPFLAGS="-I/opt/homebrew/opt/curl/include"
+    export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
+fi
+
+# JetBrains Stuff
+if [ -d "$HOME/Library/Application Support/JetBrains/Toolbox/scripts" ] ; then
+    export PATH="$HOME/Library/Application Support/JetBrains/Toolbox/scripts${PATH:+:${PATH}}"
+fi
+
 # Which platform are we running on?
 export PLATFORM=`uname | cut -d"-" -f1`
-export DISTRO=$(lsb_release -si)
+if [[ "$PLATFORM" == "Linux" || "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MINGW64_NT" ]]; then
+    export DISTRO=$(lsb_release -si)
+fi
 export TZ="America/Los_Angeles"
 
 # set the default editor
