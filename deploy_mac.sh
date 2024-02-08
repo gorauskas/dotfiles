@@ -21,7 +21,7 @@ echo "setup alacritty"
 [ -d ~/.config/alacritty/ ] || mkdir -p ~/.config/alacritty/
 pushd ${HOME}/.config/alacritty &>/dev/null
 echo "  create links for alacritty $DF_DIR from $PWD"
-ln -v -fs ${DF_DIR}/.alacritty_macos.toml alacritty.toml
+ln -v -fs ${DF_DIR}/alacritty_macos.toml alacritty.toml
 [ -L ./colors ] && rm colors
 ln -v -fs ${DF_DIR}/.alacritty-themes/colors colors
 popd &>/dev/null
