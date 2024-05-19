@@ -7,7 +7,7 @@
 # append it to this file
 adda () {
     local name=$1 value="$2"
-    echo alias $name=\'$value\' >> ~/.bash_alias
+    echo alias $name=\'$value\' >> ~/dotfiles/.bash_alias
     eval alias $name=\'$value\'
     alias $name
 }
@@ -226,6 +226,8 @@ if [[ "$PLATFORM" == "Linux" || "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MI
         alias update='echo "please see pacman usage"'
         alias Y='yaourt'
     fi
+
+    alias nr='sudo nicreset.sh'
 
     ## shortcut  for iptables and pass it via sudo#
     alias ipt='sudo /sbin/iptables'
