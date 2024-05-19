@@ -79,6 +79,9 @@ if [ -f "$HOME/.kube/kubectl_completion_bash.inc" ]; then
     . "$HOME/.kube/kubectl_completion_bash.inc";
 fi
 
+# hugo bash completions
+[ command -v hugo >/dev/null 2>&1 ] && source <(hugo completion bash)
+
 # nvm / node
 # This loads nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  
