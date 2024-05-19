@@ -202,7 +202,7 @@ alias kpf="kubectl port-forward"
 # LINUX ONLY Aliases
 if [[ "$PLATFORM" == "Linux" || "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MINGW64_NT" ]]; then
     ## pass options to free ##
-    alias meminfo='free -m -l -t'
+    alias meminfo='free -l'
 
     ## Get server cpu info ##
     alias cpuinfo='lscpu'
@@ -244,7 +244,7 @@ if [[ "$PLATFORM" == "Linux" || "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MI
 
     alias df='df -Tha --total'
     alias dus='du -ach | sort -h'
-    alias du1='du --max-depth=1'
+    alias du1='du -ach --max-depth=1'
     alias free='free -mt'
 fi
 
