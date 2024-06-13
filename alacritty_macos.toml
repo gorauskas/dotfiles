@@ -138,6 +138,7 @@ history = 9999
 [window]
 dynamic_title = true
 title = "Terminal"
+option_as_alt = "OnlyLeft"
 
 [window.dimensions]
 columns = 160
