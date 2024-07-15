@@ -3,7 +3,7 @@
 
 # python
 if [[ "$PLATFORM" == "Linux" ]]; then
-    if [ "${DISTRO}" == "Arch" ]; then
+    if [[ "${DISTRO}" == "Arch" || "${DISTRO}" == "ManjaroLinux" ]]; then
         # for arch linux
         export VIRTUALENVWRAPPER_SCRIPT=/usr/bin/virtualenvwrapper.sh
         [ -f /usr/bin/virtualenvwrapper_lazy.sh ] && . /usr/bin/virtualenvwrapper_lazy.sh
@@ -16,7 +16,7 @@ if [[ "$PLATFORM" == "Linux" ]]; then
     fi
 
     # enable bash completion in interactive shells
-    if [ "${DISTRO}" == "Arch" ]; then
+    if [[ "${DISTRO}" == "Arch" || "${DISTRO}" == "ManjaroLinux" ]]; then
         # for arch linux
         if [ -f /usr/share/bash-completion/bash_completion ] && ! shopt -oq posix; then
             . /usr/share/bash-completion/bash_completion
