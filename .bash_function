@@ -47,7 +47,7 @@ function chmog() {
 # requires superuser access in order to look at
 # all nooks and crannies
 function findall() {
-    sudo find / -name ${1} -print ;
+    sudo find / -mount -name "*${1}*" -print ;
 }
 
 # Display Environment Information
