@@ -41,19 +41,40 @@ seq () {
 ## Enable color support for ls
 if [ "$TERM" != "dumb" ]; then
     if [[ "$PLATFORM" == "Linux" || "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MINGW64_NT" ]]; then
-        alias dir='ls -alFh --group-directories-first --color=auto --time-style=long-iso'
-        alias dirt='ls -alFhtr --group-directories-first --color=auto --time-style=long-iso'
-        alias ll='ls -aF --color=auto --format=long'
+        if [ -x /usr/bin/dircolors ]; then
+            export LS_OPTIONS='--color=auto'
+            test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+        fi
+
+        alias ls='ls $LS_OPTIONS'
+        alias ll='ls -laFo'
+        alias l='ls -l'
+        alias lr='ls -R'      #recursive ls
+        alias dots='ls -ldFh .*'
+
+        alias dira='ls -alFh --group-directories-first --time-style=long-iso'
+        alias dirt='ls -alFhtr --group-directories-first --time-style=long-iso'
+        alias dir='eza -l -a --icons=auto --group-directories-first --smart-group --header --time modified --time-style="+%Y-%m-%d %H:%M:%S"'
+
+        alias logs="sudo find /var/log -type f -exec file {} \; | grep 'text' | cut -d' ' -f1 | sed -e's/:$//g' | grep -v '[0-9]$' | xargs tail -f"
+        alias cfiles="for t in files links directories; do echo \`find . -type \${t:0:1} | wc -l\` \$t; done 2> /dev/null"
+
+        alias grep='grep $LS_OPTIONS'
+        alias fgrep='fgrep $LS_OPTIONS'
+        alias egrep='egrep $LS_OPTIONS'
     fi
     if [[ "$PLATFORM" == "Darwin" || "$PLATFORM" == "FreeBSD" ]]; then
-        alias dir='ls -alFGhp -D "%F %T" --color=always'
-        alias dirt='ls -alFGhtr --color=auto'
-        alias ll='ls -alFG'
+        alias ls='ls --color=always'
+        alias ll='ls -laFG'
+        alias l='ls -l'
+        alias lr='ls -R'
+        alias dots='ls -ldFh .*'
+
+        alias dira='ls -alFGhp -D "%F %T"'
+        alias dirt='ls -alFGhtr'
+        alias dir='eza -l -a --icons=auto --group-directories-first --smart-group --header --time modified --time-style="+%Y-%m-%d %H:%M:%S"'
     fi
 fi
-alias lm='dir | less'
-alias lr='ls -R'      #recursive ls
-alias dots='ls -ldFh .*'
 
 ## Navigation
 # get rid of command not found ##
@@ -246,6 +267,8 @@ if [[ "$PLATFORM" == "Linux" || "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MI
     alias dus='du -ach | sort -h'
     alias du1='du -ach --max-depth=1'
     alias free='free -mt'
+    alias pwdu='du -Pschx .[!.]* ./* 2>/dev/null'
+    alias space='sudo ncdu -x -e -2 --color dark ./'
 fi
 
 if [[ "$PLATFORM" == "Darwin" || "$PLATFORM" == "FreeBSD" ]]; then
