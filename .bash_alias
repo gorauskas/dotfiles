@@ -152,9 +152,7 @@ alias pu="pushd"
 alias po="popd"
 alias hn='hostname'
 alias reload='. ~/.bashrc'
-
-# copy a stream into the X clipboard; e.g. "cat file | xcopy"
-alias xcopy="xclip -i -selection clipboard"
+alias space='sudo ncdu -x -e -2 --color dark ./'
 
 ## PROGRAMMING
 
@@ -250,6 +248,9 @@ if [[ "$PLATFORM" == "Linux" || "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MI
 
     alias nr='sudo nicreset.sh'
 
+    # copy a stream into the X clipboard; e.g. "cat file | xcopy"
+    alias xcopy="xclip -i -selection clipboard"
+
     ## shortcut  for iptables and pass it via sudo#
     alias ipt='sudo /sbin/iptables'
 
@@ -268,7 +269,6 @@ if [[ "$PLATFORM" == "Linux" || "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MI
     alias du1='du -ach --max-depth=1'
     alias free='free -mt'
     alias pwdu='du -Pschx .[!.]* ./* 2>/dev/null'
-    alias space='sudo ncdu -x -e -2 --color dark ./'
 fi
 
 if [[ "$PLATFORM" == "Darwin" || "$PLATFORM" == "FreeBSD" ]]; then
