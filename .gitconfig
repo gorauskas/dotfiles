@@ -75,6 +75,8 @@
     untracked = cyan
 [push]
     default = matching
+[pull]
+    rebase = false
 [diff]
     tool = meld
 [github]
