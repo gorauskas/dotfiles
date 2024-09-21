@@ -146,6 +146,7 @@ alias now='date "+%F %T"'
 alias hist='history | grep'      # requires an argument
 alias pl='ps aux | less'
 alias c='clear'
+alias q='exit'
 alias j='jobs -l'
 alias h='history'
 alias pu="pushd"
@@ -157,6 +158,7 @@ alias space='sudo ncdu -x -e -2 --color dark ./'
 ## PROGRAMMING
 
 alias diff='colordiff'              # requires colordiff package
+alias d='diff'
 alias g='git'
 alias gw='./gradlew'
 
@@ -242,11 +244,8 @@ if [[ "$PLATFORM" == "Linux" || "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MI
         alias update='sudo yum -v -y check-update && sudo yum -v -y upgrade'
     elif [ -f /etc/arch-release ]; then
         alias ins='sudo pacman -Sy'
-        alias update='echo "please see pacman usage"'
-        alias Y='yaourt'
+        alias update='sudo pacman -Syu'
     fi
-
-    alias nr='sudo nicreset.sh'
 
     # copy a stream into the X clipboard; e.g. "cat file | xcopy"
     alias xcopy="xclip -i -selection clipboard"
