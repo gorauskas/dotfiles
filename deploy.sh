@@ -47,6 +47,8 @@ else
         ln -v -fs ${DF_DIR}/.mg ${HOME}/.mg
         ln -v -fs ${DF_DIR}/.tmux.conf ${HOME}/.tmux.conf
         ln -v -fs ${DF_DIR}/.dir_colors ${HOME}/.dir_colors
+        ln -v -fs ${DF_DIR}/.curlrc ${HOME}/.curlrc
+        ln -v -fs ${DF_DIR}/.wgetrc ${HOME}/.wgetrc
 
         echo "setup alacritty"
         [ -d ~/.config/alacritty/ ] || mkdir -p ~/.config/alacritty/
