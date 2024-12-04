@@ -1,8 +1,6 @@
 [general]
 live_config_reload = true
 
-[terminal]
-
 [terminal.shell]
 program = "/opt/homebrew/bin/bash"
 args = ["-l"]
