@@ -1,116 +1,137 @@
 {
-    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-    "blocks": [
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
         {
-            "alignment": "left",
-            "segments": [
-                {
-                    "foreground": "#98F5FF",
-                    "style": "plain",
-                    "template": "<#7AC5CD>\u250f[</>{{ .UserName }}@{{ .HostName }}<#7AC5CD>]</>",
-                    "type": "session"
-                },
-                {
-                    "foreground": "#FF7F50",
-                    "properties": {
-                        "style": "austin",
-                        "threshold": 0
-                    },
-                    "style": "diamond",
-                    "template": "<#7AC5CD>[</>{{ .FormattedMs }}<#7AC5CD>]</>",
-                    "type": "executiontime"
-                },
-                {
-                    "foreground": "#98F5FF",
-                    "properties": {
-                        "time_format": "2006-01-02 15:04:05"
-                    },
-                    "style": "diamond",
-                    "template": "<#7AC5CD>[</>{{ .CurrentDate | date .Format }}<#7AC5CD>]</>",
-                    "type": "time"
-                },
-                {
-                    "foreground": "#00CD66",
-                    "properties": {
-                        "fetch_stash_count": true,
-                        "fetch_status": true,
-                        "fetch_upstream_icon": true
-                    },
-                    "style": "plain",
-                    "template": "<#7AC5CD>[</>{{ .HEAD }}{{if .BranchStatus }}{{ .BranchStatus }}{{ end }}{{ if or .Working.Changed .Staging.Changed }}\u200A<#333333>\u276A</><#CD96CD>\u2213{{ end }}{{ if .Working.Changed }}\u200A{{ .Working.String }}\u2297{{ end }}{{ if .Staging.Changed }}\u200A{{ .Staging.String }}\u2295{{ end }}{{ if gt .StashCount 0 }}\u200A{{ .StashCount }}\u229A{{ end }}{{ if or .Working.Changed .Staging.Changed }}</><#333333>\u276B</>{{ end }}<#7AC5CD>]</>",
-                    "type": "git"
-                },
-                {
-                    "foreground": "#B22222",
-                    "style": "plain",
-                    "template": "<#7AC5CD>[</>ERR:{{ .Code }}{{ if .Meaning }}<#333333>=></>{{ .Meaning }}{{ end }}<#7AC5CD>]</>",
-                    "type": "exit"
-                }
-            ],
-            "type": "prompt"
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "<#7AC5CD>\u250f[</>{{ .UserName }}@{{ .HostName }}<#7AC5CD>]</>",
+          "foreground": "#98F5FF",
+          "type": "session",
+          "style": "plain"
         },
         {
-            "alignment": "left",
-            "newline": true,
-            "segments": [
-                {
-                    "type": "text",
-                    "style": "plain",
-                    "foreground": "#7AC5CD",
-                    "template": "\u2517"
-                },
-                {
-                    "foreground": "#CDBE70",
-                    "style": "plain",
-                    "template": "<#7AC5CD>[</>Py:{{ .Full }}{{ if .Venv }}<#333333>::</>{{ .Venv }}{{ end }}<#7AC5CD>]</>",
-                    "type": "python"
-                },
-                {
-                    "type": "java",
-                    "style": "plain",
-                    "foreground": "#CDBE70",
-                    "template": "<#7AC5CD>[</><b>JVM</b>:{{ .Major }}<#7AC5CD>]</>",
-                    "properties": {
-                        "fetch_version": true,
-                        "display_mode": "files"
-                    }
-                },
-                {
-                    "type": "kotlin",
-                    "style": "plain",
-                    "foreground": "#CDBE70",
-                    "template": "<#7AC5CD>[</><b>K</b>:{{ .Full }}<#7AC5CD>]</>",
-                    "properties": {
-                        "fetch_version": true,
-                        "display_mode": "files"
-                    }
-                },
-                {
-                    "foreground": "#7AC5CD",
-                    "properties": {
-                        "style": "full"
-                    },
-                    "style": "plain",
-                    "template": "[<#00FF7F>{{ .Path }}</>]",
-                    "type": "path"
-                }
-            ],
-            "type": "prompt"
+          "properties": {
+            "cache_duration": "none",
+            "style": "austin",
+            "threshold": 0
+          },
+          "template": "<#7AC5CD>[</>{{ .FormattedMs }}<#7AC5CD>]</>",
+          "foreground": "#FF7F50",
+          "type": "executiontime",
+          "style": "diamond"
         },
         {
-            "alignment": "left",
-            "newline": true,
-            "segments": [
-                {
-                    "foreground": "#7AC5CD",
-                    "style": "plain",
-                    "template": "<#DCDCDC>\u03bb</> \u27a4",
-                    "type": "text"
-                }
-            ],
-            "type": "prompt"
+          "properties": {
+            "cache_duration": "none",
+            "time_format": "2006-01-02 15:04:05"
+          },
+          "template": "<#7AC5CD>[</>{{ .CurrentDate | date .Format }}<#7AC5CD>]</>",
+          "foreground": "#98F5FF",
+          "type": "time",
+          "style": "diamond"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": true
+          },
+          "template": "<#7AC5CD>[</>{{ .HEAD }}{{if .BranchStatus }}{{ .BranchStatus }}{{ end }}{{ if or .Working.Changed .Staging.Changed }}\u200a<#333333>❪</><#CD96CD>\u2213{{ end }}{{ if .Working.Changed }}\u200a{{ .Working.String }}\u2297{{ end }}{{ if .Staging.Changed }}\u200a{{ .Staging.String }}\u2295{{ end }}{{ if gt .StashCount 0 }}\u200a{{ .StashCount }}\u229a{{ end }}{{ if or .Working.Changed .Staging.Changed }}</><#333333>❫</>{{ end }}<#7AC5CD>]</>",
+          "foreground": "#00CD66",
+          "type": "git",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "<#7AC5CD>[</>ERR:{{ .Code }}{{ if .Meaning }}<#333333>=></>{{ .Meaning }}{{ end }}<#7AC5CD>]</>",
+          "foreground": "#B22222",
+          "type": "exit",
+          "style": "plain"
         }
-    ],
-    "final_space": true,
-    "version": 2
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "\u2517",
+          "foreground": "#7AC5CD",
+          "type": "text",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "<#7AC5CD>[</>Py:{{ .Full }}{{ if .Venv }}<#333333>::</>{{ .Venv }}{{ end }}<#7AC5CD>]</>",
+          "foreground": "#CDBE70",
+          "type": "python",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
+            "display_mode": "files",
+            "fetch_version": true
+          },
+          "template": "<#7AC5CD>[</><b>JVM</b>:{{ .Major }}<#7AC5CD>]</>",
+          "foreground": "#CDBE70",
+          "type": "java",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
+            "display_mode": "files",
+            "fetch_version": true
+          },
+          "template": "<#7AC5CD>[</><b>K</b>:{{ .Full }}<#7AC5CD>]</>",
+          "foreground": "#CDBE70",
+          "type": "kotlin",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
+            "style": "full"
+          },
+          "template": "[<#00FF7F>{{ .Path }}</>]",
+          "foreground": "#7AC5CD",
+          "type": "path",
+          "style": "plain"
+        }
+      ],
+      "newline": true
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "<#DCDCDC>λ</> ➤",
+          "foreground": "#7AC5CD",
+          "type": "text",
+          "style": "plain"
+        }
+      ],
+      "newline": true
+    }
+  ],
+  "version": 3,
+  "final_space": true
 }
