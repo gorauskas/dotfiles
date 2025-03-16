@@ -43,6 +43,7 @@ else
         ln -v -fs ${DF_DIR}/.bash_profile ${HOME}/.bash_profile
         ln -v -fs ${DF_DIR}/.bashrc ${HOME}/.bashrc
         ln -v -fs ${DF_DIR}/.gitconfig ${HOME}/.gitconfig
+        ln -v -fs ${DF_DIR}/.inputrc ${HOME}/.inputrc
         ln -v -fs ${DF_DIR}/mercurial.ini ${HOME}/mercurial.ini
         ln -v -fs ${DF_DIR}/.mg ${HOME}/.mg
         ln -v -fs ${DF_DIR}/.tmux.conf ${HOME}/.tmux.conf
