@@ -2,7 +2,7 @@
     useConfigOnly = true
     email = jgorauskas@gmail.com
     name = Jonas Gorauskas
-    signingkey = 7F8922C59019C3AB
+    signingkey = 204CD1C58FA96209
 [core]
     autocrlf = false
     safecrlf = false
