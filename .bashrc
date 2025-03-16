@@ -28,10 +28,6 @@ if [ -f "${HOME}/dotfiles/.bash_exports" ]; then
     . "${HOME}/dotfiles/.bash_exports";
 fi
 
-if [ -f "${HOME}/dotfiles/.bash_bind" ]; then
-    . "${HOME}/dotfiles/.bash_bind";
-fi
-
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
