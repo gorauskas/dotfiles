@@ -13,6 +13,7 @@ ln -v -fs ${DF_DIR}/.bash_logout ${HOME}/.bash_logout
 ln -v -fs ${DF_DIR}/.bash_profile ${HOME}/.bash_profile
 ln -v -fs ${DF_DIR}/.bashrc ${HOME}/.bashrc
 ln -v -fs ${DF_DIR}/.gitconfig_mac ${HOME}/.gitconfig
+ln -v -fs ${DF_DIR}/.inputrc ${HOME}/.inputrc
 ln -v -fs ${DF_DIR}/.mg ${HOME}/.mg
 ln -v -fs ${DF_DIR}/.tmux.conf ${HOME}/.tmux.conf
 ln -v -fs ${DF_DIR}/.dir_colors ${HOME}/.dir_colors
