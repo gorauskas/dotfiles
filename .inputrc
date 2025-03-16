@@ -1,0 +1,38 @@
+set editing-mode emacs
+set expand-tilde on
+
+# Do not echo ^C after Ctrl+c
+set echo-control-characters off
+
+# Safe paste
+set enable-bracketed-paste on
+
+# Perform file completion in a case insensitive fashion
+# Treat hyphens and underscores as equivalent
+# Limit completion items to 150
+# Display completions one per line
+set completion-ignore-case on
+set completion-map-case on
+set completion-query-items 150
+set completion-display-width 0
+
+# Display matches for ambiguous patterns at first tab press
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+
+# Immediately add a trailing slash when autocompleting symlinks to directories
+set mark-symlinked-directories on
+
+# Enable incremental history search with up/down arrows (also Readline goodness)
+# Learn more about this here: 
+# http://codeinthehole.com/writing/the-most-important-command-line-tip-incremental-history-searching-with-inputrc/
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+"\e[C": forward-char
+"\e[D": backward-char
+
+# picolisp
+set keyseq-timeout 40
+set blink-matching-paren on
+TAB: menu-complete
+C-TAB: menu-complete-backward
