@@ -14,8 +14,7 @@ Xft.dpi:        96
 Xft.antialias:  true
 Xft.rgba:       rgb
 Xft.hinting:    true
-Xft.hintstyle:  hintslight
-Xft.autohint:   false
+Xft.autohint:   true
 Xft.lcdfilter:  lcddefault
 
 !! URxvt definitions
@@ -36,12 +35,12 @@ URxvt.saveLines:              32767
 URxvt.iso14755:               false
 URxvt.iso14755_52:            false
 
-URxvt*font:                   xft:IosevkaTerm Nerd Font Mono:pixelsize=16
-URxvt*boldFont:               xft:IosevkaTerm Nerd Font Mono:bold:pixelsize=16
+URxvt*font:                   xft:EnvyCodeR Nerd Font Mono:pixelsize=14
+URxvt*boldFont:               xft:EnvyCodeR Nerd Font Mono:bold:pixelsize=14
 
 URxvt.perl-ext-common:        default,matcher,resize-font,selection-to-clipboard,tabbed
 
-URxvt.underlineURLs:          True
+URxvt.underlineURLs:          true
 URxvt.url-launcher:           /usr/bin/xdg-open
 URxvt.matcher.button:         1
 URxvt.matcher.rend.0:         Uline Bold fg8
@@ -62,7 +61,7 @@ xterm*loginShell:             true
 xterm*scrollBar:              true
 xterm*scrollKey:              true
 xterm*multiClickTime:         250
-xterm*faceName:               IosevkaTerm Nerd Font Mono
+xterm*faceName:               EnvyCodeR Nerd Font Mono
 xterm*faceSize:               11
 xterm*renderFont:             true
 xterm*scaleHeight:            1.0
