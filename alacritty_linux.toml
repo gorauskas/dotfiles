@@ -71,22 +71,22 @@ shape = "Block"
 TERM = "xterm-256color"
 
 [font]
-size = 10
+size = 11
 
 [font.bold]
-family = "GohuFont 14 Nerd Font"
+family = "EnvyCodeR Nerd Font Mono"
 style = "Bold"
 
 [font.bold_italic]
-family = "GohuFont 14 Nerd Font"
+family = "EnvyCodeR Nerd Font Mono"
 style = "Bold Italic"
 
 [font.italic]
-family = "GohuFont 14 Nerd Font"
+family = "EnvyCodeR Nerd Font Mono"
 style = "Italic"
 
 [font.normal]
-family = "GohuFont 14 Nerd Font"
+family = "EnvyCodeR Nerd Font Mono"
 style = "Regular"
 
 [[keyboard.bindings]]
