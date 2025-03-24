@@ -164,7 +164,7 @@ alias gw='./gradlew'
 
 # emacs
 alias e='emacsclient -ca emacs'
-alias em=emacs
+# alias em=emacs # conflicts with MicroEmacs em
 alias emdi='emacs --debug-init'
 alias enw='emacs -nw'
 alias qem='emacs -q'
