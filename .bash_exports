@@ -79,7 +79,8 @@ export PICO_EXTRAS_PATH=~/Projects/pico/pico-extras
 export PICO_PLAYGROUND_PATH=~/Projects/pico/pico-playground
 
 # golang
-export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+[ -d "/usr/local/go/bin" ] && export PATH=$PATH:/usr/local/go/bin
+[ -d "$HOME/go/bin" ] && export PATH=$PATH:$HOME/go/bin
 export GOPATH=$HOME/go
 
 # kotlin / java / spring
@@ -87,10 +88,10 @@ export SPRING_PROFILES_ACTIVE=development
 export SDKMAN_DIR="$HOME/.sdkman"
 
 # js / node
-export NVM_DIR="$HOME/.nvm"
+[ -d "$HOME/.nvm" ] && export NVM_DIR="$HOME/.nvm"
 
 # google cloud
-export PATH="$PATH:$HOME/bin/google-cloud-sdk/bin"
+[ -d "$HOME/bin/google-cloud-sdk/bin" ] && export PATH="$PATH:$HOME/bin/google-cloud-sdk/bin"
 
 # used for various experiments when writing code
 if [ -d "$HOME/bin" ] ; then
