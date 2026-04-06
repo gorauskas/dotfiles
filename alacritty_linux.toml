@@ -50,7 +50,6 @@ foreground = "#F5F5F5"
 [colors.search.matches]
 background = "#333333"
 foreground = "#F5F5F5"
-
 [colors.selection]
 background = "#483d8b"
 text = "CellForeground"
@@ -100,13 +99,23 @@ key = "C"
 mods = "Control|Shift"
 
 [[keyboard.bindings]]
-action = "Quit"
-key = "Q"
+action = "SpawnNewInstance"
+key = "Return"
 mods = "Control|Shift"
 
 [[keyboard.bindings]]
-action = "SpawnNewInstance"
-key = "Return"
+action = "DecreaseFontSize"
+key = "_"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "+"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "ResetFontSize"
+key = "|"
 mods = "Control|Shift"
 
 [[keyboard.bindings]]
