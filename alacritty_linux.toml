@@ -88,59 +88,20 @@ style = "Italic"
 family = "EnvyCodeR Nerd Font Mono"
 style = "Regular"
 
-[[keyboard.bindings]]
-action = "Paste"
-key = "V"
-mods = "Control|Shift"
-
-[[keyboard.bindings]]
-action = "Copy"
-key = "C"
-mods = "Control|Shift"
-
-[[keyboard.bindings]]
-action = "SpawnNewInstance"
-key = "Return"
-mods = "Control|Shift"
-
-[[keyboard.bindings]]
-action = "DecreaseFontSize"
-key = "_"
-mods = "Control|Shift"
-
-[[keyboard.bindings]]
-action = "IncreaseFontSize"
-key = "+"
-mods = "Control|Shift"
-
-[[keyboard.bindings]]
-action = "ResetFontSize"
-key = "|"
-mods = "Control|Shift"
-
-[[keyboard.bindings]]
-action = "ScrollPageUp"
-key = "PageUp"
-mode = "~Alt"
-mods = "Shift"
-
-[[keyboard.bindings]]
-action = "ScrollPageDown"
-key = "PageDown"
-mode = "~Alt"
-mods = "Shift"
-
-[[keyboard.bindings]]
-action = "ScrollToTop"
-key = "Home"
-mode = "~Alt"
-mods = "Shift"
-
-[[keyboard.bindings]]
-action = "ScrollToBottom"
-key = "End"
-mode = "~Alt"
-mods = "Shift"
+[keyboard]
+bindings = [
+  { key = "V",        mods = "Control|Shift", action = "Paste" },
+  { key = "C",        mods = "Control|Shift", action = "Copy" },
+  { key = "Q",        mods = "Control|Shift", action = "Quit" },
+  { key = "Return",   mods = "Control|Shift", action = "SpawnNewInstance" },
+  { key = "+",        mods = "Control|Shift", action = "IncreaseFontSize" },
+  { key = "_",        mods = "Control|Shift", action = "DecreaseFontSize" },
+  { key = ")",        mods = "Control|Shift", action = "ResetFontSize" },
+  { key = "PageUp",   mods = "Shift", mode = "~Alt", action = "ScrollPageUp" },
+  { key = "PageDown", mods = "Shift", mode = "~Alt", action = "ScrollPageDown" },
+  { key = "Home",     mods = "Shift", mode = "~Alt", action = "ScrollToTop" },
+  { key = "End",      mods = "Shift", mode = "~Alt", action = "ScrollToBottom" },
+]
 
 [scrolling]
 history = 9999
