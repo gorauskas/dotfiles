@@ -1,5 +1,4 @@
 set editing-mode emacs
-set expand-tilde on
 
 # Do not echo ^C after Ctrl+c
 set echo-control-characters off
