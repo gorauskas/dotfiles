@@ -17,21 +17,6 @@ if [ -d "$HOME/Library/Application Support/JetBrains/Toolbox/scripts" ] ; then
     export PATH="$HOME/Library/Application Support/JetBrains/Toolbox/scripts${PATH:+:${PATH}}"
 fi
 
-# QMK Firmware
-if [ -d "$HOME/Projects/qmk_firmware" ] ; then
-    export QMK_HOME="$HOME/Projects/qmk_firmware"
-    export QMK_FIRMWARE="$HOME/Projects/qmk_firmware"
-    export QMK_VERBOSE="True"
-    export QMK_DATETIME_FMT="%Y-%m-%d %H:%M:%S"
-    export QMK_LOG_FMT="%(levelname)s %(message)s"
-    export QMK_LOG_FILE_FMT="[%(levelname)s] [%(asctime)s] [file:%(pathname)s] [line:%(lineno)d] %(message)s"
-    export QMK_LOG_FILE_LEVEL="info"
-    export QMK_LOG_FILE="None"
-    export QMK_COLOR="True"
-    export QMK_UNICODE="True"
-    export QMK_INTERACTIVE="False"
-fi
-
 # Which platform are we running on?
 export PLATFORM=`uname | cut -d"-" -f1`
 if [[ "$PLATFORM" == "Linux" || "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MINGW64_NT" ]]; then
