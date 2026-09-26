@@ -179,7 +179,7 @@ alias gambit='gambitc'
 # python
 # The 2 aliases to ipython below are changing to ensure that ipython is
 # loaded from inside an venv when in one
-alias ipy="python3 -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
+alias ipy="python3 -c 'from IPython import start_ipython; start_ipython()'"
 
 alias py3='python3'
 alias py='python'
