@@ -1,4 +1,4 @@
-
+#!/usr/bin/env bash
 # Bourne Again Shell init file
 # Jonas Gorauskas - 2007-03-17 21:03:35
 # Modified: 2017-10-29 11:11:42
@@ -20,8 +20,6 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 elif [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
-elif [ -f /opt/homebrew/etc/bash_completion ]; then
-    . /opt/homebrew/etc/bash_completion
 fi
 
 if [ -f "${HOME}/dotfiles/.bash_exports" ]; then
@@ -72,10 +70,6 @@ fi
 
 if [ -f "${HOME}/dotfiles/.bash_prompt" ]; then
     . "${HOME}/dotfiles/.bash_prompt";
-fi
-
-if [ -f "${HOME}/.bash_figure" ]; then  # hidden
-    . "${HOME}/.bash_figure";
 fi
 
 if [[ -f "${HOME}/dotfiles/.Xresources" && "$PLATFORM" == "Linux" ]]; then
