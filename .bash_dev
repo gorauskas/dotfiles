@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Bourne Again Shell 
 # software development related stuff
 
@@ -40,15 +41,6 @@ if [[ "$PLATFORM" == "FreeBSD" ]]; then
     [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 fi
 
-if [[ "$PLATFORM" == "Darwin" ]]; then
-    export SHELL_SESSION_HISTORY=0
-    export VIRTUALENVWRAPPER_PYTHON=/opt/homebrew/bin/python3
-    if [ -f /opt/homebrew/bin/virtualenvwrapper_lazy.sh ]; then 
-        . /opt/homebrew/bin/virtualenvwrapper_lazy.sh
-        export VIRTUALENVWRAPPER_SCRIPT=/opt/homebrew/bin/virtualenvwrapper_lazy.sh
-    fi
-fi
-
 if [[ "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MINGW64_NT" ]]; then
     [ -f /usr/share/bash_completion/bash_completion ] && . /usr/share/bash_completion/bash_completion
 fi
@@ -67,28 +59,6 @@ if [ -d "$HOME/Projects/qmk_firmware" ] ; then
     export QMK_UNICODE="True"
     export QMK_INTERACTIVE="False"
 fi
-
-# google cloud
-
-# On the M3 Mac Only
-if [[ "$PLATFORM" == "Darwin" ]]; then
-    if [ -f "$(brew --prefix)/share/google-cloud-sdk/path.bash.inc" ]; then
-        . "$(brew --prefix)/share/google-cloud-sdk/path.bash.inc"
-    fi
-    if [ -f "$(brew --prefix)/share/google-cloud-sdk/completion.bash.inc" ]; then
-        . "$(brew --prefix)/share/google-cloud-sdk/completion.bash.inc"
-    fi
-fi
-
-## THIS IS THE OLD MAC INTEL WAY 
-# # The next line updates PATH for the Google Cloud SDK.
-# if [ -f "$HOME/bin/google-cloud-sdk/path.bash.inc" ]; then 
-#     . "$HOME/bin/google-cloud-sdk/path.bash.inc"; 
-# fi
-# # The next line enables shell command completion for gcloud.
-# if [ -f "$HOME/bin/google-cloud-sdk/completion.bash.inc" ]; then 
-#     . "$HOME/bin/google-cloud-sdk/completion.bash.inc"; 
-# fi
 
 # hugo bash completions
 [ command -v hugo >/dev/null 2>&1 ] && source <(hugo completion bash)

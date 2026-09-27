@@ -1,4 +1,4 @@
-
+#!/usr/bin/env bash
 # Bourne Again Shell Aliases File
 # Jonas Gorauskas - 2007-03-17 21:17:05
 # Modified: 2017-09-30 14:48:13
@@ -63,7 +63,7 @@ if [ "$TERM" != "dumb" ]; then
         alias fgrep='fgrep $LS_OPTIONS'
         alias egrep='egrep $LS_OPTIONS'
     fi
-    if [[ "$PLATFORM" == "Darwin" || "$PLATFORM" == "FreeBSD" ]]; then
+    if [[ "$PLATFORM" == "FreeBSD" ]]; then
         alias ls='ls --color=always'
         alias ll='ls -laFG'
         alias l='ls -l'
@@ -270,18 +270,13 @@ if [[ "$PLATFORM" == "Linux" || "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MI
     alias pwdu='du -Pschx .[!.]* ./* 2>/dev/null'
 fi
 
-if [[ "$PLATFORM" == "Darwin" || "$PLATFORM" == "FreeBSD" ]]; then
+if [[ "$PLATFORM" == "FreeBSD" ]]; then
     alias ports='lsof -n -i | grep LISTEN'
-    alias df='df -Ha'
+    alias df='df -Ha -,'
     alias dus='du -akx | sort -n'
     alias du1='du -s'
     alias nukeds="find ./ -type f | grep .DS_Store | xargs rm"
     alias htop='sudo htop'
-fi
-
-if [[ "$PLATFORM" == "FreeBSD" ]]; then
-    unalias df
-    alias df='df -Ha -,'
 fi
 
 #EOF
