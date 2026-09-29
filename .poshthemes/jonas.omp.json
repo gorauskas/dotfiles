@@ -1,137 +1,104 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 4,
+  "final_space": true,
   "blocks": [
     {
       "type": "prompt",
       "alignment": "left",
       "segments": [
         {
-          "properties": {
-            "cache_duration": "none"
-          },
-          "template": "<#7AC5CD>\u250f[</>{{ .UserName }}@{{ .HostName }}<#7AC5CD>]</>",
-          "foreground": "#98F5FF",
           "type": "session",
-          "style": "plain"
+          "style": "plain",
+          "foreground": "#B7E3D8",
+          "template": "<#6FC7B0>\u250f[</>{{ .UserName }}@{{ .HostName }}<#6FC7B0>]</>"
         },
         {
-          "properties": {
-            "cache_duration": "none",
-            "style": "austin",
-            "threshold": 0
-          },
-          "template": "<#7AC5CD>[</>{{ .FormattedMs }}<#7AC5CD>]</>",
-          "foreground": "#FF7F50",
-          "type": "executiontime",
-          "style": "diamond"
-        },
-        {
-          "properties": {
-            "cache_duration": "none",
-            "time_format": "2006-01-02 15:04:05"
-          },
-          "template": "<#7AC5CD>[</>{{ .CurrentDate | date .Format }}<#7AC5CD>]</>",
-          "foreground": "#98F5FF",
           "type": "time",
-          "style": "diamond"
+          "style": "plain",
+          "foreground": "#B7E3D8",
+          "template": "<#6FC7B0>[</>{{ .CurrentDate | date .Format }}<#6FC7B0>]</>",
+          "options": {
+            "time_format": "2006-01-02 15:04:05"
+          }
         },
         {
-          "properties": {
-            "cache_duration": "none",
-            "fetch_stash_count": true,
-            "fetch_status": true,
-            "fetch_upstream_icon": true
-          },
-          "template": "<#7AC5CD>[</>{{ .HEAD }}{{if .BranchStatus }}{{ .BranchStatus }}{{ end }}{{ if or .Working.Changed .Staging.Changed }}\u200a<#333333>❪</><#CD96CD>\u2213{{ end }}{{ if .Working.Changed }}\u200a{{ .Working.String }}\u2297{{ end }}{{ if .Staging.Changed }}\u200a{{ .Staging.String }}\u2295{{ end }}{{ if gt .StashCount 0 }}\u200a{{ .StashCount }}\u229a{{ end }}{{ if or .Working.Changed .Staging.Changed }}</><#333333>❫</>{{ end }}<#7AC5CD>]</>",
-          "foreground": "#00CD66",
           "type": "git",
-          "style": "plain"
+          "style": "plain",
+          "foreground": "#B7E3D8",
+          "template": "<#6FC7B0>[</>{{ .HEAD }}{{if .BranchStatus }}{{ .BranchStatus }}{{ end }}{{ if or .Working.Changed .Staging.Changed }}\u200a<#7FE0C2>\u2213{{ end }}{{ if .Working.Changed }}\u200a{{ .Working.String }}\u2297{{ end }}{{ if .Staging.Changed }}\u200a{{ .Staging.String }}\u2295{{ end }}{{ if gt .StashCount 0 }}\u200a{{ .StashCount }}\u229a{{ end }}{{ if or .Working.Changed .Staging.Changed }}</>{{ end }} <#6FC7B0>]</>",
+          "options": {
+            "source": "cli"
+          }
         },
         {
-          "properties": {
-            "cache_duration": "none"
-          },
-          "template": "<#7AC5CD>[</>ERR:{{ .Code }}{{ if .Meaning }}<#333333>=></>{{ .Meaning }}{{ end }}<#7AC5CD>]</>",
-          "foreground": "#B22222",
-          "type": "exit",
-          "style": "plain"
+          "type": "status",
+          "style": "plain",
+          "foreground": "#CE2029",
+          "template": "<#6FC7B0>[</>ERR:{{ .Code }}{{ if .Meaning }}<#7FE0C2>=></>{{ .Meaning }}{{ end }}<#6FC7B0>]</>",
+          "options": {}
         }
       ]
     },
     {
       "type": "prompt",
       "alignment": "left",
+      "newline": true,
       "segments": [
         {
-          "properties": {
-            "cache_duration": "none"
-          },
-          "template": "\u2517",
-          "foreground": "#7AC5CD",
           "type": "text",
-          "style": "plain"
-        },
-        {
-          "properties": {
+          "style": "plain",
+          "foreground": "#6FC7B0",
+          "template": "\u2517",
+          "options": {
             "cache_duration": "none"
-          },
-          "template": "<#7AC5CD>[</>Py:{{ .Full }}{{ if .Venv }}<#333333>::</>{{ .Venv }}{{ end }}<#7AC5CD>]</>",
-          "foreground": "#CDBE70",
+          }
+        },
+        {
+          "type": "executiontime",
+          "style": "plain",
+          "foreground": "#FF7900",
+          "template": "<#6FC7B0>[</>{{ .FormattedMs }}<#6FC7B0>]</>",
+          "options": {
+            "style": "austin",
+            "threshold": 0
+          }
+        },        
+        {
           "type": "python",
-          "style": "plain"
+          "style": "plain",
+          "foreground": "#F5A500",
+          "template": "<#6FC7B0>[</><#7FE0C2>\ue235</> {{ .Full }}{{ if .Venv }}<#6FC7B0>::</><#FF7900>{{ .Venv }}</>{{ end }}<#6FC7B0>]</>",
+          "options": {
+            "cache_duration": "none"
+          }
         },
         {
-          "properties": {
-            "cache_duration": "none",
-            "display_mode": "files",
-            "fetch_version": true
-          },
-          "template": "<#7AC5CD>[</><b>JVM</b>:{{ .Major }}<#7AC5CD>]</>",
-          "foreground": "#CDBE70",
-          "type": "java",
-          "style": "plain"
-        },
-        {
-          "properties": {
-            "cache_duration": "none",
-            "display_mode": "files",
-            "fetch_version": true
-          },
-          "template": "<#7AC5CD>[</><b>K</b>:{{ .Full }}<#7AC5CD>]</>",
-          "foreground": "#CDBE70",
-          "type": "kotlin",
-          "style": "plain"
-        },
-        {
-          "properties": {
-            "cache_duration": "none",
-            "style": "full"
-          },
-          "template": "[<#00FF7F>{{ .Path }}</>]",
-          "foreground": "#7AC5CD",
           "type": "path",
-          "style": "plain"
+          "style": "plain",
+          "foreground": "#6FC7B0",
+          "template": "[<#B7E3D8>{{ .Path }}</>]",
+          "options": {
+            "style": "full"
+          }
         }
-      ],
-      "newline": true
+      ]
     },
     {
       "type": "prompt",
       "alignment": "left",
+      "newline": true,
       "segments": [
         {
-          "properties": {
-            "cache_duration": "none"
-          },
-          "template": "<#DCDCDC>λ</> ➤",
-          "foreground": "#7AC5CD",
           "type": "text",
-          "style": "plain"
+          "style": "plain",
+          "foreground": "#6FC7B0",
+          "template": "<#B7E3D8>\u03bb</> \u27a4",
+          "options": {
+            "cache_duration": "none"
+          }
         }
-      ],
-      "newline": true
+      ]
     }
-  ],
-  "version": 3,
-  "final_space": true
+  ]
 }
