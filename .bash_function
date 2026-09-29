@@ -1,19 +1,20 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2009
 # Bourne Again Shell Init Function File
 # Jonas Gorauskas - 2007.03.17 22:00:00
 # Modified: 2017-10-08 13:12:10
 
 # Find a process by name
 function psgrep() {
-    ps aux | grep -v grep | grep -i -e VSZ -e $1
+    ps aux | grep -v grep | grep -i -e VSZ -e "$1"
 }
 
 # Kill a process by Name
 function pskill() {
     local pid
-    pid=$(ps ax | grep -i -e $1 | grep -v grep | awk '{ print $1 }')
+    pid=$(ps ax | grep -i -e "$1" | grep -v grep | awk '{ print $1 }')
     echo -n "Killing $1 (Process $pid) ..."
-    kill -9 $pid
+    kill -9 "$pid"
     echo "Slaughtered ..."
 }
 
@@ -22,15 +23,15 @@ function fwatch() {
     if [ $# -ne 1 ]; then
         tail -f nohup.out
     else
-        tail -f $1
+        tail -f "$1"
     fi
 }
 
 function rot13() {
-    if [ $# = 0 ] ; then
-        tr "[a-m][n-z][A-M][N-Z]" "[n-z][a-m][N-Z][A-M]"
+    if (($#)); then
+        printf '%s\n' "$*" | tr 'A-Za-z' 'N-ZA-Mn-za-m'
     else
-        echo $1 | tr "[a-m][n-z][A-M][N-Z]" "[n-z][a-m][N-Z][A-M]"
+        tr 'A-Za-z' 'N-ZA-Mn-za-m'
     fi
 }
 
@@ -39,9 +40,9 @@ function chmog() {
         echo "usage: chmog mode owner group file"
         return 1
     else
-        chmod $1 $4
-        chown $2 $4
-        chgrp $3 $4
+        chmod "$1" "$4"
+        chown "$2" "$4"
+        chgrp "$3" "$4"
     fi
 }
 
@@ -76,14 +77,14 @@ function envinfo() {
         fi
         let ic=$ic+1
     done
-    echo $is
+    echo "$is"
 }
 
 # clean a directory by removing all temp and backup files
 # that were left behind
-function clean () {
+function clean() {
     echo -n "Are you sure you want to clean this directory? [y/n] "
-    read yorn
+    read -r yorn
     if test "$yorn" = "y"; then
         rm -f \#* *~ .*~ *.bak .*.bak *.tmp .*.tmp core a.out
         echo "Directory has been cleaned!"
@@ -93,7 +94,7 @@ function clean () {
 }
 
 # Start a simple python httpd on the current directory at the given port
-function websrv () {
+function websrv() {
     command -v python >/dev/null 2>&1 || { echo >&2 "I require python but it's not installed.  Aborting."; exit 1; }
     if [ "$(python -c 'import sys; print(sys.version_info[0])')" -eq 2 ]; then
         python -m SimpleHTTPServer "$@"
@@ -103,8 +104,18 @@ function websrv () {
 }
 
 # make and cd into directory
-function mcd () {
-    mkdir -p "$1" && cd "$1";
+function mcd() {
+    mkdir -p "$1" && cd "$1" || exit;
+}
+
+function cdl() {
+    local folder="$1"
+    local folder="${folder:=$HOME}"
+    if [[ -d "$folder" ]]; then
+        cd "$folder" >/dev/null || exit; dir
+    else
+        echo "bash: cdl '$folder' - Directory not found"
+    fi
 }
 
 # page with `most` if present, otherwise use `less`
@@ -117,136 +128,61 @@ function pg() {
 }
 
 # extract archives based on extension
-function extract () {
-    if [ -f $1 ]; then
-        case $1 in
-            *.tar.bz2)   tar -jxvf $1          ;;
-            *.tar.gz)    tar -zxvf $1          ;;
-            *.tbz2)      tar -jxvf $1          ;;
-            *.tgz)       tar -zxvf $1          ;;
-            *.tar)       tar -xvf $1           ;;
-            *.bz2)       bunzip2 $1            ;;
-            *.zip)       unzip $1              ;;
-            *.ZIP)       unzip $1              ;;
-            *.gz)        gunzip $1             ;;
-            *.Z)         uncompress $1         ;;
-
-            *.7z)        7z -x $1              ;;
-            *.rar)       unrar -x $1           ;;
-            *.jar)       jar -xvf $1           ;;
-
-            *.pax)       cat $1 | pax -r                  ;;
-            *.pax.Z)     uncompress $1 --stdout | pax -r  ;;
-
-            *) echo "'$1' cannot be uncompressed with extract()" ;;
+function extract() {
+    if [ -f "$1" ]; then
+        case "$1" in
+            *.tar.bz2)   tar -jxvf "$1"                                    ;;
+            *.tar.gz)    tar -zxvf "$1"                                    ;;
+            *.tar.xz)    tar -xvf "$1"                                     ;;
+            *.tar)       tar -xvf "$1"                                     ;;
+            *.tbz2)      tar -jxvf "$1"                                    ;;
+            *.tgz)       tar -zxvf "$1"                                    ;;
+            *.7z)        7z x "$1"                                         ;;
+            *.bz2)       bunzip2 -k "$1"                                   ;;
+            *.cab)       cabextract "$1"                                   ;;
+            *.gz)        gunzip "$1"                                       ;;
+            *.jar)       jar -xvf "$1"                                     ;;
+            *.rar)       unrar x "$1"                                      ;;
+            *.xz)        unxz "$1"                                         ;;
+            *.Z)         uncompress "$1"                                   ;;
+            *.ZIP)       unzip "$1"                                        ;;
+            *.zip)       unzip "$1"                                        ;;
+            *.zst)       unzstd "$1"                                       ;;
+            *)           echo "'$1' cannot be uncompressed with extract()" ;;
         esac
     else
         echo "'$1' is not a valid file"
     fi
 }
 
-# Git commit and push - CAP
-function cap () {
-    git add . ;
-    git commit -m "$1" ;
-    git pull ;
-    git push ;
+# counts regular files, symbolic links, and directories in the 
+# current directory tree and prints the count for each type
+function cfiles() {
+    for t in files links directories; do
+        echo "$(find . -type "${t:0:1}" | wc -l) $t"
+    done 2>/dev/null
 }
 
-# Git compare local to remote - GDR git diff remote
-function gdr () {
-    git fetch origin ;
-    git diff $1..origin/$1;
+# create 16 char password using /dev/urandom
+function mkpwd() {
+    LC_ALL=C tr -dc '[:graph:]' < /dev/urandom | head -c "${1:-16}"; echo;
 }
 
 # musical ping - requires the sox package be isntalled
 function mping() {
-    ping $@ | awk -F[=\ ] '/time=/{t=$(NF-1);f=2000-14*log(t^18);c="play -q -n synth 1 pl "f"&";print $0;system(c)}';
-}
-
-# docker
-function docker-names {
-    for ID in `docker ps | awk '{print $1}' | grep -v 'CONTAINER'`; do
-        docker inspect $ID | grep Name | head -1 | awk '{print $2}' | sed 's/,//g' | sed 's%/%%g' | sed 's/"//g'
-    done
-}
-
-function docker-ips {
-    echo "IP addresses of all named running containers"
-
-    for DOC in `docker-names`; do
-        IP=`docker inspect $DOC | grep -m3 IPAddress | cut -d '"' -f 4 | tr -d "\n"`
-        OUT+=$DOC'\t'$IP'\n'
-    done;
-
-    echo -e $OUT | column -t
-}
-
-function docker-exec {
-    docker exec -it $1 ${2:-bash}
-}
-
-function docker-inspect {
-    docker inspect $1
-}
-
-function docker-logs {
-    docker logs -f $1
-}
-
-function docker-run {
-    docker run -it $1 $2
-}
-
-function docker-compose-run {
-    docker-compose run $@
-}
-
-function docker-stop-remove {
-    docker stop $1; docker rm $1
-}
-
-function docker-remove-exited {
-    docker rm $(docker ps --all -q -f status=exited)
-}
-
-function docker-remove-dangling-images {
-    imgs=$(docker images -q -f dangling=true)
-    [ ! -z "$imgs" ] && docker rmi "$imgs" || echo "No dangling images!"
-}
-
-function docker-compose-fn {
-    docker-compose $*
-}
-
-# to allow for things like `dex $(dlab label) sh`
-function dlab {
-    docker ps --filter="label=$1" --format="{{.ID}}"
+    ping "$@" | awk -F[=\ ] '/time=/{t=$(NF-1);f=2000-14*log(t^18);c="play -q -n synth 1 pl "f"&";print $0;system(c)}';
 }
 
 # LINUX ONLY
 if [[ "$PLATFORM" == "Linux" ]]; then
 
     # Open any document with any application
-    function open () {
-        T=`xdg-mime query filetype $1`
-        echo "Opening file" $1 "of type" $T "with" `xdg-mime query default $T`
-        xdg-open $1
+    function open() {
+        T=$(xdg-mime query filetype "$1")
+        WITH=$(xdg-mime query default "$T")
+        echo "Opening file" "$1" "of type" "$T" "with" "$WITH"
+        xdg-open "$1"
         echo "Open done!"
     }
 
-    # cd and ls in one
-    function cl () {
-        if [ -d "$1" ]; then
-            cd "$1"
-            dir
-        else
-            echo "bash: cl '%1' - Directory not found"
-        fi
-    }
-
-    # create 16 char password using /dev/urandom
-    function mkpwd () {
-        LC_ALL=C tr -dc '[:graph:]' < /dev/urandom | head -c ${1:-16}; echo;
-    }
 fi
