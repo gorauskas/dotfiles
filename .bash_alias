@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
-# Bourne Again Shell Aliases File
-# Jonas Gorauskas - 2007-03-17 21:17:05
-# Modified: 2026-09-29 14:03:31
 
-# A note about behavior! Consider te following example:
+# A note about behavior! Consider the following example:
 # 
 #   alias ls='ls $LS_OPTIONS'
 #   alias ll='ls -laFo'
@@ -165,6 +162,9 @@ if [[ "$PLATFORM" == "Linux" || "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MI
 
     ## Get server cpu info ##
     alias cpuinfo='lscpu'
+
+    alias dmesg='sudo dmesg -t'
+    alias sysinfo='inxi -Fxxxrza'
 
     ## get GPU ram on desktop / laptop##
     alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'

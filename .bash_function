@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2009
-# Bourne Again Shell Init Function File
-# Jonas Gorauskas - 2007.03.17 22:00:00
-# Modified: 2026-09-29 14:03:31
 
 # make a backup file
 function bak() {

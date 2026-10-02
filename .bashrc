@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-# Bourne Again Shell init file
-# Jonas Gorauskas - 2007-03-17 21:03:35
-# Modified: 2017-10-29 11:11:42
+# shellcheck disable=SC1091
 
 # If not running interactively, don't do anything
 case $- in
@@ -11,10 +9,6 @@ esac
 
 # files you make look like rw-r--r--
 umask 022
-
-if [ -s /opt/homebrew/bin/brew ]; then 
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-fi 
 
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
@@ -79,3 +73,5 @@ fi
 if [ -f "${HOME}/dotfiles/.bash_dev" ]; then
     . "${HOME}/dotfiles/.bash_dev";
 fi
+
+fastfetch 

@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# Bourne Again Shell exports file
-# Modified: 2026-09-29 14:03:31
 
 # Which platform are we running on?
 PLATFORM=$(uname | cut -d"-" -f1)

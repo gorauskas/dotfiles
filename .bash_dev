@@ -1,24 +1,22 @@
 #!/usr/bin/env bash
-# Bourne Again Shell 
+# shellcheck disable=SC1091
+
 # software development related stuff
 
 # python
 if [[ "$PLATFORM" == "Linux" ]]; then
     if [[ "${DISTRO}" == "Arch" || "${DISTRO}" == "ManjaroLinux" || "${DISTRO}" == "cachyos" ]]; then
-        # for arch linux
         export VIRTUALENVWRAPPER_SCRIPT=/usr/bin/virtualenvwrapper.sh
         [ -f /usr/bin/virtualenvwrapper_lazy.sh ] && . /usr/bin/virtualenvwrapper_lazy.sh
     fi
 
     if [[ "${DISTRO}" == "Debian" || "${DISTRO}" == "Ubuntu" ]]; then
-        # for debian
         export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
         [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && . /usr/local/bin/virtualenvwrapper_lazy.sh
     fi
 
     # enable bash completion in interactive shells
     if [[ "${DISTRO}" == "Arch" || "${DISTRO}" == "ManjaroLinux" || "${DISTRO}" == "cachyos" ]]; then
-        # for arch linux
         if [ -f /usr/share/bash-completion/bash_completion ] && ! shopt -oq posix; then
             . /usr/share/bash-completion/bash_completion
         fi
@@ -28,7 +26,6 @@ if [[ "$PLATFORM" == "Linux" ]]; then
     fi
 
     if [[ "${DISTRO}" == "Debian" || "${DISTRO}" == "Ubuntu" ]]; then
-        # for debian
         if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
             . /etc/bash_completion
         fi
@@ -39,10 +36,6 @@ if [[ "$PLATFORM" == "FreeBSD" ]]; then
     export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
     [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && . /usr/local/bin/virtualenvwrapper_lazy.sh
     [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
-fi
-
-if [[ "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MINGW64_NT" ]]; then
-    [ -f /usr/share/bash_completion/bash_completion ] && . /usr/share/bash_completion/bash_completion
 fi
 
 # QMK Firmware
@@ -61,19 +54,203 @@ if [ -d "$HOME/Projects/qmk_firmware" ] ; then
 fi
 
 # hugo bash completions
-[ command -v hugo >/dev/null 2>&1 ] && source <(hugo completion bash)
+if command -v hugo >/dev/null 2>&1; then
+    # shellcheck disable=SC1090
+    source <(hugo completion bash)
+fi
 
 # nvm / node
 # This loads nvm
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  
 
 # This loads nvm bash_completion
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  
 
 # rust
 [ -s "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
 # sdkman
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+# export SDKMAN_DIR="$HOME/.sdkman"
+# [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+
+# TODO: DEV SPECIFIC ALIASES 
+# LS Dir Output for developers:
+alias dird='eza -l -a -h -F -@ -t modified -s newest --icons --group-directories-first --smart-group --time-style=long-iso --loc --git --git-repos'
+alias devlog='eza --code --icons'
+
+alias diff='colordiff'              # requires colordiff package
+alias d='diff'
+alias g='git'
+alias gw='./gradlew'
+
+# emacs
+alias e='emacsclient -ca emacs'
+# alias em=emacs # conflicts with MicroEmacs em
+alias emdi='emacs --debug-init'
+alias enw='emacs -nw'
+alias qem='emacs -q'
+alias sem='sudo emacs'
+
+# lisp
+alias lisp='rlwrap sbcl'
+alias csi='rlwrap chicken-csi'
+alias guile='rlwrap guile'
+alias gambit='gambitc'
+
+# python
+# The 2 aliases to ipython below are changing to ensure that ipython is
+# loaded from inside an venv when in one
+alias ipy="python3 -c 'from IPython import start_ipython; start_ipython()'"
+
+alias py3='python3'
+alias py='python'
+
+# Git commit and push - CAP
+function cap() {
+    git add . ;
+    git commit -m "$1" ;
+    git pull ;
+    git push ;
+}
+
+# Git compare local to remote - GDR git diff remote
+function gdr() {
+    git fetch origin ;
+    git diff "$1"..origin/"$1";
+}
+
+# maven
+# alias mcc='mvn clean compile'
+# alias mci='mvn clean install'
+# alias mcp='mvn clean package'
+# alias mda='mvn dependency:analyze'
+# alias mdt='mvn dependency:tree | less'
+# alias mp='mvn package -DskipTests'
+
+# docker
+# alias dco=docker-compose-fn
+# alias dcu="docker-compose up -d"
+# alias dcd="docker-compose down"
+# alias dcr=docker-compose-run
+# alias dex=docker-exec
+# alias di=docker-inspect
+# alias dim="docker images"
+# alias dip=docker-ips
+# alias dl=docker-logs
+# alias dnames=docker-names
+# alias dps="docker ps"
+# alias dpsa="docker ps -a"
+# alias drmc=docker-remove-exited # containers
+# alias drmid=docker-remove-dangling-images
+# alias drun=docker-run
+# alias dsp="docker system prune --all"
+# alias dsrm=docker-stop-remove # the container
+
+# kubernetes
+# alias kc=kubectl
+# alias kx=kubectx
+# alias kns=kubens
+# alias kgp="kubectl get pods"
+# alias kgs="kubectl get secrets"
+# alias kgc="kubectl get configmaps"
+# alias kpf="kubectl port-forward"
+
+# # docker
+# function docker-names {
+#     for ID in `docker ps | awk '{print $1}' | grep -v 'CONTAINER'`; do
+#         docker inspect "$ID" | grep Name | head -1 | awk '{print $2}' | sed 's/,//g' | sed 's%/%%g' | sed 's/"//g'
+#     done
+# }
+
+# function docker-ips {
+#     echo "IP addresses of all named running containers"
+
+#     for DOC in `docker-names`; do
+#         IP=$(docker inspect "$DOC" | grep -m3 IPAddress | cut -d '"' -f 4 | tr -d "\n")
+#         OUT+=$DOC'\t'$IP'\n'
+#     done;
+
+#     echo -e "$OUT" | column -t
+# }
+
+# function docker-exec {
+#     docker exec -it "$1" "${2:-bash}"
+# }
+
+# function docker-inspect {
+#     docker inspect "$1"
+# }
+
+# function docker-logs {
+#     docker logs -f "$1"
+# }
+
+# function docker-run {
+#     docker run -it "$1" "$2"
+# }
+
+# function docker-compose-run {
+#     docker-compose run "$@"
+# }
+
+# function docker-stop-remove {
+#     docker stop "$1"; docker rm "$1"
+# }
+
+# function docker-remove-exited {
+#     docker rm "$(docker ps --all -q -f status=exited)"
+# }
+
+# function docker-remove-dangling-images {
+#     imgs=$(docker images -q -f dangling=true)
+#     [ ! -z "$imgs" ] && docker rmi "$imgs" || echo "No dangling images!"
+# }
+
+# function docker-compose-fn {
+#     docker-compose "$*"
+# }
+
+# # to allow for things like `dex $(dlab label) sh`
+# function dlab {
+#     docker ps --filter="label=$1" --format="{{.ID}}"
+# }
+
+# # JetBrains Stuff
+# if [ -d "$HOME/Library/Application Support/JetBrains/Toolbox/scripts" ] ; then
+#     export PATH="$HOME/Library/Application Support/JetBrains/Toolbox/scripts${PATH:+:${PATH}}"
+# fi
+
+# # DEVELOPMENT
+# # python virtualenv
+# export WORKON_HOME=$HOME/.virtualenvs
+# export PROJECT_HOME=$HOME/Projects
+# export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+
+# # don't use cowsay with ansible
+# export ANSIBLE_NOCOWS=1
+
+# # don't send .NET telemetry
+# export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+# # raspberry pi pico C sdk
+# export PICO_SDK_PATH=~/Projects/pico/pico-sdk
+# export PICO_EXAMPLES_PATH=~/Projects/pico/pico-examples
+# export PICO_EXTRAS_PATH=~/Projects/pico/pico-extras
+# export PICO_PLAYGROUND_PATH=~/Projects/pico/pico-playground
+
+# # golang
+# [ -d "/usr/local/go/bin" ] && export PATH=$PATH:/usr/local/go/bin
+# [ -d "$HOME/go/bin" ] && export PATH=$PATH:$HOME/go/bin
+# export GOPATH=$HOME/go
+
+# # kotlin / java / spring
+# export SPRING_PROFILES_ACTIVE=development
+# export SDKMAN_DIR="$HOME/.sdkman"
+
+# # js / node
+# [ -d "$HOME/.nvm" ] && export NVM_DIR="$HOME/.nvm"
+
+# # google cloud
+# [ -d "$HOME/bin/google-cloud-sdk/bin" ] && export PATH="$PATH:$HOME/bin/google-cloud-sdk/bin"
