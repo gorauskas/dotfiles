@@ -1,17 +1,30 @@
-# JGG Dotfiles Ignore list
+# JGG Dotfiles Ignore list + global gitignore
 
 # Folder view configuration files
 .DS_Store
 Desktop.ini
-.vscode/
-
-# Thumbnail cache files
-._*
 Thumbs.db
+
+# Editor / IDE cruft
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Build / dependency dirs commonly left untracked
+node_modules/
+__pycache__/
+*.pyc
 
 # Files that might appear on external disks
 .Spotlight-V100
 .Trashes
+
+# Secrets you never want to commit by accident
+*.pem
+*.key
+.env
 
 vimconf/
 .vim/
