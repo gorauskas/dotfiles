@@ -27,9 +27,7 @@
           "style": "plain",
           "foreground": "#B7E3D8",
           "template": "<#6FC7B0>[</>{{ .HEAD }}{{if .BranchStatus }}{{ .BranchStatus }}{{ end }}{{ if or .Working.Changed .Staging.Changed }}\u200a<#7FE0C2>\u2213{{ end }}{{ if .Working.Changed }}\u200a{{ .Working.String }}\u2297{{ end }}{{ if .Staging.Changed }}\u200a{{ .Staging.String }}\u2295{{ end }}{{ if gt .StashCount 0 }}\u200a{{ .StashCount }}\u229a{{ end }}{{ if or .Working.Changed .Staging.Changed }}</>{{ end }} <#6FC7B0>]</>",
-          "options": {
-            "source": "cli"
-          }
+          "options": {}
         },
         {
           "type": "status",
