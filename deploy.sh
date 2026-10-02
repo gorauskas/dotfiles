@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# Created: 2013-05-06 17:39:39 by Jonas Gorauskas [JGG]
-# Modified: 2025-03-17 13:28:22
 
 # The strategy is to git clone the repo to ~/dotfiles and then execute this file
 # to generate sym links on ~/ to all the files in the repo. This file is intended

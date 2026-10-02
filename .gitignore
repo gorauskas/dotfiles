@@ -1,5 +1,3 @@
-# JGG Dotfiles Ignore list + global gitignore
-
 # Folder view configuration files
 .DS_Store
 Desktop.ini
