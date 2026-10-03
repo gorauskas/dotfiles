@@ -29,7 +29,7 @@ if [[ "$1" == "desktop" || "$1" == "server" ]]; then
     [ -d ~/.config/alacritty/ ] || mkdir -p ~/.config/alacritty/
     pushd "${HOME}/.config/alacritty" &>/dev/null || exit
     echo "  create links for alacritty $DF_DIR from $PWD"
-    ln -v -fs "${DF_DIR}/alacritty_linux.toml" alacritty.toml
+    ln -v -fs "${DF_DIR}/alacritty.toml" alacritty.toml
     [ -L ./colors ] && rm colors
     ln -v -fs "${DF_DIR}/.alacritty-themes/colors" colors
     popd &>/dev/null || exit
@@ -37,13 +37,12 @@ if [[ "$1" == "desktop" || "$1" == "server" ]]; then
     echo "setup posh"
     [ -L ~/.poshthemes ] || ln -v -fs "${DF_DIR}/.poshthemes" "${HOME}/.poshthemes"
 
-    echo "setup vim"
-    [ -d ./vimconf ] && rm -rf ./vimconf
-    git clone https://github.com/gorauskas/vimconf.git
-    ln -v -fs "${DF_DIR}/vimconf/.vimrc" "${HOME}/.vimrc"
-
-    [ -h "${HOME}/.vim" ] && rm "${HOME}/.vim"
-    ln -v -fs "${DF_DIR}/vimconf/.vim/" "${HOME}/.vim"
+    echo "setup fastfetch"
+    [ -d ~/.config/fastfetch/ ] || mkdir -p ~/.config/fastfetch/
+    pushd "${HOME}/.config/fastfetch" &>/dev/null || exit
+    echo "  create link for fastfetch $DF_DIR from $PWD"
+    ln -v -fs "${DF_DIR}/fastfetch_config.jsonc" config.jsonc
+    popd &>/dev/null || exit
 fi
 
 if [[ "$1" == "desktop" ]]; then
