@@ -1,4 +1,4 @@
-<p align="center"><img alt="dotfiles" src="./bash.png" witdth=50% height=50% /></p>
+<p align="center"><img alt="dotfiles" src="./bash.png" witdth="250px" height="250px" /></p>
 <h1 align="center"> Dot Files </h1>
 <p align="center"> </p>
 
