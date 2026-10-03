@@ -1,92 +1,82 @@
 [general]
 live_config_reload = true
 
-[terminal.shell]
-program = "bash"
-args = ["-l"]
+[terminal]
+shell = { program = "bash", args = ["-l"] }
 
 [colors]
 draw_bold_text_with_bright_colors = true
 
+[colors.primary]
+background = "#091310"
+foreground = "#B7E3D8"
+dim_foreground = "#8AA39B"
+bright_foreground = "#E0F5EF"
+
 [colors.bright]
-black = "#333333"
-blue = "#98F5FF"
-cyan = "#00F5FF"
-green = "#00FF7F"
-magenta = "#FFBBFF"
-red = "#FF7F50"
-white = "#F5F5F5"
-yellow = "#FFEC8B"
-
-[colors.cursor]
-cursor = "#FF7F50"
-text = "#333333"
-
-[colors.dim]
-black = "#0D0D0D"
-blue = "#7AC5CD"
-cyan = "#00C5CD"
-green = "#00CD66"
-magenta = "#CD96CD"
-red = "#B22222"
-white = "#DCDCDC"
-yellow = "#CDBE70"
+black = "#40514C"
+red = "#F06D75"
+green = "#8BDFC4"
+yellow = "#FFD166"
+blue = "#80B9E8"
+magenta = "#B89CE8"
+cyan = "#8AE1E7"
+white = "#E0F5EF"
 
 [colors.normal]
-black = "#0D0D0D"
-blue = "#7AC5CD"
-cyan = "#00C5CD"
-green = "#00CD66"
-magenta = "#CD96CD"
-red = "#B22222"
-white = "#DCDCDC"
-yellow = "#CDBE70"
+black = "#091310"
+red = "#CE2029"
+green = "#6FC7B0"
+yellow = "#F5A500"
+blue = "#568CC5"
+magenta = "#AB80C4"
+cyan = "#65BFC4"
+white = "#B7E3D8"
 
-[colors.primary]
-background = "#0D0D0D"
-dim_foreground = "#DCDCDC"
+[colors.dim]
+black = "#091310"
+red = "#8F292F"
+green = "#4F9381"
+yellow = "#B87D16"
+blue = "#416B95"
+magenta = "#806395"
+cyan = "#4C9093"
+white = "#829F97"
+
+[colors.cursor]
+text = "#091310"
+cursor = "#6FC7B0"
+
+[colors.selection]
+background = "#333333"
 foreground = "#F5F5F5"
 
 [colors.search.matches]
 background = "#333333"
 foreground = "#F5F5F5"
-[colors.selection]
-background = "#483d8b"
-text = "CellForeground"
 
-[colors.vi_mode_cursor]
-cursor = "#FF7F50"
-text = "#333333"
+[colors.search.focused_match]
+background = "#111111"
+foreground = "#eeeeee"
 
 [cursor]
+style = {
+  shape = "Block",
+  blinking = "Always"
+}
 blink_interval = 333
+blink_timeout = 0
 unfocused_hollow = true
-
-[cursor.style]
-blinking = "Always"
-shape = "Block"
 
 [env]
 TERM = "xterm-256color"
 
 [font]
 size = 11
-
-[font.bold]
-family = "EnvyCodeR Nerd Font Mono"
-style = "Bold"
-
-[font.bold_italic]
-family = "EnvyCodeR Nerd Font Mono"
-style = "Bold Italic"
-
-[font.italic]
-family = "EnvyCodeR Nerd Font Mono"
-style = "Italic"
-
-[font.normal]
-family = "EnvyCodeR Nerd Font Mono"
-style = "Regular"
+normal = {
+  family = "EnvyCodeR Nerd Font Mono",
+  style = "Regular"
+}
 
 [keyboard]
 bindings = [
@@ -105,15 +95,13 @@ bindings = [
 
 [scrolling]
 history = 9999
+multiplier = 5
+
+[selection]
+save_to_clipboard = true
 
 [window]
+padding = { x = 5, y = 5 }
+dimensions = { columns = 160, lines = 48 }
 dynamic_title = true
 title = "Terminal"
-
-[window.dimensions]
-columns = 160
-lines = 48
-
-[window.padding]
-x = 5
-y = 5
