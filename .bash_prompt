@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# Bourne Again Shell Init Prompt File
-# Jonas Gorauskas
 
 PROMPT_COMMAND=""
 

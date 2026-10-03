@@ -1,28 +1,22 @@
+# To change user name, email address, and signing key, 
+# please use the following commands:
+#   git config --global user.name "Your Name"
+#   git config --global user.email "your.email@example.com"
+#   git config --global user.signingkey "your.signing.key"
+
+[core]
+    autocrlf = false
+    safecrlf = false
+    pager = most
+
 [user]
     useConfigOnly = true
     email = jgorauskas@gmail.com
     name = Jonas Gorauskas
     signingkey = D154EF40E89AD6BD
-[core]
-    autocrlf = false
-    safecrlf = false
-    pager = most
-[gui]
-    fontdiff = -family \"DejaVu Sans Mono\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
-    commitmsgwidth = 120
-    encoding = utf-8
-    trustmtime = true
-    historybrowser = gitk
-[merge]
-    summary = true
-    tool = meld
-[credential]
-[giggle]
-    main-window-maximized = false
-    main-window-geometry = 989x880+829+87
-    file-view-hpane-position = 184
-[url "git@github.com:gorauskas/"]
-    insteadOf = jgg:
+
+###############################################################################
+
 [alias]
     a = add
     b = branch
@@ -56,8 +50,7 @@
     undo = reset --hard HEAD~1
     unpushed = log --branches --not --remotes --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     visual = !gitk
-[color]
-    ui = auto
+
 [color "branch"]
     current = yellow reverse
     local = yellow
@@ -71,34 +64,42 @@
     added = yellow
     changed = green
     untracked = cyan
-[push]
-    default = matching
-[pull]
-    rebase = false
-[diff]
-    tool = meld
-[github]
-    user = gorauskas
-[log]
-    date = iso
-    abbrevCommit = true
-[sendemail]
-    smtpuser = jgorauskas@gmail.com
-    smtpserver = smtp.gmail.com
-    smtpserverport = 587
-    smtpencryption = tls
-    suppresscc = all
-[init]
-    defaultBranch = main
-[cola]
-    spellcheck = false
-    blameviewer = git gui blame
-    theme = flat-dark-blue
-    icontheme = dark
+
 [commit]
     gpgsign = true
-[safe]
-    directory = /home/jonasg/Projects
+
+[diff]
+    tool = meld
+
+[fetch]
+	prune = true
+
+[github]
+    user = gorauskas
+
 [gpg]
     program = /usr/bin/gpg2
     format = openpgp
+
+[init]
+    defaultBranch = main
+
+[log]
+    date = iso
+    abbrevCommit = true
+
+[merge]
+    summary = true
+    tool = meld
+
+[pull]
+    rebase = true
+
+[push]
+    default = matching
+
+[safe]
+    directory = /home/jonasg/Projects
+
+[url "git@github.com:gorauskas/"]
+    insteadOf = jgg:

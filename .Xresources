@@ -1,7 +1,3 @@
-! X Resources definitions
-! Created: 2001-11-10 20:04:17 by Jonas Gorauskas
-! Modified: 2023-06-24 05:58:19
-!
 ! Notes:
 !  to test, run the following to source the file:
 !
@@ -73,29 +69,29 @@ xterm*eightBitInput:          true
 xterm*metaSendsEscape:        true
 xterm*cursorBlink:            true
 
-! --- URXVT + XTERM TERMINAL COLORS [CHARCOAL DARK] ---
-#define cb00 #0D0D0D
-#define cb01 #B22222
-#define cb02 #00CD66
-#define cb03 #CDBE70
-#define cb04 #7AC5CD
-#define cb05 #CD96CD
-#define cb06 #00C5CD
-#define cb07 #DCDCDC
+! --- URXVT + XTERM TERMINAL COLORS ---
+#define cb00 #091310
+#define cb01 #CE2029
+#define cb02 #6FC7B0
+#define cb03 #F5A500
+#define cb04 #568CC5
+#define cb05 #AB80C4
+#define cb06 #65BFC4
+#define cb07 #B7E3D8
 
-#define cb08 #333333
-#define cb09 #FF7F50
-#define cb10 #00FF7F
-#define cb11 #FFEC8B
-#define cb12 #98F5FF
-#define cb13 #FFBBFF
-#define cb14 #00F5FF
-#define cb15 #F5F5F5
+#define cb08 #40514C
+#define cb09 #F06D75
+#define cb10 #8BDFC4
+#define cb11 #FFD166
+#define cb12 #80B9E8
+#define cb13 #B89CE8
+#define cb14 #8AE1E7
+#define cb15 #E0F5EF
 
 ! special
 *.foreground:   cb15
 *.background:   cb00
-*.cursorColor:  cb09
+*.cursorColor:  #FF7900
 *fading: 35
 *fadeColor: cb08
 
