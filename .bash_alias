@@ -1,82 +1,85 @@
 #!/usr/bin/env bash
-# Bourne Again Shell Aliases File
-# Jonas Gorauskas - 2007-03-17 21:17:05
-# Modified: 2017-09-30 14:48:13
+
+# A note about behavior! Consider the following example:
+# 
+#   alias ls='ls $LS_OPTIONS'
+#   alias ll='ls -laFo'
+# 
+# In the above case we override the ls command with our own alias. 
+# The ll alias will then call our ls alias, which will expand to "ls $LS_OPTIONS -laFo". 
+# If this is not what you want, you must `unalias ls` to go back to the behavior of the 
+# original `ls` command. OR you can create your aliases like this: 
+#
+#   alias ll='command ls -laFo'
+#
+# There are other places in the code where this is done, so be aware of this behavior 
+# when creating new aliases.
 
 # A function to add an alias to the current shell and
 # append it to this file
 adda () {
     local name=$1 value="$2"
-    echo alias $name=\'$value\' >> ~/dotfiles/.bash_alias
-    eval alias $name=\'$value\'
-    alias $name
-}
-
-# Repeat command N times
-#   e.g. repeat 10 echo foo
-repeat () {
-    local count="$1" i;
-    shift;
-    for i in $(seq 1 "$count");
-    do
-        eval "$@";
-    done
-}
-
-# Sub-Function used by Repeat
-seq () {
-    local lower upper output;
-    lower=$1 upper=$2
-
-    if [ $lower -ge $upper ]; then return; fi
-
-    while [ $lower -le $upper ]; do
-        echo -n "$lower "
-        lower=$(($lower + 1))
-    done
-    echo "$lower"
+    echo alias "$name"=\'"$value"\' >> ~/dotfiles/.bash_alias
+    eval alias "$name"=\'"$value"\'
+    alias "$name"
 }
 
 #### USER SPECIFIC ALIASES AND FUNCTIONS
-## Enable color support for ls
-if [ "$TERM" != "dumb" ]; then
-    if [[ "$PLATFORM" == "Linux" || "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MINGW64_NT" ]]; then
-        if [ -x /usr/bin/dircolors ]; then
-            export LS_OPTIONS='--color=auto'
-            test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-        fi
+# show all user-specific aliases:
+alias sa='alias -p'
 
+# Enable colors
+if [[ "$PLATFORM" == "Linux" ]]; then
+    if [ -x /usr/bin/dircolors ]; then
+        LS_OPTIONS='--color=auto'
+        test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    fi
+fi
+
+if [[ "$PLATFORM" == "FreeBSD" ]]; then
+    LS_OPTIONS='--color=always'
+fi
+
+export LS_OPTIONS
+
+if [ "$TERM" != "dumb" ]; then
+    if [[ "$PLATFORM" == "Linux" ]]; then
         alias ls='ls $LS_OPTIONS'
         alias ll='ls -laFo'
         alias l='ls -l'
         alias lr='ls -R'      #recursive ls
+        alias l.=' ls -lhFa --time-style=long-iso --ignore=lost+found'
         alias dots='ls -ldFh .*'
 
         alias dira='ls -alFh --group-directories-first --time-style=long-iso'
-        alias dirt='ls -alFhtr --group-directories-first --time-style=long-iso'
-        alias dir='eza -l -a --icons=auto --group-directories-first --smart-group --header --time modified --time-style="+%Y-%m-%d %H:%M:%S"'
+        alias dirr='ls -alFhtr --group-directories-first --time-style=long-iso'
 
         alias logs="sudo find /var/log -type f -exec file {} \; | grep 'text' | cut -d' ' -f1 | sed -e's/:$//g' | grep -v '[0-9]$' | xargs tail -f"
-        alias cfiles="for t in files links directories; do echo \`find . -type \${t:0:1} | wc -l\` \$t; done 2> /dev/null"
-
-        alias grep='grep $LS_OPTIONS'
-        alias fgrep='fgrep $LS_OPTIONS'
-        alias egrep='egrep $LS_OPTIONS'
     fi
     if [[ "$PLATFORM" == "FreeBSD" ]]; then
-        alias ls='ls --color=always'
+        alias ls='ls $LS_OPTIONS'
         alias ll='ls -laFG'
         alias l='ls -l'
         alias lr='ls -R'
         alias dots='ls -ldFh .*'
 
         alias dira='ls -alFGhp -D "%F %T"'
-        alias dirt='ls -alFGhtr'
-        alias dir='eza -l -a --icons=auto --group-directories-first --smart-group --header --time modified --time-style="+%Y-%m-%d %H:%M:%S"'
+        alias dirr='ls -alFGhtr'
     fi
 fi
 
-## Navigation
+# Awesome ls replacement:
+alias dir='eza -l -a -h -F -t modified -s newest --icons --group-directories-first --smart-group --time-style="+%Y-%m-%d %H:%M:%S"'
+# Output as tree:
+alias dirt='eza -l -a -h -F -T -t modified -s newest --icons --group-directories-first --smart-group --time-style=long-iso'
+
+# SEARCHING ALIASES
+alias grep='grep $LS_OPTIONS'
+alias grepn='grep -n'
+alias fgrep='fgrep $LS_OPTIONS'
+alias egrep='egrep -n $LS_OPTIONS'
+
+## NAVIGATION ALIASES
 # get rid of command not found ##
 alias cd..='cd ..'
 
@@ -87,9 +90,10 @@ alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
+# go back to previous directory
+alias back='cd -'
 
 ### QUERY THE HW
-
 ## get top process eating memory
 alias psmem='ps aux | sort -nr -k 4'
 alias psmem10='ps aux | sort -nr -k 4 | head -10'
@@ -130,13 +134,9 @@ alias header='curl -I'
 alias headerc='curl -I --compress'
 alias wget='wget -c'
 
-
 ## MISCELLANEOUS
 
 # modified existing commands
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
 alias more='less'
 alias nano='nano -w'
 
@@ -155,71 +155,6 @@ alias hn='hostname'
 alias reload='. ~/.bashrc'
 alias space='sudo ncdu -x -e -2 --color dark ./'
 
-## PROGRAMMING
-
-alias diff='colordiff'              # requires colordiff package
-alias d='diff'
-alias g='git'
-alias gw='./gradlew'
-
-# emacs
-alias e='emacsclient -ca emacs'
-# alias em=emacs # conflicts with MicroEmacs em
-alias emdi='emacs --debug-init'
-alias enw='emacs -nw'
-alias qem='emacs -q'
-alias sem='sudo emacs'
-
-# lisp
-alias lisp='rlwrap sbcl'
-alias csi='rlwrap chicken-csi'
-alias guile='rlwrap guile'
-alias gambit='gambitc'
-
-# python
-# The 2 aliases to ipython below are changing to ensure that ipython is
-# loaded from inside an venv when in one
-alias ipy="python3 -c 'from IPython import start_ipython; start_ipython()'"
-
-alias py3='python3'
-alias py='python'
-
-# maven
-alias mcc='mvn clean compile'
-alias mci='mvn clean install'
-alias mcp='mvn clean package'
-alias mda='mvn dependency:analyze'
-alias mdt='mvn dependency:tree | less'
-alias mp='mvn package -DskipTests'
-
-# docker
-alias dco=docker-compose-fn
-alias dcu="docker-compose up -d"
-alias dcd="docker-compose down"
-alias dcr=docker-compose-run
-alias dex=docker-exec
-alias di=docker-inspect
-alias dim="docker images"
-alias dip=docker-ips
-alias dl=docker-logs
-alias dnames=docker-names
-alias dps="docker ps"
-alias dpsa="docker ps -a"
-alias drmc=docker-remove-exited # containers
-alias drmid=docker-remove-dangling-images
-alias drun=docker-run
-alias dsp="docker system prune --all"
-alias dsrm=docker-stop-remove # the container
-
-# kubernetes
-alias kc=kubectl
-alias kx=kubectx
-alias kns=kubens
-alias kgp="kubectl get pods"
-alias kgs="kubectl get secrets"
-alias kgc="kubectl get configmaps"
-alias kpf="kubectl port-forward"
-
 # LINUX ONLY Aliases
 if [[ "$PLATFORM" == "Linux" || "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MINGW64_NT" ]]; then
     ## pass options to free ##
@@ -227,6 +162,9 @@ if [[ "$PLATFORM" == "Linux" || "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MI
 
     ## Get server cpu info ##
     alias cpuinfo='lscpu'
+
+    alias dmesg='sudo dmesg -t'
+    alias sysinfo='inxi -Fxxxrza'
 
     ## get GPU ram on desktop / laptop##
     alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
@@ -263,7 +201,8 @@ if [[ "$PLATFORM" == "Linux" || "$PLATFORM" == "CYGWIN_NT" || "$PLATFORM" == "MI
     alias ports='netstat -tulanp'
     alias openports='ss --all --numeric --processes --ipv4 --ipv6'
 
-    alias df='df -Tha --total'
+    # df pretty
+    alias dfp='df -Tha --sync --total -x squashfs -x tmpfs -x devtmpfs'
     alias dus='du -ach | sort -h'
     alias du1='du -ach --max-depth=1'
     alias free='free -mt'
