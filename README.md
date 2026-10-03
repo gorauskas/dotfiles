@@ -1,8 +1,6 @@
-<div style="text-align:center; margin-bottom: 50px;">
-<img alt="dotfiles" src="./bash.png" witdth="300px" height="300px" />
-<h1 style="border-bottom: none; margin-bottom: 50px;"> Dot Files </h1>
-<hr/>
-</div>
+<p align="center"><img alt="dotfiles" src="./bash.png" witdth=50% height=50% /></p>
+<h1 align="center"> Dot Files </h1>
+<p align="center"> </p>
 
 These are my public dotfiles and they are guaranteed to work for me... Feel free
 to steal them, but your mileage may vary. 
