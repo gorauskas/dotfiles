@@ -159,8 +159,7 @@ function pskill() {
     echo "Slaughtered ..."
 }
 
-
-
+# Caesar cipher - requires `tr` command
 function rot13() {
     if (($#)); then
         printf '%s\n' "$*" | tr 'A-Za-z' 'N-ZA-Mn-za-m'

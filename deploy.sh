@@ -60,7 +60,7 @@ if [[ "$1" == "desktop" ]]; then
     fi
 
     [ -d "${HOME}/Pictures/tiles" ] && rm -rf "${HOME}/Pictures/tiles"
-    cp -r "${DF_DIR}/tiles/" "${HOME}/Pictures/"
+    cp -r "${DF_DIR}/assets/tiles/" "${HOME}/Pictures/"
 elif [[ "$1" == "server" ]]; then
     echo "setup server "
     if [ ! -d "${HOME}/bin" ]; then
