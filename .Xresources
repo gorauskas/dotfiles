@@ -14,22 +14,23 @@ Xft.autohint:   true
 Xft.lcdfilter:  lcddefault
 
 !! URxvt definitions
-URxvt*termName:               rxvt-unicode-256color
-URxvt*transparent:            false
-URxvt*inheritPixmap:          false
-URxvt*imLocale:               en_US.UTF-8
-URxvt*scrollBar:              true
-URxvt*scrollBar_right:        false
-URxvt*scrollstyle:            plain
-URxvt*cursorBlink:            true
-URxvt*geometry:               160x60
-URxvt*letterSpace:            -1
-URxvt*urgentOnBell:           true
-URxvt*depth:                  32
-
-URxvt.saveLines:              32767
+URxvt.preeditType:            Root
+URxvt.perl-lib:               /usr/lib/urxvt/perl
+URxvt.cursorBlink:            true
+URxvt.depth:                  32
+URxvt.geometry:               160x60
+URxvt.imLocale:               en_US.UTF-8
+URxvt.inheritPixmap:          false
 URxvt.iso14755:               false
 URxvt.iso14755_52:            false
+URxvt.letterSpace:            -1
+URxvt.saveLines:              32767
+URxvt.scrollBar:              true
+URxvt.scrollBar_right:        false
+URxvt.scrollstyle:            plain
+URxvt.termName:               rxvt-unicode-256color
+URxvt.transparent:            false
+URxvt.urgentOnBell:           true
 
 URxvt*font:                   xft:EnvyCodeR Nerd Font Mono:pixelsize=14
 URxvt*boldFont:               xft:EnvyCodeR Nerd Font Mono:bold:pixelsize=14
@@ -51,23 +52,23 @@ URxvt.tabbed.tab-fg: 10
 URxvt.tabbed.tab-bg: 0
 
 !! xterm definitions
-xterm*geometry:               160x64
-xterm*internalBorder:         10
-xterm*loginShell:             true
-xterm*scrollBar:              true
-xterm*scrollKey:              true
-xterm*multiClickTime:         250
+xterm*cursorBlink:            true
+xterm*dynamicColors:          on
+xterm*eightBitInput:          true
 xterm*faceName:               EnvyCodeR Nerd Font Mono
 xterm*faceSize:               11
-xterm*renderFont:             true
-xterm*scaleHeight:            1.0
-xterm*saveLines:              32767
-xterm*dynamicColors:          on
+xterm*geometry:               160x64
 xterm*highlightSelection:     true
-xterm*utf8:                   1
-xterm*eightBitInput:          true
+xterm*internalBorder:         10
+xterm*loginShell:             true
 xterm*metaSendsEscape:        true
-xterm*cursorBlink:            true
+xterm*multiClickTime:         250
+xterm*renderFont:             true
+xterm*saveLines:              32767
+xterm*scaleHeight:            1.0
+xterm*scrollBar:              true
+xterm*scrollKey:              true
+xterm*utf8:                   1
 
 ! --- URXVT + XTERM TERMINAL COLORS ---
 #define cb00 #091310
